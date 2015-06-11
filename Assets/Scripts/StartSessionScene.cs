@@ -39,7 +39,7 @@ public class StartSessionScene : MonoBehaviour {
 	private void createSession () {
 		ParseObject session = new ParseObject(sessionName);
 		// create fields by empty inputs
-		session["device"] = "";
+		session["device"] = "TEACHER";
 		session["firstName"] = "";
 		session["lastName"] = "";
 		session["currentTask"] = "";
@@ -53,7 +53,7 @@ public class StartSessionScene : MonoBehaviour {
 				sessionCreated = true;
 				AppManager.Instance.currentClass = sessionName;
 				// empty session/object created in db so remove as class is now created in Parse
-				session.DeleteAsync();
+				//session.DeleteAsync(); // actually we need teacher object to start session
 			}
 		});
 	}

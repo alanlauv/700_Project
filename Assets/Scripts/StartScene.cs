@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Parse;
 
 public class StartScene : MonoBehaviour {
 	string firstName = "First name";
 	string lastName = "Last name";
 	string className = "Classroom";
+	string deviceName = null;
 
 	bool loggedIn = false;
 
 	// Use this for initialization
 	void Start () {
-		
+		deviceName = SystemInfo.deviceName;
 	}
 	
 	// Update is called once per frame
@@ -83,8 +85,34 @@ public class StartScene : MonoBehaviour {
 	}
 
 	private void newLogIn () {
+		ParseObject.GetQuery(className).FindAsync().ContinueWith(t => {
+			if (t.IsFaulted || t.IsCanceled) {
+				// The login failed. Check the error to see why.
+				Debug.Log("class does not exist");
+			} else {
+				// Login was successful.
+
+				// get list of students from Parse class
+				IEnumerable<ParseObject> students = t.Result;
+				bool classExists = false;
+				// if there is something in the collection then class exists
+				foreach (var student in students) {
+					classExists = true;
+					break;
+				}
+				if (classExists) {
+					Debug.Log ("class exist");
+					createStudent ();
+				} else {
+					Debug.Log("class does not exist");
+				}
+			}
+		});
+	}
+
+	private void createStudent () {
 		ParseObject student = new ParseObject(className);
-		student["device"] = SystemInfo.deviceName;
+		student["device"] = deviceName;
 		student["firstName"] = firstName;
 		student["lastName"] = lastName;
 		student["currentTask"] = "None";
