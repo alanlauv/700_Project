@@ -42,7 +42,7 @@ public class TeacherScene : MonoBehaviour {
 		scrollPosition = GUI.BeginScrollView(new Rect(10, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, 1000));
 
 		// table headers
-		drawStudentEntry(0, "Device", "Name", "Current Task", "Help Needed");
+		drawStudentEntry(0, "DEVICE", "STUDENT", "CURRENT TASK", "HELP?");
 
 		// list students
 		if (students != null) {
@@ -90,7 +90,7 @@ public class TeacherScene : MonoBehaviour {
 
 			// end session
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .55f, Screen.width * .2f, Screen.height * .1f), "End Session")) {
-
+				endSession();
 			}
 
 			// logout
@@ -105,5 +105,14 @@ public class TeacherScene : MonoBehaviour {
 		ParseObject.GetQuery(AppManager.Instance.currentClass).FindAsync().ContinueWith(t => {
 			students = t.Result;
 		});
+	}
+
+	// delete all the objects in the classroom
+	private void endSession () {
+		if (students != null) {
+			foreach (var student in students) {
+				student.DeleteAsync();
+			}
+		}
 	}
 }
