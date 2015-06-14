@@ -18,6 +18,7 @@ public class TaskSelectionScene : MonoBehaviour {
 		// topic title
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;
+		titleStyle.normal.textColor = Color.black;
 		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), "Geometry & Measurement", titleStyle);
 
 		// sound toggle
