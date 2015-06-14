@@ -26,7 +26,7 @@ public class Y1Q1Scene : MonoBehaviour {
 	private Texture2D greenCircle;
 	private Texture2D bg;
 
-	private string question = "The Green Rocket is ______ than the Grey Rocket";
+	private string question = "The Green Rocket is ______ than the Blue Rocket";
 	
 	// Use this for initialization
 	void Start () {
