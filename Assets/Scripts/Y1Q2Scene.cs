@@ -63,10 +63,12 @@ public class Y1Q2Scene : MonoBehaviour {
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;
 		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
-		drawRedRocket();
-		drawBlueRocket();
-		drawGreenRocket();
-		drawPurpleRocket();
+
+		//drawRedRocket();
+		//drawBlueRocket();
+		//drawGreenRocket();
+		//drawPurpleRocket();
+
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
 			if (displaySettings) {
