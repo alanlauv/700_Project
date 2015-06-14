@@ -136,19 +136,19 @@ public class Y1Q2Scene : MonoBehaviour {
 	}
 
 	private void drawRedRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .23f, Screen.height * .1f, Screen.width * .24f, Screen.width * .418f), redRocket);
+		GUI.DrawTexture(new Rect(Screen.width * .23f, Screen.height * .235f, Screen.width * .24f, Screen.width * .48f), redRocket);
 
 	}
 	private void drawBlueRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .455f, Screen.height * .13f, Screen.width * .28f, Screen.width * .4f), blueRocket);
+		GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .275f, Screen.width * .29f, Screen.width * .45f), blueRocket);
 		
 	}
 	private void drawGreenRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .725f, Screen.height * .0f, Screen.width * .27f, Screen.width * .47f), greenRocket);
+		GUI.DrawTexture(new Rect(Screen.width * .73f, Screen.height * .07f, Screen.width * .283f, Screen.width * .6f), greenRocket);
 		
 	}
 	private void drawPurpleRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .35f, Screen.width * .23f, Screen.width * .30f), purpleRocket);
+		GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .52f, Screen.width * .23f, Screen.width * .30f), purpleRocket);
 		
 	}
 	
