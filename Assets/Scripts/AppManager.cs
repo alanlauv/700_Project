@@ -12,6 +12,7 @@ public class AppManager {
 	public const string TEACHER_SCENE = "TeacherScene";
 
 	public const string Y1Q1_SCENE = "Y1Q1Scene";
+	public const string Y1Q2_SCENE = "Y1Q2Scene";
 
 	public bool sound = false; //{ get; set; }
 	public bool teacherMode = false; //{ get; set; }

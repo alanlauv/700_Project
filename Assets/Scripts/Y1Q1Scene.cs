@@ -90,7 +90,8 @@ public class Y1Q1Scene : MonoBehaviour {
 		// answer pool
 		// taller
 		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Taller")) {
-			displayRedCross = true;
+			displayGreenCircle = true;
+			question = "The Green Rocket is taller than the Grey Rocket";
 		}
 
 		// thinner
@@ -110,8 +111,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 		// shorter
 		if (GUI.Button (new Rect (Screen.width * .7f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Shorter")) {
-			displayGreenCircle = true;
-			question = "The Green Rocket is taller than the Grey Rocket";
+			displayRedCross = true;
 		}
 
 		drawGreenCircle();
