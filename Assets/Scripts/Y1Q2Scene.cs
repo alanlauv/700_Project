@@ -70,6 +70,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		//drawPurpleRocket();
 
 		// settings button
+
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
 			if (displaySettings) {
 				displaySettings = false;

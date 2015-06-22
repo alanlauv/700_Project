@@ -26,6 +26,11 @@ public class StartScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
+		// set up scaling
+		//float rx = Screen.width / 1600;
+		//float ry = Screen.height / 1000;
+		//GUI.matrix = Matrix4x4.TRS (Vector3(0, 0, 0), Quaternion.identity, Vector3 (rx, ry, 1)); 
+
 		// school label
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;

@@ -7,9 +7,15 @@ public class mouseDrag : MonoBehaviour {
 	static bool doSwap = false;
 
 	static bool slot1 = false;
-	static bool slot2 = true;
-	static bool slot3 = true;
+	static bool slot2 = false;
+	static bool slot3 = false;
 	static bool slot4 = false;
+
+	// X positions 0.13, 0.37, 0.61, 0.87
+	static float curGreenRocketPos;
+	static float curRedRocketPos;
+	static float curBlueRocketPos;
+	static float curPurpleRocketPos;
 
 	float distance = 1.0f;
 	Vector3 objPosition;
@@ -23,36 +29,40 @@ public class mouseDrag : MonoBehaviour {
 		currentPosition = transform.position;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
+
+		if (startZ == 1.0f) {
+			curGreenRocketPos = currentPosition.x;
+		} else if (startZ == 2.0f) {
+			curRedRocketPos = currentPosition.x;
+		} else if (startZ == 3.0f) {
+			curBlueRocketPos = currentPosition.x;
+		} else if (startZ == 4.0f) {
+			curPurpleRocketPos = currentPosition.x;
+		}
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (currentPosition.x == 0.13f) {
-			if (currentPosition.z == 1.0f) {
+			if (currentPosition.z == 1.0f) { // green rocket z=1
 				slot1 = true;
 			} else {
 				slot1 = false;
 			}
-		}
-
-		if (currentPosition.x == 0.37f) {
-			if (currentPosition.z == 2.0f) {
+		} else if (currentPosition.x == 0.37f) {
+			if (currentPosition.z == 2.0f) { // red rocket z=2
 				slot2 = true;
 			} else {
 				slot2 = false;
 			}
-		}
-
-		if (currentPosition.x == 0.61f) {
-			if (currentPosition.z == 3.0f) {
+		} else if (currentPosition.x == 0.61f) {
+			if (currentPosition.z == 3.0f) { // blue rocket z=3
 				slot3 = true;
 			} else {
 				slot3 = false;
 			}
-		}
-
-		if (currentPosition.x == 0.87f) {
-			if (currentPosition.z == 4.0f) {
+		} else if (currentPosition.x == 0.87f) {
+			if (currentPosition.z == 4.0f) { // purple rocket z=4
 				slot4 = true;
 			} else {
 				slot4 = false;
@@ -107,7 +117,7 @@ public class mouseDrag : MonoBehaviour {
 		} else if (transform.position.x > 0.75f & transform.position.x < 0.90f) { // slot 4
 			transform.position = new Vector3(0.87f, startY, startZ);
 			currentPosition = transform.position;
-		} else {
+		} else { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 		}
 	}
