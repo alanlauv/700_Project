@@ -102,7 +102,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		// taller
 		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Taller")) {
 			displayGreenCircle = true;
-			question = "The Green Rocket is taller than the Grey Rocket";
+			question = "The Green Rocket is taller than the Blue Rocket";
 		}
 
 		// thinner
@@ -171,7 +171,7 @@ public class Y1Q1Scene : MonoBehaviour {
 				displayHelpDialog = false;
 			}
 
-			GUI.DrawTexture(new Rect(Screen.width * .41f, Screen.height * .35f, Screen.width * .15f, Screen.height * .2f), astronaut);
+			GUI.DrawTexture(new Rect(Screen.width * .41f, Screen.height * .34f, Screen.width * .15f, Screen.height * .23f), astronaut);
 
 			// call for help
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "Ask Teacher")) {
