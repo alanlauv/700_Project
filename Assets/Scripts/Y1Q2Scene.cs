@@ -12,7 +12,7 @@ public class Y1Q2Scene : MonoBehaviour {
 	
 	// update data timer
 	private float timer = 0.0f;
-	private float timerMax = 30.0f;
+	private float timerMax = 15.0f;
 	
 	private float crossTimer = 0.0f;
 	private float crossTimerMax = 3.0f;
@@ -28,7 +28,7 @@ public class Y1Q2Scene : MonoBehaviour {
 	private Texture2D star;
 	private Texture2D starEmpty;
 	private Texture2D hintLine;
-	private string question = "Sort the 4 rockets from the tallest to the shortest!";
+	private string question = "Order the 4 rockets!";
 	
 	// Use this for initialization
 	void Start () {
@@ -64,9 +64,13 @@ public class Y1Q2Scene : MonoBehaviour {
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;
 		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
-		
-		// settings button
 
+		// TALLEST
+		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "TALLEST", titleStyle);
+		// SHORTEST
+		GUI.Label (new Rect (Screen.width * .77f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "SHORTEST", titleStyle);
+
+		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
 			if (displaySettings) {
 				displaySettings = false;
@@ -75,14 +79,15 @@ public class Y1Q2Scene : MonoBehaviour {
 			}
 		}
 		
-		// help dialog button (1min wait)
+		// help dialog button
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "H")) {
-				if (displayHelpDialog) {
-					displayHelpDialog = false;
-				} else {
-					displayHelpDialog = true;
-				}
+				// TODO don't need help dialog anymore?
+				//if (displayHelpDialog) {
+				//	displayHelpDialog = false;
+				//} else {
+				//	displayHelpDialog = true;
+				//}
 				displayHintLine = true;
 			}
 		}

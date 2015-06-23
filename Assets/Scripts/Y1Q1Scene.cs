@@ -17,7 +17,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	// update data timer
 	private float timer = 0.0f;
-	private float timerMax = 20.0f;
+	private float timerMax = 15.0f;
 
 	private float crossTimer = 0.0f;
 	private float crossTimerMax = 3.0f;
@@ -94,11 +94,12 @@ public class Y1Q1Scene : MonoBehaviour {
 		// help dialog button (20sec wait) and display astronauts
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "H")) {
-				if (displayHelpDialog) {
-					displayHelpDialog = false;
-				} else {
-					displayHelpDialog = true;
-				}
+				// don't need help dialog anymore?
+				//if (displayHelpDialog) {
+				//	displayHelpDialog = false;
+				//} else {
+				//	displayHelpDialog = true;
+				//}
 				displayAstronaut = true;
 				numIncorrect++;
 			}
