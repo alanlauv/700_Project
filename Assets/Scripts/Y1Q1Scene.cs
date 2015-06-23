@@ -11,6 +11,7 @@ public class Y1Q1Scene : MonoBehaviour {
 	private bool displayGreenCircle = false;
 	private bool displayHelpDialog = false;
 	private bool displayAstronaut = false;
+	private bool displayStars = false;
 
 	private int numIncorrect = 0;
 
@@ -29,6 +30,8 @@ public class Y1Q1Scene : MonoBehaviour {
 	private Texture2D greenCircle;
 	private Texture2D bg;
 	private Texture2D astronaut;
+	private Texture2D star;
+	private Texture2D starEmpty;
 
 	private string question = "The Green Rocket is ______ than the Blue Rocket";
 	
@@ -38,6 +41,8 @@ public class Y1Q1Scene : MonoBehaviour {
 		greenCircle = (Texture2D)Resources.Load("green-circle");
 		bg = (Texture2D)Resources.Load("black-bg");
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
+		star = (Texture2D)Resources.Load("pics/Star/Star");
+		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q1);
@@ -95,13 +100,15 @@ public class Y1Q1Scene : MonoBehaviour {
 					displayHelpDialog = true;
 				}
 				displayAstronaut = true;
+				numIncorrect++;
 			}
 		}
 
 		// answer pool
 		// taller
 		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Taller")) {
-			displayGreenCircle = true;
+			//displayGreenCircle = true;
+			displayStars = true;
 			question = "The Green Rocket is taller than the Blue Rocket";
 		}
 
@@ -134,6 +141,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		drawRedCross();
 		drawHelpDialog();
 		drawSettings();
+		drawStars();
 	}
 
 	private void drawSettings () {
@@ -203,6 +211,30 @@ public class Y1Q1Scene : MonoBehaviour {
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .66f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .53f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .4f, Screen.width * .08f, Screen.height * .13f), astronaut);
+		}
+	}
+
+	private void drawStars () {
+		if (displayStars) {
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Completed");
+			
+			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
+			
+			if (numIncorrect == 1) {
+				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
+				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
+			} else if (numIncorrect >= 2) {
+				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
+				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
+			} else {
+				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
+				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
+			}
+
+			// ok
+			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
+				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
+			}
 		}
 	}
 }

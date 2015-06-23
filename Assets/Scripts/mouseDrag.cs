@@ -3,8 +3,9 @@ using System.Collections;
 
 public class mouseDrag : MonoBehaviour {
 
-	static Vector2 swap;
-	static bool doSwap = false;
+	static Vector2 swap; // don't need
+	static bool doSwap = false; // don't need
+	static bool isMouseDrag = false; // don't need
 
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -16,6 +17,7 @@ public class mouseDrag : MonoBehaviour {
 	static float curRedRocketPos;
 	static float curBlueRocketPos;
 	static float curPurpleRocketPos;
+	static float swapPos;
 
 	float distance = 1.0f;
 	Vector3 objPosition;
@@ -23,6 +25,8 @@ public class mouseDrag : MonoBehaviour {
 	Vector3 currentPosition;
 	float startY;
 	float startZ;
+
+	static Texture2D fire;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +43,8 @@ public class mouseDrag : MonoBehaviour {
 		} else if (startZ == 4.0f) {
 			curPurpleRocketPos = currentPosition.x;
 		}
+
+		fire = (Texture2D)Resources.Load("pics/Fire sprites/Fire");
 	}
 
 	// Update is called once per frame
@@ -73,6 +79,26 @@ public class mouseDrag : MonoBehaviour {
 			Debug.Log ("task completed");
 		}
 
+		/**
+		if (!isMouseDrag) {
+			if (startZ == 1.0f) {
+				if (curGreenRocketPos != currentPosition.x) {
+					transform.position = new Vector3(curGreenRocketPos, startY, startZ);
+				}
+			} else if (startZ == 2.0f) {
+				if (curRedRocketPos != currentPosition.x) {
+					transform.position = new Vector3(curRedRocketPos, startY, startZ);
+				}
+			} else if (startZ == 3.0f) {
+				if (curBlueRocketPos != currentPosition.x) {
+					transform.position = new Vector3(curBlueRocketPos, startY, startZ);
+				}
+			} else if (startZ == 4.0f) {
+				if (curPurpleRocketPos != currentPosition.x) {
+					transform.position = new Vector3(curPurpleRocketPos, startY, startZ);
+				}
+			}
+		}*/
 
 		/**
 		if (doSwap == true) {
@@ -91,6 +117,7 @@ public class mouseDrag : MonoBehaviour {
 	}
 
 	void OnMouseDrag () {
+		isMouseDrag = true;
 		//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
 
 		Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
@@ -102,23 +129,91 @@ public class mouseDrag : MonoBehaviour {
 		transform.position = objPosition;
 	}
 
+	void OnGUI () {
+		if (slot1) {
+			GUI.DrawTexture(new Rect(Screen.width * .08f, Screen.height * .93f, Screen.width * .08f, Screen.height * .07f), fire);
+		}
+		if (slot2) {
+			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .94f, Screen.width * .08f, Screen.height * .06f), fire);
+		}
+		if (slot3) {
+			GUI.DrawTexture(new Rect(Screen.width * .575f, Screen.height * .95f, Screen.width * .08f, Screen.height * .05f), fire);
+		}
+		if (slot4) {
+			GUI.DrawTexture(new Rect(Screen.width * .832f, Screen.height * .955f, Screen.width * .08f, Screen.height * .045f), fire);
+		}
+	}
+
 	void OnMouseUp () {
+		isMouseDrag = false;
+
 		if (transform.position.x > 0.03f & transform.position.x < 0.16f) { // slot 1
+			changePos(0.13f);
 			transform.position = new Vector3(0.13f, startY, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.x > 0.24f & transform.position.x < 0.40f) { // slot 2
 			//swap = new Vector2(1.0f, 2.0f);
 			//doSwap = true;
+			changePos(0.37f);
 			transform.position = new Vector3(0.37f, startY, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.x > 0.50f & transform.position.x < 0.66f) { // slot 3
+			changePos(0.61f);
 			transform.position = new Vector3(0.61f, startY, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.x > 0.75f & transform.position.x < 0.90f) { // slot 4
+			changePos(0.87f);
 			transform.position = new Vector3(0.87f, startY, startZ);
 			currentPosition = transform.position;
 		} else { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
+		}
+
+		// swap the rocket
+		if (startZ == 1.0f) {
+			if (curGreenRocketPos != currentPosition.x) {
+				transform.position = new Vector3(curGreenRocketPos, startY, startZ);
+			}
+		} else if (startZ == 2.0f) {
+			if (curRedRocketPos != currentPosition.x) {
+				transform.position = new Vector3(curRedRocketPos, startY, startZ);
+			}
+		} else if (startZ == 3.0f) {
+			if (curBlueRocketPos != currentPosition.x) {
+				transform.position = new Vector3(curBlueRocketPos, startY, startZ);
+			}
+		} else if (startZ == 4.0f) {
+			if (curPurpleRocketPos != currentPosition.x) {
+				transform.position = new Vector3(curPurpleRocketPos, startY, startZ);
+			}
+		}
+
+	}
+
+	void changePos (float xPos) {
+		swapPos = currentPosition.x; // don't need this
+
+		// update the xposition of the rocket that is currently in the slot that the rocket
+		// was dragged to, update to the xposition to the value of the dragged rocket
+		if (curGreenRocketPos == xPos) {
+			curGreenRocketPos = currentPosition.x;
+		} else if (curBlueRocketPos == xPos) {
+			curBlueRocketPos = currentPosition.x;
+		} else if (curRedRocketPos == xPos) {
+			curRedRocketPos = currentPosition.x;
+		} else if (curPurpleRocketPos == xPos) {
+			curPurpleRocketPos = currentPosition.x;
+		}
+
+		// update cur pos of the rocket that was just dragged
+		if (startZ == 1.0f) {
+			curGreenRocketPos = xPos;
+		} else if (startZ == 2.0f) {
+			curRedRocketPos = xPos;
+		} else if (startZ == 3.0f) {
+			curBlueRocketPos = xPos;
+		} else if (startZ == 4.0f) {
+			curPurpleRocketPos = xPos;
 		}
 	}
 }

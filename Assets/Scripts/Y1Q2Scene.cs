@@ -8,34 +8,35 @@ public class Y1Q2Scene : MonoBehaviour {
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
+	private bool displayHintLine = false;
 	
 	// update data timer
 	private float timer = 0.0f;
-	private float timerMax = 60.0f;
+	private float timerMax = 30.0f;
 	
 	private float crossTimer = 0.0f;
 	private float crossTimerMax = 3.0f;
 	
 	private float circleTimer = 0.0f;
 	private float circleTimerMax = 3.0f;
+
+	private int numIncorrect = 0;
 	
 	//textures
 	private Texture2D redCross;
 	private Texture2D bg;
-	private Texture2D redRocket;
-	private Texture2D blueRocket;
-	private Texture2D greenRocket;
-	private Texture2D purpleRocket;
+	private Texture2D star;
+	private Texture2D starEmpty;
+	private Texture2D hintLine;
 	private string question = "Sort the 4 rockets from the tallest to the shortest!";
 	
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("red-cross");
-		redRocket= (Texture2D)Resources.Load("rocket_red");
-		blueRocket= (Texture2D)Resources.Load("rocket_blue");
-		greenRocket= (Texture2D)Resources.Load("rocket_green");
-		purpleRocket= (Texture2D)Resources.Load("rocket_purple");
 		bg = (Texture2D)Resources.Load("black-bg");
+		star = (Texture2D)Resources.Load("pics/Star/Star");
+		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
+		hintLine = (Texture2D)Resources.Load("y1q2_line");
 		
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q2);
@@ -63,12 +64,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;
 		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
-
-		//drawRedRocket();
-		//drawBlueRocket();
-		//drawGreenRocket();
-		//drawPurpleRocket();
-
+		
 		// settings button
 
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
@@ -87,12 +83,15 @@ public class Y1Q2Scene : MonoBehaviour {
 				} else {
 					displayHelpDialog = true;
 				}
+				displayHintLine = true;
 			}
 		}
 
 		drawRedCross();
 		drawHelpDialog();
 		drawSettings();
+		drawStars();
+		drawHintLine();
 	}
 	
 	private void drawSettings () {
@@ -138,22 +137,30 @@ public class Y1Q2Scene : MonoBehaviour {
 		}
 	}
 
-	private void drawRedRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .23f, Screen.height * .235f, Screen.width * .24f, Screen.width * .48f), redRocket);
+	// TODO probably move to mouseDrag?
+	private void drawStars () {
+		if (false) {
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Completed");
 
-	}
-	private void drawBlueRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .275f, Screen.width * .29f, Screen.width * .45f), blueRocket);
-		
-	}
-	private void drawGreenRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .73f, Screen.height * .07f, Screen.width * .283f, Screen.width * .6f), greenRocket);
-		
-	}
-	private void drawPurpleRocket () {
-		GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .52f, Screen.width * .23f, Screen.width * .30f), purpleRocket);
-		
-	}
-	
+			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
 
+			if (numIncorrect == 1) {
+				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
+			} else if (numIncorrect >= 2) {
+			GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
+
+			}
+
+			// ok
+			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
+				
+			}
+		}
+	}
+
+	private void drawHintLine () {
+		if (displayHintLine) {
+			GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .01f, Screen.width * 1.0f, Screen.height * 1.0f), hintLine);
+		}
+	}
 }
