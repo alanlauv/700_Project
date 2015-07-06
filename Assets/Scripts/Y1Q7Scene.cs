@@ -36,7 +36,7 @@ public class Y1Q7Scene : MonoBehaviour {
 		bg = (Texture2D)Resources.Load("black-bg");
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
-		hintLine = (Texture2D)Resources.Load("y1q2_line");
+		hintLine = (Texture2D)Resources.Load("y1q7_hintline");
 		
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q7);
@@ -164,8 +164,8 @@ public class Y1Q7Scene : MonoBehaviour {
 	}
 	
 	private void drawHintLine () {
-		if (displayHintLine) {
-			GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .01f, Screen.width * 1.0f, Screen.height * 1.0f), hintLine);
+		if (displayHintLine) { // TODO temp fix
+			GUI.DrawTexture(new Rect(Screen.width * .05f, Screen.height * .0f, Screen.width * 0.9f, Screen.height * 1.0f), hintLine);
 		}
 	}
 }
