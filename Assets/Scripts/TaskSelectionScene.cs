@@ -73,28 +73,28 @@ public class TaskSelectionScene : MonoBehaviour {
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), "3")) {
-				
+				Application.LoadLevel(AppManager.Y1Q3_SCENE);
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), "4")) {
-				
+				Application.LoadLevel(AppManager.Y1Q4_SCENE);
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), "5")) {
-				
+				Application.LoadLevel(AppManager.Y1Q5_SCENE);
 			}
 
 			// row2 no6-10
 			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), "6")) {
-				
+				Application.LoadLevel(AppManager.Y1Q6_SCENE);
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), "7")) {
-				
+				Application.LoadLevel(AppManager.Y1Q7_SCENE);
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), "8")) {
-				
+				Application.LoadLevel(AppManager.Y1Q8_SCENE);
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), "9")) {

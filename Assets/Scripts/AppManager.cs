@@ -13,6 +13,13 @@ public class AppManager {
 
 	public const string Y1Q1_SCENE = "Y1Q1Scene";
 	public const string Y1Q2_SCENE = "Y1Q2Scene";
+	public const string Y1Q3_SCENE = "Y1Q3Scene";
+	public const string Y1Q4_SCENE = "Y1Q4Scene";
+	public const string Y1Q5_SCENE = "Y1Q5Scene";
+	public const string Y1Q6_SCENE = "Y1Q6Scene";
+	public const string Y1Q7_SCENE = "Y1Q7Scene";
+	public const string Y1Q8_SCENE = "Y1Q8Scene";
+
 
 	public bool sound = false; //{ get; set; }
 	public bool teacherMode = false; //{ get; set; }
