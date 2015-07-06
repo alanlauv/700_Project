@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Y1Q2Scene : MonoBehaviour {
-	public const string MEASUREMENT_Y1Q2 = "Measurement/Y1/Q2";
+public class Y1Q4Scene : MonoBehaviour {
+	public const string MEASUREMENT_Y1Q4 = "Measurement/Y1/Q4";
 	
 	private bool displaySettings = false;
 	private bool displayHelpButton = false;
@@ -39,7 +39,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		hintLine = (Texture2D)Resources.Load("y1q2_line");
 		
 		// set current task
-		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q2);
+		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q4);
 	}
 	
 	// Update is called once per frame

@@ -94,7 +94,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		// help dialog button (20sec wait) and display astronauts
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "H")) {
-				// don't need help dialog anymore?
+				// TODO don't need help dialog anymore?
 				//if (displayHelpDialog) {
 				//	displayHelpDialog = false;
 				//} else {

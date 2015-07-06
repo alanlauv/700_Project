@@ -88,12 +88,12 @@ public class TeacherScene : MonoBehaviour {
 				Application.LoadLevel(AppManager.START_SESSION_SCENE);
 			}
 
-			// end session
+			// TODO end session
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .55f, Screen.width * .2f, Screen.height * .1f), "End Session")) {
 				endSession();
 			}
 
-			// logout
+			// TODO logout
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), "Logout")) {
 				Application.LoadLevel(AppManager.START_SCENE);
 			}
