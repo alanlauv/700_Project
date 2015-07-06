@@ -40,8 +40,8 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (currentPosition.y == 0.3f) {
-			if (currentPosition.z == 3.0f) { // green z=3
-				slot1 = true;
+			if (currentPosition.z == 1.0f) { // pink z=1
+				slot1 = true;;
 			} else {
 				slot1 = false;
 			}
@@ -52,7 +52,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 				slot2 = false;
 			}
 		} else if (currentPosition.y == 0.7f) {
-			if (currentPosition.z == 1.0f) { // pink z=1
+			if (currentPosition.z == 3.0f) { // green z=3
 				slot3 = true;
 			} else {
 				slot3 = false;
