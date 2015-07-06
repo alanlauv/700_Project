@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class mouseDrag : MonoBehaviour {
+public class Y1Q4mouseDrag : MonoBehaviour {
 
 	static Vector2 swap; // don't need
 	static bool doSwap = false; // don't need
