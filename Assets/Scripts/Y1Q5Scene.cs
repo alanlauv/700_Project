@@ -81,7 +81,7 @@ public class Y1Q5Scene : MonoBehaviour {
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;
 		titleStyle.normal.textColor = Color.black;
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .03f, Screen.width * 0.5f, Screen.height * .1f), question, titleStyle);
+		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .07f, Screen.width * 0.5f, Screen.height * .1f), question, titleStyle);
 		
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {

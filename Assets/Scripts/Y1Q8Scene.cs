@@ -63,7 +63,7 @@ public class Y1Q8Scene : MonoBehaviour {
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;
 		titleStyle.normal.textColor = Color.black;
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .03f, Screen.width * 0.5f, Screen.height * .1f), question, titleStyle);
+		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .07f, Screen.width * 0.5f, Screen.height * .1f), question, titleStyle);
 		
 		// TALLEST
 		GUI.Label (new Rect (Screen.width * .5f, Screen.height * .84f, Screen.width * 0.2f, Screen.height * .1f), "Shortest", titleStyle);
