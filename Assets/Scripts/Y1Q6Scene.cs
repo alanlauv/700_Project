@@ -39,7 +39,7 @@ public class Y1Q6Scene : MonoBehaviour {
 		redCross = (Texture2D)Resources.Load("red-cross");
 		greenCircle = (Texture2D)Resources.Load("green-circle");
 		bg = (Texture2D)Resources.Load("black-bg");
-		ladybug = (Texture2D)Resources.Load("pics/Lady-Bug");
+		ladybug = (Texture2D)Resources.Load("pics/Lady-Bug_r");
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		
