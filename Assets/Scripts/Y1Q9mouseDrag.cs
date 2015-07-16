@@ -7,13 +7,7 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 	static bool slot2 = false;
 	static bool slot3 = false;
 	static bool slot4 = false;
-	
-	private bool displayStars = false;
-	private bool displayRedCross = false;
-	private int numIncorrect = 0;
-	
-	private float crossTimer = 0.0f;
-	private float crossTimerMax = 3.0f;
+	static bool slot5 = false;
 	
 	float distance = 1.0f;
 	Vector3 objPosition;
@@ -23,9 +17,7 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 	float startY;
 	float startZ;
 	
-	private Texture2D star;
-	private Texture2D starEmpty;
-	private Texture2D redCross;
+	private bool isSlotted = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -33,47 +25,25 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 		startX = currentPosition.x;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
-		
-		star = (Texture2D)Resources.Load("pics/Star/Star");
-		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
-		redCross = (Texture2D)Resources.Load("red-cross");
 	}
 	
 	// Update is called once per frame
 	void Update () {		
-		if (displayRedCross) {
-			crossTimer += Time.deltaTime;
-			if (crossTimer >= crossTimerMax) {
-				displayRedCross = false;
-				crossTimer = 0.0f;
-			}
-		}
+
 	}
 	
 	void OnMouseDrag () {
-		//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
-		
-		Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-		//mousePosition.z = transform.position.z;
-		
-		objPosition	= Camera.main.ScreenToViewportPoint(mousePosition);
-		objPosition.z = 5.0f;
-		
-		transform.position = objPosition;
-	}
-	
-	void OnGUI () {
-		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), "Done!")) {
-			if (slot1 == true && slot2 == true && slot3 == true) {
-				displayStars = true;
-			} else {
-				numIncorrect++;
-				displayRedCross = true;
-			}
+		if (!isSlotted) {
+			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
+			
+			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
+			//mousePosition.z = transform.position.z;
+			
+			objPosition = Camera.main.ScreenToViewportPoint (mousePosition);
+			objPosition.z = 5.0f;
+			
+			transform.position = objPosition;
 		}
-		
-		drawStars();
-		drawRedCross();
 	}
 	
 	void OnMouseUp () {	
@@ -83,31 +53,42 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 
 				transform.position = new Vector3 (0.55f, 0.26f, startZ);
 				slot1 = true;
+				isSlotted = true;
 			
 			} else if (slot2 == false && slot1 == true &&
 			           transform.position.y > 0.33f && transform.position.y < 0.45f) { // slot 2, height of astro is 0.13f
 
 				transform.position = new Vector3 (0.55f, 0.39f, startZ);
 				slot2 = true;
+				isSlotted = true;
 
 			} else if (slot3 == false && slot1 == true && slot2 == true &&
 			           transform.position.y > 0.46f && transform.position.y < 0.58f) {
 
 				transform.position = new Vector3 (0.55f, 0.52f, startZ);
 				slot3 = true;
+				isSlotted = true;
 			
 			} else if (slot4 == false && slot1 == true && slot2 == true && slot3 == true &&
 			           transform.position.y > 0.59f && transform.position.y < 0.71f) {
 				
 				transform.position = new Vector3 (0.55f, 0.65f, startZ);
 				slot4 = true;
+				isSlotted = true;
 
-			} else { // not valid drop slot, move back to before slot.
+			} else if (slot5 == false && slot1 == true && slot2 == true && slot3 == true && slot4 == true &&
+			           transform.position.y > 0.72f && transform.position.y < 0.84f) {
+
+				transform.position = new Vector3 (0.55f, 0.78f, startZ);
+				slot5 = true;
+				isSlotted = true;
+
+			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
 			}
 
 
-		} else { // not valid drop slot, move back to before slot.
+		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 		}
 
@@ -132,35 +113,5 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 			transform.position = currentPosition;
 		}
 		*/
-	}
-	
-	private void drawRedCross () {
-		if (displayRedCross) {
-			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
-		}
-	}
-	
-	private void drawStars () {
-		if (displayStars) {
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Completed");
-			
-			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			
-			if (numIncorrect == 1) {
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else if (numIncorrect >= 2) {
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else {
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			}
-			
-			// ok
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
-				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
-			}
-		}
 	}
 }
