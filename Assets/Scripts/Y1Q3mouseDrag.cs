@@ -18,7 +18,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	static bool slot2 = false;
 	static bool slot3 = false;
 	
-	// X positions 0.13, 0.37, 0.61, 0.87
+	// X positions 0.17, 0.37, 0.61, 0.84
 	static float curRedRocketPos;
 	static float curBlueRocketPos;
 	static float curPurpleRocketPos;
@@ -58,7 +58,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (currentPosition.x == 0.13f) {
+		if (currentPosition.x == 0.17f) {
 			if (currentPosition.z == 3.0f) { // purple rocket z=1
 				slot1 = true;
 			} else {
@@ -70,7 +70,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 			} else {
 				slot2 = false;
 			}
-		} else if (currentPosition.x == 0.87f) {
+		} else if (currentPosition.x == 0.84f) {
 			if (currentPosition.z == 1.0f) { // blue rocket z=3
 				slot3 = true;
 			} else {
@@ -109,13 +109,13 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 		
 		/**
 		if (doSwap == true) {
-			if (swap.x == 1.0f && currentPosition.x == 0.13f) {
+			if (swap.x == 1.0f && currentPosition.x == 0.17f) {
 				if (swap.y == 2.0f) {
 					transform.position = new Vector3(0.37f, startY, 1.0f);
 				} else if (swap.y == 3.0f) {
 					transform.position = new Vector3(0.62f, startY, 1.0f);
 				} else if (swap.y == 4.0f) {
-					transform.position = new Vector3(0.87f, startY, 1.0f);
+					transform.position = new Vector3(0.84f, startY, 1.0f);
 				}
 			}
 			doSwap = false;
@@ -139,13 +139,13 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	void OnGUI () {
 		// fire for correct slot
 		if (slot1) {
-			GUI.DrawTexture(new Rect(Screen.width * .088f, Screen.height * .94f, Screen.width * .08f, Screen.height * .06f), fire);
+			GUI.DrawTexture(new Rect(Screen.width * .13f, Screen.height * .94f, Screen.width * .08f, Screen.height * .06f), fire);
 		}
 		if (slot2) {
 			GUI.DrawTexture(new Rect(Screen.width * .455f, Screen.height * .91f, Screen.width * .09f, Screen.height * .08f), fire);
 		}
 		if (slot3) {
-			GUI.DrawTexture(new Rect(Screen.width * .825f, Screen.height * .89f, Screen.width * .1f, Screen.height * .11f), fire);
+			GUI.DrawTexture(new Rect(Screen.width * .8f, Screen.height * .9f, Screen.width * .1f, Screen.height * .1f), fire);
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), "Blast Off!")) {
@@ -165,8 +165,8 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 		isMouseDrag = false;
 		
 		if (transform.position.x > 0.03f & transform.position.x < 0.16f) { // slot 1
-			changePos(0.13f);
-			transform.position = new Vector3(0.13f, startY, startZ);
+			changePos(0.17f);
+			transform.position = new Vector3(0.17f, startY, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.x > 0.4f & transform.position.x < 0.6f) { // slot 2
 			//swap = new Vector2(1.0f, 2.0f);
@@ -175,8 +175,8 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 			transform.position = new Vector3(0.5f, startY, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.x > 0.75f & transform.position.x < 0.90f) { // slot 3
-			changePos(0.87f);
-			transform.position = new Vector3(0.87f, startY, startZ);
+			changePos(0.84f);
+			transform.position = new Vector3(0.84f, startY, startZ);
 			currentPosition = transform.position;
 		} else { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
