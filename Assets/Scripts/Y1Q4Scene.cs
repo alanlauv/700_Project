@@ -66,9 +66,9 @@ public class Y1Q4Scene : MonoBehaviour {
 		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
 
 		// TALLEST
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "TALLEST", titleStyle);
+		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "Tallest", titleStyle);
 		// SHORTEST
-		GUI.Label (new Rect (Screen.width * .77f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "SHORTEST", titleStyle);
+		GUI.Label (new Rect (Screen.width * .77f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "Shortest", titleStyle);
 
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
