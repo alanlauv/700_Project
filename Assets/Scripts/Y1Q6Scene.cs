@@ -194,34 +194,34 @@ public class Y1Q6Scene : MonoBehaviour {
 			//green
 			//GUI.DrawTexture(new Rect(Screen.width * .67f, Screen.height * .12f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			//GUI.DrawTexture(new Rect(Screen.width * .72f, Screen.height * .12f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .17f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .17f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .17f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .17f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .175f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .175f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .175f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .175f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			//blue
 			//GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .32f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .615f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .655f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .695f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .735f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .37f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .615f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .655f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .695f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .735f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .375f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			//pink
 			//GUI.DrawTexture(new Rect(Screen.width * .72f, Screen.height * .52f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			//GUI.DrawTexture(new Rect(Screen.width * .77f, Screen.height * .52f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .57f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .57f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .57f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .575f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .575f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .575f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			//yellow
 			//GUI.DrawTexture(new Rect(Screen.width * .62f, Screen.height * .72f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .695f, Screen.height * .77f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .735f, Screen.height * .77f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .77f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .77f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .77f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .77f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .695f, Screen.height * .775f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .735f, Screen.height * .775f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .775f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .775f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .775f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .775f, Screen.width * .04f, Screen.height * .06f), ladybug);
 		}
 	}
 	
