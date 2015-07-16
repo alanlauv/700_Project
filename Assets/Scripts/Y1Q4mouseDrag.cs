@@ -148,16 +148,16 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 
 	void OnGUI () {
 		if (slot1) {
-			GUI.DrawTexture(new Rect(Screen.width * .08f, Screen.height * .93f, Screen.width * .08f, Screen.height * .07f), fire);
+			GUI.DrawTexture(new Rect(Screen.width * .085f, Screen.height * .88f, Screen.width * .08f, Screen.height * .12f), fire);
 		}
 		if (slot2) {
-			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .94f, Screen.width * .08f, Screen.height * .06f), fire);
+			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .91f, Screen.width * .08f, Screen.height * .09f), fire);
 		}
 		if (slot3) {
-			GUI.DrawTexture(new Rect(Screen.width * .575f, Screen.height * .95f, Screen.width * .08f, Screen.height * .05f), fire);
+			GUI.DrawTexture(new Rect(Screen.width * .576f, Screen.height * .93f, Screen.width * .08f, Screen.height * .07f), fire);
 		}
 		if (slot4) {
-			GUI.DrawTexture(new Rect(Screen.width * .832f, Screen.height * .955f, Screen.width * .08f, Screen.height * .045f), fire);
+			GUI.DrawTexture(new Rect(Screen.width * .832f, Screen.height * .95f, Screen.width * .08f, Screen.height * .05f), fire);
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), "Blast Off!")) {
