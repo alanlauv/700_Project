@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Y1Q9Scene : MonoBehaviour {
-	public const string MEASUREMENT_Y1Q9 = "Measurement/Y1/Q9";
-
+public class Y1Q10Scene : MonoBehaviour {
+	public const string MEASUREMENT_Y1Q10 = "Measurement/Y1/Q10";
+	
 	private bool displaySettings = false;
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
 	private bool displayStars = false;
-
+	
 	private int numIncorrect = 0;
 	
 	// update data timer
@@ -18,15 +18,15 @@ public class Y1Q9Scene : MonoBehaviour {
 	
 	private float crossTimer = 0.0f;
 	private float crossTimerMax = 3.0f;
-
+	
 	// textures
 	private Texture2D redCross;
 	private Texture2D bg;
 	private Texture2D star;
 	private Texture2D starEmpty;
-
-	private string question = "How many Astronauts tall is the Purple Rocket?";
-
+	
+	private string question = "How many Astronauts tall is the Blue Rocket?";
+	
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("red-cross");
@@ -35,7 +35,7 @@ public class Y1Q9Scene : MonoBehaviour {
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		
 		// set current task
-		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q9);
+		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q10);
 	}
 	
 	// Update is called once per frame
@@ -54,12 +54,12 @@ public class Y1Q9Scene : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	void OnGUI () {
 		GUIStyle titleStyle = new GUIStyle ("Label");
 		titleStyle.alignment = TextAnchor.UpperCenter;
 		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
-
+		
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
 			if (displaySettings) {
@@ -81,57 +81,57 @@ public class Y1Q9Scene : MonoBehaviour {
 				numIncorrect++;
 			}
 		}
-
+		
 		// answer pool
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "1")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
 		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "2")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
 		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "3")) {
-			displayStars = true;
-		}
-
-		if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "4")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
+		if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "4")) {
+			displayStars = true;
+		}
+		
 		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "5")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
 		if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "6")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
 		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "7")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
 		if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "8")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
 		if (GUI.Button (new Rect (Screen.width * .85f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), "9")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-
+		
 		drawRedCross();
 		drawSettings();
 		drawStars();
 	}
-
+	
 	private void drawSettings () {
 		if (displaySettings) {
 			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), bg);
