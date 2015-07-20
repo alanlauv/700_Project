@@ -31,6 +31,9 @@ public class Y1Q2Scene : MonoBehaviour {
 	private Texture2D astronaut;
 	private Texture2D star;
 	private Texture2D starEmpty;
+	//settings & help icon
+	private Texture2D settingsIcon;
+	private Texture2D helpIcon;
 	
 	private string question = "The Purple Rocket is ______ than the Red Rocket";
 	
@@ -42,6 +45,8 @@ public class Y1Q2Scene : MonoBehaviour {
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
+		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
+		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
 		
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q2);
@@ -82,7 +87,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
 		
 		// settings button
-		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
+		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
 			if (displaySettings) {
 				displaySettings = false;
 			} else {
@@ -92,7 +97,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		
 		// help dialog button (20sec wait) and display astronauts
 		if (displayHelpButton) {
-			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "H")) {
+			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
 				// TODO don't need help dialog anymore?
 				//if (displayHelpDialog) {
 				//	displayHelpDialog = false;

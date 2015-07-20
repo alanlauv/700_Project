@@ -28,6 +28,10 @@ public class Y1Q3Scene : MonoBehaviour {
 	private Texture2D star;
 	private Texture2D starEmpty;
 	private Texture2D hintLine;
+	//settings & help icon
+	private Texture2D settingsIcon;
+	private Texture2D helpIcon;
+
 	private string question = "Order the 3 rockets!";
 
 	// Use this for initialization
@@ -37,6 +41,8 @@ public class Y1Q3Scene : MonoBehaviour {
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		hintLine = (Texture2D)Resources.Load("y1q2_line");
+		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
+		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
 		
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q3);
@@ -70,7 +76,7 @@ public class Y1Q3Scene : MonoBehaviour {
 		GUI.Label (new Rect (Screen.width * .77f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "Tallest", titleStyle);
 		
 		// settings button
-		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "S")) {
+		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
 			if (displaySettings) {
 				displaySettings = false;
 			} else {
@@ -80,7 +86,7 @@ public class Y1Q3Scene : MonoBehaviour {
 		
 		// help dialog button
 		if (displayHelpButton) {
-			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), "H")) {
+			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
 				// TODO don't need help dialog anymore?
 				//if (displayHelpDialog) {
 				//	displayHelpDialog = false;
