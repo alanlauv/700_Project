@@ -111,7 +111,7 @@ public class TaskSelectionScene : MonoBehaviour {
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), "12")) {
-				
+				Application.LoadLevel(AppManager.Y1Q12_SCENE);
 			}
 
 			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), "13")) {

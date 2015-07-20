@@ -22,6 +22,7 @@ public class AppManager {
 	public const string Y1Q9_SCENE = "Y1Q9Scene";
 	public const string Y1Q10_SCENE = "Y1Q10Scene";
 	public const string Y1Q11_SCENE = "Y1Q11Scene";
+	public const string Y1Q12_SCENE = "Y1Q12Scene";
 
 
 	public bool sound = false; //{ get; set; }
