@@ -35,7 +35,7 @@ public class Y1Q6Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 	
-	private string question = "Choose the shortest pencil";
+	private string question = "Choose the shortest pencil!";
 	
 	// Use this for initialization
 	void Start () {

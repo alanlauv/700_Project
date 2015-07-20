@@ -28,7 +28,7 @@ public class Y1Q12Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 	
-	private string question = "How many Ladybugs long is the Blue Pencil?";
+	private string question = "How many ladybugs long is the blue pencil?";
 	
 	// Use this for initialization
 	void Start () {

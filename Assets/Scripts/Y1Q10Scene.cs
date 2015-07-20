@@ -28,7 +28,7 @@ public class Y1Q10Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 	
-	private string question = "How many Astronauts tall is the Blue Rocket?";
+	private string question = "How many astronauts tall is the blue rocket?";
 	
 	// Use this for initialization
 	void Start () {

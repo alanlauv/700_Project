@@ -36,7 +36,7 @@ public class Y1Q5Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 	
-	private string question = "Choose the longest pencil";
+	private string question = "Choose the longest pencil!";
 	
 	// Use this for initialization
 	void Start () {

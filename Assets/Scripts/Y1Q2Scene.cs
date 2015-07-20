@@ -35,7 +35,7 @@ public class Y1Q2Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 	
-	private string question = "The Purple Rocket is ______ than the Red Rocket";
+	private string question = "The purple rocket is ______ than the red rocket";
 	
 	// Use this for initialization
 	void Start () {
@@ -138,7 +138,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		// shorter
 		if (GUI.Button (new Rect (Screen.width * .7f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Shorter")) {
 			displayStars = true;
-			question = "The Purple Rocket is shorter than the Red Rocket";
+			question = "The purple rocket is shorter than the red rocket";
 		}
 		
 		drawAstronaut();

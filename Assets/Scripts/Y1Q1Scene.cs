@@ -36,7 +36,7 @@ public class Y1Q1Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 
-	private string question = "The Green Rocket is ______ than the Blue Rocket";
+	private string question = "The green rocket is ______ than the blue rocket";
 	
 	// Use this for initialization
 	void Start () {
@@ -115,7 +115,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Taller")) {
 			//displayGreenCircle = true;
 			displayStars = true;
-			question = "The Green Rocket is taller than the Blue Rocket";
+			question = "The green rocket is taller than the blue rocket";
 		}
 
 		// thinner
