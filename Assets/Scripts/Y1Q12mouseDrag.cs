@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Y1Q12mouseDrag : MonoBehaviour {
-	
+
+	static bool slot0 = false;
 	static bool slot1 = false;
 	static bool slot2 = false;
 	static bool slot3 = false;
@@ -22,6 +23,8 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 	float startZ;
 	
 	private bool isSlotted = false;
+
+	private Texture2D ladybugOutline;
 	
 	// Use this for initialization
 	void Start () {
@@ -29,11 +32,18 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 		startX = currentPosition.x;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
+
+		ladybugOutline = (Texture2D)Resources.Load ("Sprites/Lady-Bug_l_outline");
 	}
 	
 	// Update is called once per frame
 	void Update () {		
 		
+	}
+
+	void OnGUI () {
+		if (slot0 == false)
+			GUI.DrawTexture (new Rect (Screen.width * .09f, Screen.height * .385f, Screen.width * .042f, Screen.height * .066f), ladybugOutline);
 	}
 	
 	void OnMouseDrag () {
@@ -52,7 +62,14 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 	
 	void OnMouseUp () {	
 		if (transform.position.y > 0.535f && transform.position.y < 0.635f) {
-			if (slot1 == false &&
+			if (slot0 == false &&
+			    transform.position.x > 0.095f && transform.position.x < 0.125f) { // slot1, +-1.5
+				
+				transform.position = new Vector3 (0.11f, 0.585f, startZ);
+				slot0 = true;
+				isSlotted = true;
+				
+			} else if (slot1 == false &&
 			    transform.position.x > 0.135f && transform.position.x < 0.165f) { // slot1, +-1.5
 				
 				transform.position = new Vector3 (0.15f, 0.585f, startZ);
