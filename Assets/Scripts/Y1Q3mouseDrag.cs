@@ -35,6 +35,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	private Texture2D star;
 	private Texture2D starEmpty;
 	private Texture2D redCross;
+	private Texture2D blastOff;
 	
 	// Use this for initialization
 	void Start () {
@@ -54,6 +55,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		redCross = (Texture2D)Resources.Load("red-cross");
+		blastOff = (Texture2D)Resources.Load ("Text/blast_off_text");
 	}
 	
 	// Update is called once per frame
@@ -148,7 +150,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 			GUI.DrawTexture(new Rect(Screen.width * .8f, Screen.height * .9f, Screen.width * .1f, Screen.height * .1f), fire);
 		}
 
-		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), "Blast Off!")) {
+		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
 			if (slot1 == true && slot2 == true && slot3 == true) {
 				displayStars = true;
 			} else {
