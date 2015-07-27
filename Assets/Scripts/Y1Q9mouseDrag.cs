@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class Y1Q9mouseDrag : MonoBehaviour {
-	
+
+	static bool slot0 = false;
 	static bool slot1 = false;
 	static bool slot2 = false;
 	static bool slot3 = false;
@@ -17,6 +18,8 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 	float startZ;
 	
 	private bool isSlotted = false;
+
+	private Texture2D astronautOutline;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,11 +27,24 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 		startX = currentPosition.x;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
+
+		astronautOutline = (Texture2D)Resources.Load ("Sprites/astronaut_outline");
 	}
 	
 	// Update is called once per frame
 	void Update () {		
 		
+	}
+
+	void OnGUI () {
+		if (slot0 == false)
+			GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
+
+		if (slot1 == false && slot0 == true)
+			GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .54f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
+
+		if (slot2 == false && slot1 == true)
+			GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .41f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
 	}
 	
 	void OnMouseDrag () {
@@ -47,7 +63,14 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 	
 	void OnMouseUp () {	
 		if (transform.position.x > 0.5f && transform.position.x < 0.6f) {
-			if (slot1 == false &&
+			if (slot0 == false &&
+			    transform.position.y > 0.2f && transform.position.y < 0.32f) { // slot1, +-6 from 0.26f
+				
+				transform.position = new Vector3 (0.55f, 0.26f, startZ);
+				slot0 = true;
+				isSlotted = true;
+
+			} else if (slot1 == false && slot0 == true &&
 			    transform.position.y > 0.33f && transform.position.y < 0.45f) { // slot1, +-6 from 0.26f
 				
 				transform.position = new Vector3 (0.55f, 0.39f, startZ);
