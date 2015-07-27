@@ -198,6 +198,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 			transform.position = currentPosition;
 		}
 
+		/** TODO
 		// swap the rocket
 		if (startZ == 1.0f) {
 			if (curGreenRocketPos != currentPosition.x) {
@@ -216,6 +217,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 				transform.position = new Vector3(curPurpleRocketPos, startY, startZ);
 			}
 		}
+		*/
 
 	}
 

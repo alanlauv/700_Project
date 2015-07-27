@@ -181,7 +181,8 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 		} else { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 		}
-		
+
+		/** TODO
 		// swap the rocket
 		if (startZ == 1.0f) {
 			if (curBlueRocketPos != currentPosition.x) {
@@ -196,6 +197,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 				transform.position = new Vector3(curPurpleRocketPos, startY, startZ);
 			}
 		}
+		*/
 		
 	}
 	
