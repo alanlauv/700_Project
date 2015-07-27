@@ -35,6 +35,10 @@ public class Y1Q5Scene : MonoBehaviour {
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
+	// text
+	private Texture2D greenPencilText;
+	private Texture2D yellowPencilText;
+	private Texture2D bluePencilText;
 	
 	private string question = "Choose the longest pencil!";
 	
@@ -48,6 +52,10 @@ public class Y1Q5Scene : MonoBehaviour {
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
+
+		greenPencilText = (Texture2D)Resources.Load ("Text/green_pencil_text");
+		yellowPencilText = (Texture2D)Resources.Load ("Text/yellow_pencil_text");
+		bluePencilText = (Texture2D)Resources.Load ("Text/blue_pencil_text");
 		
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q5);
@@ -113,21 +121,21 @@ public class Y1Q5Scene : MonoBehaviour {
 		
 		// answer pool
 		// Yellow
-		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), "Yellow Pencil")) {
+		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), yellowPencilText)) {
 			displayRedCross = true;
 			numIncorrect++;
 			
 		}
 		
 		// green pencil
-		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), "Green Pencil")) {
+		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), greenPencilText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
 
 		
 		// blue pencil
-		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .65f, Screen.width * .2f, Screen.height * .1f), "Blue Pencil")) {
+		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .65f, Screen.width * .2f, Screen.height * .1f), bluePencilText)) {
 			displayStars = true;
 		}
 		
