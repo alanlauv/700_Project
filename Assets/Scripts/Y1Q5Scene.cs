@@ -40,7 +40,7 @@ public class Y1Q5Scene : MonoBehaviour {
 	private Texture2D yellowPencilText;
 	private Texture2D bluePencilText;
 	
-	private string question = "Choose the longest pencil!";
+	private string question = ""; // "Choose the longest pencil!";
 	
 	// Use this for initialization
 	void Start () {
