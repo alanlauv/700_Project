@@ -18,6 +18,8 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 	float startZ;
 	
 	private bool isSlotted = false;
+
+	private Texture2D astronautOutline;
 	
 	// Use this for initialization
 	void Start () {
@@ -25,11 +27,18 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 		startX = currentPosition.x;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
+
+		astronautOutline = (Texture2D)Resources.Load ("Sprites/astronaut_outline");
 	}
 	
 	// Update is called once per frame
 	void Update () {		
 
+	}
+
+	void OnGUI () {
+		if (slot1 == false)
+			GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
 	}
 	
 	void OnMouseDrag () {
