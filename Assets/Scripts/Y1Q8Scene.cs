@@ -66,16 +66,7 @@ public class Y1Q8Scene : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		GUIStyle titleStyle = new GUIStyle ("Label");
-		titleStyle.alignment = TextAnchor.UpperCenter;
-		titleStyle.normal.textColor = Color.black;
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .07f, Screen.width * 0.5f, Screen.height * .1f), question, titleStyle);
-		
-		// TALLEST
-		GUI.Label (new Rect (Screen.width * .5f, Screen.height * .84f, Screen.width * 0.2f, Screen.height * .1f), "Shortest", titleStyle);
-		// SHORTEST
-		GUI.Label (new Rect (Screen.width * .5f, Screen.height * .09f, Screen.width * 0.2f, Screen.height * .1f), "Longest", titleStyle);
-		
+
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
 			if (displaySettings) {
