@@ -124,7 +124,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		}
 		
 		// wider
-		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Wider")) {
+		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Thinner")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}

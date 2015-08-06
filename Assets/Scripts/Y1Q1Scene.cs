@@ -36,8 +36,6 @@ public class Y1Q1Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 
-	private string question = "The green rocket is ______ than the blue rocket";
-	
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("red-cross");
@@ -83,9 +81,6 @@ public class Y1Q1Scene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUIStyle titleStyle = new GUIStyle ("Label");
-		titleStyle.alignment = TextAnchor.UpperCenter;
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
 
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
@@ -115,11 +110,11 @@ public class Y1Q1Scene : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Taller")) {
 			//displayGreenCircle = true;
 			displayStars = true;
-			question = "The green rocket is taller than the blue rocket";
+//			question = "The green rocket is taller than the blue rocket";
 		}
 
 		// thinner
-		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Thinner")) {
+		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Longer")) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
