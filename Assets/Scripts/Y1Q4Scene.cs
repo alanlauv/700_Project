@@ -32,7 +32,7 @@ public class Y1Q4Scene : MonoBehaviour {
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 
-	private string question = "Order the 4 rockets!";
+//	private string question = "Order the 4 rockets!";
 	
 	// Use this for initialization
 	void Start () {
@@ -67,15 +67,7 @@ public class Y1Q4Scene : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		GUIStyle titleStyle = new GUIStyle ("Label");
-		titleStyle.alignment = TextAnchor.UpperCenter;
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), question, titleStyle);
-
-		// TALLEST
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "Tallest", titleStyle);
-		// SHORTEST
-		GUI.Label (new Rect (Screen.width * .77f, Screen.height * .08f, Screen.width * 0.2f, Screen.height * .1f), "Shortest", titleStyle);
-
+		
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
 			if (displaySettings) {
