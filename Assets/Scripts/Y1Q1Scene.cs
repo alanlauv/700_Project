@@ -119,32 +119,32 @@ public class Y1Q1Scene : MonoBehaviour {
 
 		// answer pool
 		// taller
-		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
+		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
 			//displayGreenCircle = true;
 			displayStars = true;
 //			question = "The green rocket is taller than the blue rocket";
 		}
 
 		// thinner
-		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
+		if (GUI.Button (new Rect (Screen.width * .3f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
 
 		// wider
-		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), widerText)) {
+		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), widerText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
 
 		// bigger
-		if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
+		if (GUI.Button (new Rect (Screen.width * .6f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
 
 		// shorter
-		if (GUI.Button (new Rect (Screen.width * .7f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
+		if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
