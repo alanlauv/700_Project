@@ -31,6 +31,9 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	private Texture2D star;
 	private Texture2D starEmpty;
 	private Texture2D redCross;
+
+	// finished text
+	private Texture2D finishedText;
 	
 	// Use this for initialization
 	void Start () {
@@ -50,6 +53,8 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		redCross = (Texture2D)Resources.Load("red-cross");
+
+		finishedText = (Texture2D)Resources.Load ("Text/finished_text");
 	}
 	
 	// Update is called once per frame
@@ -96,7 +101,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), "Done!")) {
+		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
 			if (slot1 == true && slot2 == true && slot3 == true) {
 				displayStars = true;
 			} else {
