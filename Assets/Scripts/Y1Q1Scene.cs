@@ -35,6 +35,12 @@ public class Y1Q1Scene : MonoBehaviour {
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
+	//answers text
+	private Texture2D tallerText;
+	private Texture2D longerText;
+	private Texture2D widerText;
+	private Texture2D biggerText;
+	private Texture2D shorterText;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +52,12 @@ public class Y1Q1Scene : MonoBehaviour {
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
+
+		tallerText = (Texture2D)Resources.Load ("Text/taller_text");
+		longerText = (Texture2D)Resources.Load ("Text/longer_text");
+		widerText = (Texture2D)Resources.Load ("Text/wider_text");
+		biggerText = (Texture2D)Resources.Load ("Text/bigger_text");
+		shorterText = (Texture2D)Resources.Load ("Text/shorter_text");
 
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q1);
@@ -107,32 +119,32 @@ public class Y1Q1Scene : MonoBehaviour {
 
 		// answer pool
 		// taller
-		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Taller")) {
+		if (GUI.Button (new Rect (Screen.width * .1f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
 			//displayGreenCircle = true;
 			displayStars = true;
 //			question = "The green rocket is taller than the blue rocket";
 		}
 
 		// thinner
-		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Longer")) {
+		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
 
 		// wider
-		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Wider")) {
+		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), widerText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
 
 		// bigger
-		if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Bigger")) {
+		if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
 
 		// shorter
-		if (GUI.Button (new Rect (Screen.width * .7f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), "Shorter")) {
+		if (GUI.Button (new Rect (Screen.width * .7f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
 			displayRedCross = true;
 			numIncorrect++;
 		}
