@@ -163,7 +163,7 @@ public class Y1Q4Scene : MonoBehaviour {
 
 	private void drawHintLine () {
 		if (displayHintLine) {
-			GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .01f, Screen.width * 1.0f, Screen.height * 1.0f), hintLine);
+			GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .1f, Screen.width * 1.0f, Screen.height * 1.0f), hintLine);
 		}
 	}
 }
