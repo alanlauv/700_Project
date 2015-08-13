@@ -4,7 +4,14 @@ using System.Collections;
 public class TaskSelectionScene : MonoBehaviour {
 	bool displayTasks = false;
 
+	private Texture2D backText;
+
 	private Texture2D year1Text;
+	private Texture2D year2Text;
+	private Texture2D year3Text;
+	private Texture2D year4Text;
+	private Texture2D year5Text;
+	private Texture2D year6Text;
 
 	private Texture2D oneText;
 	private Texture2D twoText;
@@ -29,7 +36,14 @@ public class TaskSelectionScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		backText = (Texture2D)Resources.Load ("Text/back_text");
+
 		year1Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year1_text");
+		year2Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year2_text");
+		year3Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year3_text");
+		year4Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year4_text");
+		year5Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year5_text");
+		year6Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year6_text");
 
 		oneText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-1");
 		twoText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-2");
@@ -68,23 +82,23 @@ public class TaskSelectionScene : MonoBehaviour {
 			displayTasks = true;
 		}
 
-		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .3f, Screen.width * .2f, Screen.height * .1f), "Year 2")) {
+		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .3f, Screen.width * .2f, Screen.height * .1f), year2Text)) {
 			displayTasks = true;
 		}
 
-		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .4f, Screen.width * .2f, Screen.height * .1f), "Year 3")) {
+		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .4f, Screen.width * .2f, Screen.height * .1f), year3Text)) {
 			displayTasks = true;
 		}
 
-		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), "Year 4")) {
+		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), year4Text)) {
 			displayTasks = true;
 		}
 
-		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "Year 5")) {
+		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), year5Text)) {
 			displayTasks = true;
 		}
 
-		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), "Year 6")) {
+		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), year6Text)) {
 			displayTasks = true;
 		}
 
@@ -92,7 +106,7 @@ public class TaskSelectionScene : MonoBehaviour {
 		drawTasks ();
 
 		// back button
-		if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .9f, Screen.width * .2f, Screen.height * .1f), "Back")) {
+		if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .9f, Screen.width * .2f, Screen.height * .1f), backText)) {
 			Application.LoadLevel(AppManager.MAIN_MENU_SCENE);
 		}
 	}
