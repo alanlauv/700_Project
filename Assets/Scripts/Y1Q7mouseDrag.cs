@@ -31,6 +31,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	private Texture2D star;
 	private Texture2D starEmpty;
 	private Texture2D redCross;
+	private Texture2D squigglyLine;
 
 	// finished text
 	private Texture2D finishedText;
@@ -53,6 +54,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		redCross = (Texture2D)Resources.Load("red-cross");
+		squigglyLine = (Texture2D)Resources.Load ("pics/squiggle_left");
 
 		finishedText = (Texture2D)Resources.Load ("Text/finished_text");
 	}
@@ -61,7 +63,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	void Update () {
 		if (currentPosition.y == 0.3f) {
 			if (currentPosition.z == 1.0f) { // pink z=1
-				slot1 = true;;
+				slot1 = true;
 			} else {
 				slot1 = false;
 			}
@@ -109,7 +111,8 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 				displayRedCross = true;
 			}
 		}
-		
+
+		drawSquigglyLines ();
 		drawStars();
 		drawRedCross();
 	}
@@ -130,6 +133,17 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 		} else { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 		}
+	}
+
+	private void drawSquigglyLines () {
+		if (slot1)
+			GUI.DrawTexture(new Rect(Screen.width * .3f, Screen.height * .225f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
+
+		if (slot2)
+			GUI.DrawTexture(new Rect(Screen.width * .4f, Screen.height * .425f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
+
+		if (slot3)
+			GUI.DrawTexture(new Rect(Screen.width * .5f, Screen.height * .625f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
 	}
 
 	private void drawRedCross () {
