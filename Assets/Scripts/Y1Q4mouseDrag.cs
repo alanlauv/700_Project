@@ -13,7 +13,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 	private int numIncorrect = 0;
 
 	private float flameTimer = 0.0f;
-	private const float flameTimerMax = crossTimerMax + 1.0f;
+	private const float flameTimerMax = crossTimerMax + 2.0f;
 
 	private float crossTimer = 0.0f;
 	private const float crossTimerMax = 3.0f;

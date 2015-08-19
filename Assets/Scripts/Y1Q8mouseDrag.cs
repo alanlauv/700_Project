@@ -8,12 +8,16 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	static bool slot3 = false;
 	static bool slot4 = false;
 
+	private bool displaySquiggles = false;
 	private bool displayStars = false;
 	private bool displayRedCross = false;
 	private int numIncorrect = 0;
+
+	private float squigglesTimer = 0.0f;
+	private const float squigglesTimerMax = crossTimerMax + 2.0f;
 	
 	private float crossTimer = 0.0f;
-	private float crossTimerMax = 3.0f;
+	private const float crossTimerMax = 3.0f;
 	
 	// Y positions 0.2, 0.4, 0.6, 0.8
 	static float curPinkPencilPos;
@@ -98,6 +102,14 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 				crossTimer = 0.0f;
 			}
 		}
+
+		if (displaySquiggles) {
+			squigglesTimer += Time.deltaTime;
+			if (squigglesTimer >= squigglesTimerMax) {
+				displaySquiggles = false;
+				squigglesTimer = 0.0f;
+			}
+		}
 	}
 	
 	void OnMouseDrag () {
@@ -114,6 +126,7 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	
 	void OnGUI () {
 		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
+			displaySquiggles = true;
 			if (slot1 == true && slot2 == true && slot3 == true) {
 				displayStars = true;
 			} else {
@@ -150,17 +163,19 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	}
 
 	private void drawSquigglyLines () {
-		if (slot1)
-			GUI.DrawTexture(new Rect(Screen.width * .235f, Screen.height * .15f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
+		if (displaySquiggles) {
+			if (slot1)
+				GUI.DrawTexture (new Rect (Screen.width * .235f, Screen.height * .15f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
 		
-		if (slot2)
-			GUI.DrawTexture(new Rect(Screen.width * .335f, Screen.height * .35f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
+			if (slot2)
+				GUI.DrawTexture (new Rect (Screen.width * .335f, Screen.height * .35f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
 		
-		if (slot3)
-			GUI.DrawTexture(new Rect(Screen.width * .435f, Screen.height * .55f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
+			if (slot3)
+				GUI.DrawTexture (new Rect (Screen.width * .435f, Screen.height * .55f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
 
-		if (slot4)
-			GUI.DrawTexture(new Rect(Screen.width * .535f, Screen.height * .75f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
+			if (slot4)
+				GUI.DrawTexture (new Rect (Screen.width * .535f, Screen.height * .75f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
+		}
 	}
 
 	private void drawRedCross () {
