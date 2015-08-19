@@ -7,12 +7,16 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 	static bool doSwap = false; // don't need
 	static bool isMouseDrag = false; // don't need
 
+	private bool displayFlames = false;
 	private bool displayStars = false;
 	private bool displayRedCross = false;
 	private int numIncorrect = 0;
 
+	private float flameTimer = 0.0f;
+	private const float flameTimerMax = crossTimerMax + 1.0f;
+
 	private float crossTimer = 0.0f;
-	private float crossTimerMax = 3.0f;
+	private const float crossTimerMax = 3.0f;
 
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -98,6 +102,14 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 			}
 		}
 
+		if (displayFlames) {
+			flameTimer += Time.deltaTime;
+			if (flameTimer >= flameTimerMax) {
+				displayFlames = false;
+				flameTimer = 0.0f;
+			}
+		}
+
 		/**
 		if (!isMouseDrag) {
 			if (startZ == 1.0f) {
@@ -149,20 +161,8 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (slot1) {
-			GUI.DrawTexture(new Rect(Screen.width * .085f, Screen.height * .88f, Screen.width * .08f, Screen.height * .12f), fire);
-		}
-		if (slot2) {
-			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .91f, Screen.width * .08f, Screen.height * .09f), fire);
-		}
-		if (slot3) {
-			GUI.DrawTexture(new Rect(Screen.width * .576f, Screen.height * .93f, Screen.width * .08f, Screen.height * .07f), fire);
-		}
-		if (slot4) {
-			GUI.DrawTexture(new Rect(Screen.width * .832f, Screen.height * .95f, Screen.width * .08f, Screen.height * .05f), fire);
-		}
-
 		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
+			displayFlames = true;
 			if (slot1 == true && slot2 == true && slot3 == true && slot4 == true) {
 				displayStars = true;
 			} else {
@@ -171,28 +171,29 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 			}
 		}
 
-		drawStars();
+		drawFlames ();
 		drawRedCross();
+		drawStars();
 	}
 
 	void OnMouseUp () {
 		isMouseDrag = false;
 
-		if (transform.position.x > 0.03f & transform.position.x < 0.16f) { // slot 1
+		if (transform.position.x > 0.03f & transform.position.x < 0.23f) { // slot 1
 			changePos(0.13f);
 			transform.position = new Vector3(0.13f, startY, startZ);
 			currentPosition = transform.position;
-		} else if (transform.position.x > 0.24f & transform.position.x < 0.40f) { // slot 2
+		} else if (transform.position.x > 0.27f & transform.position.x < 0.47f) { // slot 2
 			//swap = new Vector2(1.0f, 2.0f);
 			//doSwap = true;
 			changePos(0.37f);
 			transform.position = new Vector3(0.37f, startY, startZ);
 			currentPosition = transform.position;
-		} else if (transform.position.x > 0.50f & transform.position.x < 0.66f) { // slot 3
+		} else if (transform.position.x > 0.51f & transform.position.x < 0.71f) { // slot 3
 			changePos(0.61f);
 			transform.position = new Vector3(0.61f, startY, startZ);
 			currentPosition = transform.position;
-		} else if (transform.position.x > 0.75f & transform.position.x < 0.90f) { // slot 4
+		} else if (transform.position.x > 0.77f & transform.position.x < 0.97f) { // slot 4
 			changePos(0.87f);
 			transform.position = new Vector3(0.87f, startY, startZ);
 			currentPosition = transform.position;
@@ -247,6 +248,23 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 			curBlueRocketPos = xPos;
 		} else if (startZ == 4.0f) {
 			curPurpleRocketPos = xPos;
+		}
+	}
+
+	private void drawFlames () {
+		if (displayFlames) {
+			if (slot1) {
+				GUI.DrawTexture(new Rect(Screen.width * .085f, Screen.height * .88f, Screen.width * .08f, Screen.height * .12f), fire);
+			}
+			if (slot2) {
+				GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .91f, Screen.width * .08f, Screen.height * .09f), fire);
+			}
+			if (slot3) {
+				GUI.DrawTexture(new Rect(Screen.width * .576f, Screen.height * .93f, Screen.width * .08f, Screen.height * .07f), fire);
+			}
+			if (slot4) {
+				GUI.DrawTexture(new Rect(Screen.width * .832f, Screen.height * .95f, Screen.width * .08f, Screen.height * .05f), fire);
+			}
 		}
 	}
 
