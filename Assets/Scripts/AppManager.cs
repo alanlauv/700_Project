@@ -10,6 +10,7 @@ public class AppManager {
 	public const string TASK_SELECTION_SCENE = "TaskSelectionScene";
 	public const string START_SESSION_SCENE = "StartSessionScene";
 	public const string TEACHER_SCENE = "TeacherScene";
+	public const string TEACHER_COMPLETED_TASKS_SCENE = "TeacherCompletedTasksScene";
 
 	public const string Y1Q1_SCENE = "Y1Q1Scene";
 	public const string Y1Q2_SCENE = "Y1Q2Scene";
@@ -85,7 +86,8 @@ public class AppManager {
 			});
 		}
 	}
-	
+
+	// append to Parse DB the completed task
 	public void addCompletedTask(string task, int numStars) {
 		if (student != null) {
 			string append = task + "; Stars: " + numStars;
@@ -101,5 +103,17 @@ public class AppManager {
 	public void exitTask(string scene) {
 		Application.LoadLevel(scene);
 		setCurrentTask("None");
+	}
+
+	// passing student completedTasks of a student in Teacher Scene
+	public void storeCompletedTasks(string studentName, string tasks) {
+		string s = studentName + "\n" + tasks;
+		if (tasks.Equals(""))
+			s += "Has not yet completed any tasks";
+		PlayerPrefs.SetString ("COMPLETED_TASKS", s);	
+	}
+
+	public string loadCompletedTasks() {
+		return PlayerPrefs.GetString ("COMPLETED_TASKS");
 	}
 }

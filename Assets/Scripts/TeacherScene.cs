@@ -38,24 +38,27 @@ public class TeacherScene : MonoBehaviour {
 			}
 		}
 
-		// scroll view for table
+		// TODO scroll view for table (hard-coded length atm)
 		scrollPosition = GUI.BeginScrollView(new Rect(10, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, 1000));
 
 		// table headers
-		drawStudentEntry(0, "DEVICE", "STUDENT", "CURRENT TASK", "HELP?");
+		drawStudentEntry(0, "DEVICE", "STUDENT", "CURRENT TASK", "HELP?", "");
 
 		// list students
 		if (students != null) {
 			int i = 1;
 			foreach (var student in students) {
 				// This does not require a network access.
-				if (!student["firstName"].Equals("")) { // firstName exists so not a blank entry row, i.e. TEACHER OBJECT
+				if (student["device"].Equals("TEACHER")) {
+					student.DeleteAsync(); // delete useless teacher entry
+				} else {
 					//string device = student["device"] + "";
 					string device = student.Get<string>("device");
 					string fullName = student["firstName"] + " " + student["lastName"];
 					string currentTask = student.Get<string>("currentTask");
-					string helpNeeded = student.Get<string>("helpNeeded");;
-					drawStudentEntry(i, device, fullName, currentTask, helpNeeded);
+					string helpNeeded = student.Get<string>("helpNeeded");
+					string completedTasks = student.Get<string>("completedTasks");
+					drawStudentEntry(i, device, fullName, currentTask, helpNeeded, completedTasks);
 					i++;
 					//Debug.Log("Device: " + student["device"]);
 				}
@@ -67,7 +70,14 @@ public class TeacherScene : MonoBehaviour {
 		drawSettings ();
 	}
 
-	private void drawStudentEntry (int pos, string device, string name, string task, string helpNeeded) {
+	private void drawStudentEntry (int pos, string device, string name, string task, string helpNeeded, string completedTasks) {
+		if (pos != 0) {
+			if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .1f * pos, Screen.width * .9f, Screen.height * .1f), "")) {
+				AppManager.Instance.storeCompletedTasks(name, completedTasks);
+				Application.LoadLevel(AppManager.TEACHER_COMPLETED_TASKS_SCENE);
+			}
+		}
+
 		GUI.Label(new Rect (Screen.width * .0f, Screen.height * .1f * pos, Screen.width * .15f, Screen.height * .1f), device);
 		GUI.Label(new Rect (Screen.width * .2f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), name);
 		GUI.Label(new Rect (Screen.width * .45f, Screen.height * .1f * pos, Screen.width * .3f, Screen.height * .1f), task);
