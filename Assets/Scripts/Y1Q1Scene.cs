@@ -123,6 +123,11 @@ public class Y1Q1Scene : MonoBehaviour {
 			//displayGreenCircle = true;
 			displayStars = true;
 //			question = "The green rocket is taller than the blue rocket";
+			GameObject fire1 = GameObject.Find("Fire1");
+			fire1.GetComponent<Renderer>().enabled = true;
+
+			GameObject fire2 = GameObject.Find("Fire2");
+			fire2.GetComponent<Renderer>().enabled = true;
 		}
 
 		// thinner
