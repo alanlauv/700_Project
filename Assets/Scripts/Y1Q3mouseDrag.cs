@@ -241,17 +241,25 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	}
 
 	private void drawFlames () {
+		GameObject fire1 = GameObject.Find("Fire1");
+		GameObject fire2 = GameObject.Find("Fire2");
+		GameObject fire3 = GameObject.Find("Fire3");
+
 		if (displayFlames) {
 			// fire for correct slot
 			if (slot1) {
-				GUI.DrawTexture(new Rect(Screen.width * .13f, Screen.height * .94f, Screen.width * .08f, Screen.height * .06f), fire);
+				fire1.GetComponent<Renderer> ().enabled = true;
 			}
 			if (slot2) {
-				GUI.DrawTexture(new Rect(Screen.width * .455f, Screen.height * .91f, Screen.width * .09f, Screen.height * .08f), fire);
+				fire2.GetComponent<Renderer> ().enabled = true;
 			}
 			if (slot3) {
-				GUI.DrawTexture(new Rect(Screen.width * .8f, Screen.height * .9f, Screen.width * .1f, Screen.height * .1f), fire);
+				fire3.GetComponent<Renderer> ().enabled = true;
 			}
+		} else {
+			fire1.GetComponent<Renderer> ().enabled = false;
+			fire2.GetComponent<Renderer> ().enabled = false;
+			fire3.GetComponent<Renderer> ().enabled = false;
 		}
 	}
 
