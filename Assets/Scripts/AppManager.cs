@@ -85,6 +85,17 @@ public class AppManager {
 			});
 		}
 	}
+	
+	public void addCompletedTask(string task, int numStars) {
+		if (student != null) {
+			string append = task + "; Stars: " + numStars;
+			if (student["completedTasks"] != "") {
+				student["completedTasks"] += "\n" + append;
+			} else {
+				student["completedTasks"] += append;
+			}
+		}
+	}
 
 	// use this method for exiting a task scene instead of Application.LoadLevel
 	public void exitTask(string scene) {

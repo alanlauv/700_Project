@@ -49,7 +49,7 @@ public class TeacherScene : MonoBehaviour {
 			int i = 1;
 			foreach (var student in students) {
 				// This does not require a network access.
-				if (!student["firstName"].Equals("")) { // firstName exists so not a blank entry row
+				if (!student["firstName"].Equals("")) { // firstName exists so not a blank entry row, i.e. TEACHER OBJECT
 					//string device = student["device"] + "";
 					string device = student.Get<string>("device");
 					string fullName = student["firstName"] + " " + student["lastName"];

@@ -44,6 +44,7 @@ public class StartSessionScene : MonoBehaviour {
 		session["lastName"] = "";
 		session["currentTask"] = "";
 		session["helpNeeded"] = "";
+		session["completedTasks"] = "";
 		session.SaveAsync().ContinueWith(t => {
 			if (t.IsFaulted || t.IsCanceled) {
 				// The session creation failed. Check the error to see why.

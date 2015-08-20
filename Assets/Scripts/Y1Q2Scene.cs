@@ -247,6 +247,7 @@ public class Y1Q2Scene : MonoBehaviour {
 			
 			// ok
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
+				AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q2, 1);
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
 		}

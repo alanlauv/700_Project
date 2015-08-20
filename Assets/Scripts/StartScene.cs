@@ -122,6 +122,7 @@ public class StartScene : MonoBehaviour {
 		student["lastName"] = lastName;
 		student["currentTask"] = "None";
 		student["helpNeeded"] = "No";
+		student["completedTasks"] = "";
 		student.SaveAsync().ContinueWith(t => {
 			if (t.IsFaulted || t.IsCanceled) {
 				// The login failed. Check the error to see why.
