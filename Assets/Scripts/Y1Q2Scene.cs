@@ -148,6 +148,13 @@ public class Y1Q2Scene : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
 			displayStars = true;
 //			question = "The purple rocket is shorter than the red rocket";
+
+			// flames appear when correct answer is chosen
+			GameObject fire1 = GameObject.Find("Fire1");
+			fire1.GetComponent<Renderer>().enabled = true;
+			
+			GameObject fire2 = GameObject.Find("Fire2");
+			fire2.GetComponent<Renderer>().enabled = true;
 		}
 		
 		drawAstronaut();

@@ -123,6 +123,8 @@ public class Y1Q1Scene : MonoBehaviour {
 			//displayGreenCircle = true;
 			displayStars = true;
 //			question = "The green rocket is taller than the blue rocket";
+
+			// flames appear when correct answer is chosen
 			GameObject fire1 = GameObject.Find("Fire1");
 			fire1.GetComponent<Renderer>().enabled = true;
 
