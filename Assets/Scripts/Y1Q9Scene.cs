@@ -119,6 +119,10 @@ public class Y1Q9Scene : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), threeText)) {
 			displayStars = true;
 			AppManager.Instance.storeNumIncorrect(numIncorrect);
+
+			// flames appear when correct answer is chosen
+			GameObject fire = GameObject.Find("Fire");
+			fire.GetComponent<Renderer>().enabled = true;
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fourText)) {
