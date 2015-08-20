@@ -137,13 +137,14 @@ public class Y1Q5Scene : MonoBehaviour {
 		// blue pencil
 		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .65f, Screen.width * .2f, Screen.height * .1f), bluePencilText)) {
 			displayStars = true;
+			AppManager.Instance.storeNumIncorrect(numIncorrect);
 		}
 		
 		drawLadyBug();
 		drawRedCross();
 		drawHelpDialog();
 		drawSettings();
-		drawStars();
+		//drawStars();
 	}
 	
 	private void drawSettings () {

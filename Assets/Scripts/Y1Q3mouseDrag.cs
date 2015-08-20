@@ -40,6 +40,11 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	private Texture2D starEmpty;
 	private Texture2D redCross;
 	private Texture2D blastOff;
+
+	private Texture2D excellentText;
+	private Texture2D goodText;
+	private Texture2D completedText;
+	private Texture2D okText;
 	
 	// Use this for initialization
 	void Start () {
@@ -60,6 +65,11 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		redCross = (Texture2D)Resources.Load("red-cross");
 		blastOff = (Texture2D)Resources.Load ("Text/blast_off_text");
+
+		excellentText = (Texture2D)Resources.Load ("Text/excellent_text");
+		goodText = (Texture2D)Resources.Load ("Text/good_text");
+		completedText = (Texture2D)Resources.Load ("Text/completed_text");
+		okText = (Texture2D)Resources.Load ("Text/ok_text");
 	}
 	
 	// Update is called once per frame
@@ -155,6 +165,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 			displayFlames = true;
 			if (slot1 == true && slot2 == true && slot3 == true) {
 				displayStars = true;
+				AppManager.Instance.storeNumIncorrect(numIncorrect);
 			} else {
 				numIncorrect++;
 				displayRedCross = true;
@@ -163,7 +174,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 
 		drawFlames ();
 		drawRedCross();
-		drawStars();
+		//drawStars();
 	}
 	
 	void OnMouseUp () {
@@ -252,23 +263,26 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	
 	private void drawStars () {
 		if (displayStars) {
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Completed");
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "");
 			
 			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
 			
 			if (numIncorrect == 1) {
+				GUI.DrawTexture(new Rect (Screen.width * .4f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), goodText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
 			} else if (numIncorrect >= 2) {
+				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), completedText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
 			} else {
+				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), excellentText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
 			}
 			
 			// ok
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
+			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), okText)) {
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
 		}

@@ -40,6 +40,11 @@ public class Y1Q2Scene : MonoBehaviour {
 	private Texture2D thinnerText;
 	private Texture2D biggerText;
 	private Texture2D shorterText;
+
+	private Texture2D excellentText;
+	private Texture2D goodText;
+	private Texture2D completedText;
+	private Texture2D okText;
 	
 	//private string question = "The purple rocket is ______ than the red rocket";
 	
@@ -59,6 +64,11 @@ public class Y1Q2Scene : MonoBehaviour {
 		thinnerText = (Texture2D)Resources.Load ("Text/thinner_text");
 		biggerText = (Texture2D)Resources.Load ("Text/bigger_text");
 		shorterText = (Texture2D)Resources.Load ("Text/shorter_text");
+
+		excellentText = (Texture2D)Resources.Load ("Text/excellent_text");
+		goodText = (Texture2D)Resources.Load ("Text/good_text");
+		completedText = (Texture2D)Resources.Load ("Text/completed_text");
+		okText = (Texture2D)Resources.Load ("Text/ok_text");
 
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q2);
@@ -148,6 +158,9 @@ public class Y1Q2Scene : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
 			displayStars = true;
 //			question = "The purple rocket is shorter than the red rocket";
+			AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q2, 1);
+			AppManager.Instance.storeNumIncorrect(numIncorrect);
+
 
 			// flames appear when correct answer is chosen
 			GameObject fire1 = GameObject.Find("Fire1");
@@ -162,7 +175,7 @@ public class Y1Q2Scene : MonoBehaviour {
 		drawRedCross();
 		drawHelpDialog();
 		drawSettings();
-		drawStars();
+		//drawStars();
 	}
 	
 	private void drawSettings () {
@@ -237,24 +250,27 @@ public class Y1Q2Scene : MonoBehaviour {
 	
 	private void drawStars () {
 		if (displayStars) {
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Completed");
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "");
 			
 			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
 			
 			if (numIncorrect == 1) {
+				GUI.DrawTexture(new Rect (Screen.width * .4f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), goodText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
 			} else if (numIncorrect >= 2) {
+				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), completedText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
 			} else {
+				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), excellentText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
 			}
 			
 			// ok
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
-				AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q2, 1);
+			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), okText)) {
+
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
 		}

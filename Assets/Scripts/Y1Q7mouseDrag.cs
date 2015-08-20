@@ -119,6 +119,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 			displaySquiggles = true;
 			if (slot1 == true && slot2 == true && slot3 == true) {
 				displayStars = true;
+				AppManager.Instance.storeNumIncorrect(numIncorrect);
 			} else {
 				numIncorrect++;
 				displayRedCross = true;
@@ -126,7 +127,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 		}
 
 		drawSquigglyLines ();
-		drawStars();
+		//drawStars();
 		drawRedCross();
 	}
 	

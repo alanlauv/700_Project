@@ -123,6 +123,7 @@ public class Y1Q10Scene : MonoBehaviour {
 		
 		if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fourText)) {
 			displayStars = true;
+			AppManager.Instance.storeNumIncorrect(numIncorrect);
 		}
 		
 		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fiveText)) {
@@ -152,7 +153,7 @@ public class Y1Q10Scene : MonoBehaviour {
 		
 		drawRedCross();
 		drawSettings();
-		drawStars();
+		//drawStars();
 	}
 	
 	private void drawSettings () {

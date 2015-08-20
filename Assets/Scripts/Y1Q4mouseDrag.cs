@@ -165,6 +165,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 			displayFlames = true;
 			if (slot1 == true && slot2 == true && slot3 == true && slot4 == true) {
 				displayStars = true;
+				AppManager.Instance.storeNumIncorrect(numIncorrect);
 			} else {
 				numIncorrect++;
 				displayRedCross = true;
@@ -173,7 +174,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 
 		drawFlames ();
 		drawRedCross();
-		drawStars();
+		//drawStars();
 	}
 
 	void OnMouseUp () {

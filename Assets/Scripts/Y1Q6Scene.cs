@@ -134,6 +134,7 @@ public class Y1Q6Scene : MonoBehaviour {
 		// blue pencil
 		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .55f, Screen.width * .2f, Screen.height * .1f), pinkPencilText)) {
 			displayStars = true;
+			AppManager.Instance.storeNumIncorrect(numIncorrect);
 		}
 
 		//pink pencil
@@ -146,7 +147,7 @@ public class Y1Q6Scene : MonoBehaviour {
 		drawRedCross();
 		drawHelpDialog();
 		drawSettings();
-		drawStars();
+		//drawStars();
 	}
 	
 	private void drawSettings () {

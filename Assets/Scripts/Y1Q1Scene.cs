@@ -130,9 +130,9 @@ public class Y1Q1Scene : MonoBehaviour {
 		// answer pool
 		// taller
 		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
-			//displayGreenCircle = true;
 			displayStars = true;
-//			question = "The green rocket is taller than the blue rocket";
+			AppManager.Instance.storeNumIncorrect(numIncorrect);
+			AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q1, 2);
 
 			// flames appear when correct answer is chosen
 			GameObject fire1 = GameObject.Find("Fire1");
@@ -171,7 +171,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		drawRedCross();
 		drawHelpDialog();
 		drawSettings();
-		drawStars();
+		//drawStars();
 	}
 
 	private void drawSettings () {
@@ -266,7 +266,6 @@ public class Y1Q1Scene : MonoBehaviour {
 
 			// ok
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), okText)) {
-				AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q1, 2);
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
 		}

@@ -105,6 +105,22 @@ public class AppManager {
 		setCurrentTask("None");
 	}
 
+	// passing numIncorrect [-1 = task not yet completed, else if >=0 then completed]
+	public void storeNumIncorrect(int numIncorrect) {
+		PlayerPrefs.SetInt ("NUM_INCORRECT", numIncorrect);
+	}
+
+	public int loadNumIncorrect() {
+		if (PlayerPrefs.GetInt ("NUM_INCORRECT") == null) {
+			PlayerPrefs.SetInt ("NUM_INCORRECT", -1);
+		}
+		return PlayerPrefs.GetInt ("NUM_INCORRECT");
+	}
+
+	public void resetNumIncorrect () {
+		PlayerPrefs.SetInt ("NUM_INCORRECT", -1);
+	}
+
 	// passing student completedTasks of a student in Teacher Scene
 	public void storeCompletedTasks(string studentName, string tasks) {
 		string s = studentName + "\n" + tasks;
