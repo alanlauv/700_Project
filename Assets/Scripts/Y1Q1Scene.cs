@@ -44,7 +44,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		redCross = (Texture2D)Resources.Load("red-cross");
+		redCross = (Texture2D)Resources.Load("incorrect");
 		greenCircle = (Texture2D)Resources.Load("green-circle");
 		bg = (Texture2D)Resources.Load("black-bg");
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
@@ -203,7 +203,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	private void drawRedCross () {
 		if (displayRedCross) {
-			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
+			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .15f, Screen.width * .35f, Screen.width * .35f), redCross);
 		}
 	}
 
