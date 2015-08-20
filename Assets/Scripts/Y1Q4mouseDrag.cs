@@ -253,19 +253,29 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 	}
 
 	private void drawFlames () {
+		GameObject fire1 = GameObject.Find("Fire1");
+		GameObject fire2 = GameObject.Find("Fire2");
+		GameObject fire3 = GameObject.Find("Fire3");
+		GameObject fire4 = GameObject.Find("Fire4");
+
 		if (displayFlames) {
 			if (slot1) {
-				GUI.DrawTexture(new Rect(Screen.width * .085f, Screen.height * .88f, Screen.width * .08f, Screen.height * .12f), fire);
+				fire1.GetComponent<Renderer> ().enabled = true;
 			}
 			if (slot2) {
-				GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .91f, Screen.width * .08f, Screen.height * .09f), fire);
+				fire2.GetComponent<Renderer> ().enabled = true;
 			}
 			if (slot3) {
-				GUI.DrawTexture(new Rect(Screen.width * .576f, Screen.height * .93f, Screen.width * .08f, Screen.height * .07f), fire);
+				fire3.GetComponent<Renderer> ().enabled = true;
 			}
 			if (slot4) {
-				GUI.DrawTexture(new Rect(Screen.width * .832f, Screen.height * .95f, Screen.width * .08f, Screen.height * .05f), fire);
+				fire4.GetComponent<Renderer> ().enabled = true;
 			}
+		} else {
+			fire1.GetComponent<Renderer> ().enabled = false;
+			fire2.GetComponent<Renderer> ().enabled = false;
+			fire3.GetComponent<Renderer> ().enabled = false;
+			fire4.GetComponent<Renderer> ().enabled = false;
 		}
 	}
 
