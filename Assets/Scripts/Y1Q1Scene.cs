@@ -91,16 +91,9 @@ public class Y1Q1Scene : MonoBehaviour {
 				crossTimer = 0.0f;
 			}
 		}
+		
 
-		if (displayGreenCircle) {
-			circleTimer += Time.deltaTime;
-			if (circleTimer >= circleTimerMax) {
-				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
-			}
-		}
-
-		if (displayAstronaut == false && numIncorrect >= 2) {
-			displayAstronaut = true;
+		if (displayAstronaut == false && numIncorrect >= 1) {
 			displayHelpButton = true;
 		}
 	}
@@ -116,15 +109,9 @@ public class Y1Q1Scene : MonoBehaviour {
 			}
 		}
 
-		// help dialog button (20sec wait) and display astronauts
+		// help dialog button (15sec wait) and display astronauts
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .88f, Screen.height * .002f, Screen.width * .12f, Screen.width * .10f), helpIcon)) {
-				// TODO don't need help dialog anymore?
-				//if (displayHelpDialog) {
-				//	displayHelpDialog = false;
-				//} else {
-				//	displayHelpDialog = true;
-				//}
 				displayAstronaut = true;
 				numIncorrect++;
 			}
@@ -171,9 +158,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		}
 
 		drawAstronaut();
-		drawGreenCircle();
 		drawRedCross();
-		drawHelpDialog();
 		drawSettings();
 		drawCorrectBlob();
 		//drawStars();
@@ -205,33 +190,9 @@ public class Y1Q1Scene : MonoBehaviour {
 		}
 	}
 
-	private void drawHelpDialog () {
-		if (displayHelpDialog) {
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Look at");
-
-			// close dialog button
-			if (GUI.Button (new Rect (Screen.width * .64f, Screen.height * .26f, Screen.width * .05f, Screen.width * .05f), "X")) {
-				displayHelpDialog = false;
-			}
-
-			GUI.DrawTexture(new Rect(Screen.width * .41f, Screen.height * .34f, Screen.width * .15f, Screen.height * .23f), astronaut);
-
-			// call for help
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "Ask Teacher")) {
-				displayHelpDialog = false;
-			}
-		}
-	}
-
 	private void drawRedCross () {
 		if (displayRedCross) {
 			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .15f, Screen.width * .43f, Screen.width * .35f), redCross);
-		}
-	}
-
-	private void drawGreenCircle () {
-		if (displayGreenCircle) {
-			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), greenCircle);
 		}
 	}
 
@@ -249,32 +210,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		}
 	}
 
-	private void drawStars () {
-		if (displayStars) {
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "");
-			
-			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			
-			if (numIncorrect == 1) {
-				GUI.DrawTexture(new Rect (Screen.width * .4f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), goodText);
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else if (numIncorrect >= 2) {
-				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), completedText);
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else {
-				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), excellentText);
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			}
 
-			// ok
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), okText)) {
-				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
-			}
-		}
-	}
 	private void drawCorrectBlob () {
 		if (displayCorrect){
 			GUI.DrawTexture(new Rect (Screen.width * .70f, Screen.height * .28f, Screen.width * .22f, Screen.height * .25f), blob_correct);
