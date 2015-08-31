@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Y1Q12Scene : MonoBehaviour {
-	public const string MEASUREMENT_Y1Q12 = "Measurement/Y1/Q12";
+public class Y2Q4Scene : MonoBehaviour {
+	public const string MEASUREMENT_Y2Q4 = "Measurement/Y2/Q4";
 	
 	private bool displaySettings = false;
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
+	private bool displayStars = false;
 	
 	private int numIncorrect = 0;
 	
@@ -21,29 +22,46 @@ public class Y1Q12Scene : MonoBehaviour {
 	// textures
 	private Texture2D redCross;
 	private Texture2D bg;
+	private Texture2D star;
+	private Texture2D starEmpty;
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 
-	// finished text
-	private Texture2D finishedText;
-
+	// answer pool text
+	private Texture2D oneText;
+	private Texture2D twoText;
+	private Texture2D threeText;
+	private Texture2D fourText;
+	private Texture2D fiveText;
+	private Texture2D sixText;
+	private Texture2D sevenText;
+	private Texture2D eightText;
+	private Texture2D nineText;
+	
 //	private string question = "How many ladybugs long is the blue pencil?";
 	
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("red-cross");
 		bg = (Texture2D)Resources.Load("black-bg");
+		star = (Texture2D)Resources.Load("pics/Star/Star");
+		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
 
-		finishedText = (Texture2D)Resources.Load ("Text/finished_text");
-
+		oneText = (Texture2D)Resources.Load ("Text/1_2_text");
+		twoText = (Texture2D)Resources.Load ("Text/2_2_text");
+		threeText = (Texture2D)Resources.Load ("Text/3_2_text");
+		fourText = (Texture2D)Resources.Load ("Text/4_2_text");
+		fiveText = (Texture2D)Resources.Load ("Text/5_2_text");
+		sixText = (Texture2D)Resources.Load ("Text/6_2_text");
+		sevenText = (Texture2D)Resources.Load ("Text/7_2_text");
+		eightText = (Texture2D)Resources.Load ("Text/8_2_text");
+		nineText = (Texture2D)Resources.Load ("Text/9_2_text");
+		
 		// set current task
-		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q12);
-
-		AppManager.Instance.resetCounter ();
-		AppManager.Instance.resetNumIncorrect ();
+		AppManager.Instance.setCurrentTask(MEASUREMENT_Y2Q4);
 	}
 	
 	// Update is called once per frame
@@ -85,16 +103,51 @@ public class Y1Q12Scene : MonoBehaviour {
 				numIncorrect++;
 			}
 		}
-
-		// finished button
-		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
-			if (AppManager.Instance.loadCounter() == 9) {
-				AppManager.Instance.storeNumIncorrect(numIncorrect);
-				
-			} else {
-				numIncorrect++;
-				displayRedCross = true;
-			}
+		
+		// answer pool
+		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), oneText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), twoText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), threeText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fourText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fiveText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sixText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sevenText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), eightText)) {
+			displayRedCross = true;
+			numIncorrect++;
+		}
+		
+		if (GUI.Button (new Rect (Screen.width * .85f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), nineText)) {
+			displayStars = true;
+			AppManager.Instance.storeNumIncorrect(numIncorrect);
 		}
 		
 		drawRedCross();
