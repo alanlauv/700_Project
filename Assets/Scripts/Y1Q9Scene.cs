@@ -8,7 +8,6 @@ public class Y1Q9Scene : MonoBehaviour {
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
-	private bool displayStars = false;
 
 	private int numIncorrect = 0;
 	
@@ -90,7 +89,6 @@ public class Y1Q9Scene : MonoBehaviour {
 		// blast off button
 		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .85f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
 			if (AppManager.Instance.loadCounter() == 3) {
-				displayStars = true;
 				AppManager.Instance.storeNumIncorrect(numIncorrect);
 
 				// flames appear when correct answer is chosen
