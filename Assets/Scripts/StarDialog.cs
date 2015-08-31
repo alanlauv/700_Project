@@ -3,6 +3,8 @@ using System.Collections;
 
 public class StarDialog : MonoBehaviour {
 
+	public static int guiDepth = 20;
+
 	private bool displayStars = false;
 	private int numIncorrect = 0;
 
@@ -35,6 +37,8 @@ public class StarDialog : MonoBehaviour {
 	}
 
 	void OnGUI () {
+		GUI.depth = guiDepth;
+
 		if (displayStars) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "");
 			

@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Y1Q9mouseDrag : MonoBehaviour {
-
-	public static int guiDepth = 0;
+public class Y2Q1mouseDrag : MonoBehaviour {
 
 	static bool slot0 = false;
 	static bool slot1 = false;
@@ -39,8 +37,6 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUI.depth = guiDepth;
-
 		if (slot0 == false)
 			GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
 
@@ -73,7 +69,6 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.55f, 0.26f, startZ);
 				slot0 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
 
 			} else if (slot1 == false && slot0 == true &&
 			    transform.position.y > 0.33f && transform.position.y < 0.45f) { // slot1, +-6 from 0.26f
@@ -81,32 +76,28 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.55f, 0.39f, startZ);
 				slot1 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
-
+				
 			} else if (slot2 == false && slot1 == true &&
 			           transform.position.y > 0.46f && transform.position.y < 0.58f) { // slot 2, height of astro is 0.13f
 				
 				transform.position = new Vector3 (0.55f, 0.52f, startZ);
 				slot2 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
-
+				
 			} else if (slot3 == false && slot2 == true &&
 			           transform.position.y > 0.59f && transform.position.y < 0.71f) {
 				
 				transform.position = new Vector3 (0.55f, 0.65f, startZ);
 				slot3 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
-
+				
 			} else if (slot4 == false && slot3 == true &&
 			           transform.position.y > 0.72f && transform.position.y < 0.84f) {
 				
 				transform.position = new Vector3 (0.55f, 0.78f, startZ);
 				slot4 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
-
+				
 			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
 			}

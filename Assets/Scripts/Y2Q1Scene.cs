@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Y1Q9Scene : MonoBehaviour {
-	public const string MEASUREMENT_Y1Q9 = "Measurement/Y1/Q9";
+public class Y2Q1Scene : MonoBehaviour {
+	public const string MEASUREMENT_Y2Q1 = "Measurement/Y2/Q1";
 
 	private bool displaySettings = false;
 	private bool displayHelpButton = false;
@@ -39,8 +39,6 @@ public class Y1Q9Scene : MonoBehaviour {
 	private Texture2D eightText;
 	private Texture2D nineText;
 
-	private Texture2D blastOff;
-
 //	private string question = "How many astronauts tall is the purple rocket?";
 
 	// Use this for initialization
@@ -62,13 +60,8 @@ public class Y1Q9Scene : MonoBehaviour {
 		eightText = (Texture2D)Resources.Load ("Text/8_text");
 		nineText = (Texture2D)Resources.Load ("Text/9_text");
 
-		blastOff = (Texture2D)Resources.Load ("Text/blast_off_text");
-
 		// set current task
-		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q9);
-
-		AppManager.Instance.resetCounter ();
-		AppManager.Instance.resetNumIncorrect ();
+		AppManager.Instance.setCurrentTask(MEASUREMENT_Y2Q1);
 	}
 	
 	// Update is called once per frame
@@ -112,18 +105,6 @@ public class Y1Q9Scene : MonoBehaviour {
 			}
 		}
 
-		// blast off button
-		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .85f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
-			if (AppManager.Instance.loadCounter() == 3) {
-				displayStars = true;
-				AppManager.Instance.storeNumIncorrect(numIncorrect);
-			} else {
-				numIncorrect++;
-				displayRedCross = true;
-			}
-		}
-
-		/*
 		// answer pool
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), oneText)) {
 			displayRedCross = true;
@@ -173,7 +154,6 @@ public class Y1Q9Scene : MonoBehaviour {
 			displayRedCross = true;
 			numIncorrect++;
 		}
-*/
 
 		drawRedCross();
 		drawSettings();

@@ -25,6 +25,7 @@ public class AppManager {
 	public const string Y1Q11_SCENE = "Y1Q11Scene";
 	public const string Y1Q12_SCENE = "Y1Q12Scene";
 
+	public const string Y2Q1_SCENE = "Y2Q1Scene";
 
 	public bool sound = false; //{ get; set; }
 	public bool teacherMode = false; //{ get; set; }
@@ -119,6 +120,24 @@ public class AppManager {
 
 	public void resetNumIncorrect () {
 		PlayerPrefs.SetInt ("NUM_INCORRECT", -1);
+	}
+
+	// store and load number of slots for incrementing q9-12
+	public void incrementCounter() {
+		int counter = loadCounter ();
+		counter++;
+		PlayerPrefs.SetInt ("COUNTER", counter);
+	}
+
+	public int loadCounter() {
+		if (PlayerPrefs.GetInt ("COUNTER") == null) {
+			PlayerPrefs.SetInt ("COUNTER", 0);
+		}
+		return PlayerPrefs.GetInt ("COUNTER");
+	}
+
+	public void resetCounter () {
+		PlayerPrefs.SetInt ("COUNTER", 0);
 	}
 
 	// passing student completedTasks of a student in Teacher Scene
