@@ -4,15 +4,11 @@ using Parse;
 
 public class Y1Q1Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y1Q1 = "Measurement/Y1/Q1";
-
-	private bool displaySettings = false;
+	
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
-	private bool displayGreenCircle = false;
 	private bool displayHelpDialog = false;
 	private bool displayAstronaut = false;
-	private bool displayStars = false;
-	private bool displayCorrect = false;
 
 	private int numIncorrect = 0;
 
@@ -23,18 +19,10 @@ public class Y1Q1Scene : MonoBehaviour {
 	private float crossTimer = 0.0f;
 	private float crossTimerMax = 3.0f;
 
-	private float circleTimer = 0.0f;
-	private float circleTimerMax = 3.0f;
-
 	//textures
 	private Texture2D redCross;
-	private Texture2D greenCircle;
-	private Texture2D bg;
 	private Texture2D astronaut;
-	private Texture2D star;
-	private Texture2D starEmpty;
 	//settings & help icon
-	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 	//answers text
 	private Texture2D tallerText;
@@ -51,12 +39,7 @@ public class Y1Q1Scene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("incorrect");
-		greenCircle = (Texture2D)Resources.Load("green-circle");
-		bg = (Texture2D)Resources.Load("black-bg");
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
-		star = (Texture2D)Resources.Load("pics/Star/Star");
-		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
-		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("hint_icon");
 
 		tallerText = (Texture2D)Resources.Load ("Text/taller_text");
@@ -89,7 +72,6 @@ public class Y1Q1Scene : MonoBehaviour {
 				crossTimer = 0.0f;
 			}
 		}
-		
 
 		if (displayAstronaut == false && numIncorrect >= 1) {
 			displayHelpButton = true;
@@ -97,15 +79,6 @@ public class Y1Q1Scene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-
-		// settings button
-		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .918f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
-			if (displaySettings) {
-				displaySettings = false;
-			} else {
-				displaySettings = true;
-			}
-		}
 
 		// help dialog button (15sec wait) and display astronauts on click. Flashes on the second incorrect attempt
 		if (displayHelpButton) {
@@ -118,8 +91,6 @@ public class Y1Q1Scene : MonoBehaviour {
 		// answer pool
 		// taller
 		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
-			displayStars = true;
-			displayCorrect = true;
 			AppManager.Instance.storeNumIncorrect(numIncorrect);
 			AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q1, 2);
 
@@ -157,33 +128,6 @@ public class Y1Q1Scene : MonoBehaviour {
 
 		drawAstronaut();
 		drawRedCross();
-		drawSettings();
-	}
-
-	private void drawSettings () {
-		if (displaySettings) {
-			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), bg);
-
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .3f, Screen.width * .4f, Screen.height * .5f), "");
-			
-			// continue
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .35f, Screen.width * .2f, Screen.height * .1f), "Continue")) {
-				displaySettings = false;
-			}
-
-			// task selection
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), "Main Menu")) {
-				AppManager.Instance.exitTask(AppManager.MAIN_MENU_SCENE);
-			}
-						
-			// quit
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .65f, Screen.width * .2f, Screen.height * .1f), "Quit")) {
-				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
-			}
-
-			// sound
-			AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
-		}
 	}
 
 	private void drawRedCross () {
