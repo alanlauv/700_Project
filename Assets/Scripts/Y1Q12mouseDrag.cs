@@ -68,6 +68,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.11f, 0.585f, startZ);
 				slot0 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 				
 			} else if (slot1 == false &&
 			    transform.position.x > 0.135f && transform.position.x < 0.165f) { // slot1, +-1.5
@@ -75,6 +76,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.15f, 0.585f, startZ);
 				slot1 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 				
 			} else if (slot2 == false && slot1 == true &&
 			           transform.position.x > 0.175f && transform.position.x < 0.205f) { // slot 2
@@ -82,6 +84,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.19f, 0.585f, startZ);
 				slot2 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 				
 			} else if (slot3 == false && slot2 == true &&
 			           transform.position.x > 0.215f && transform.position.x < 0.245f) {
@@ -89,6 +92,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.23f, 0.585f, startZ);
 				slot3 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 				
 			} else if (slot4 == false && slot3 == true &&
 			           transform.position.x > 0.255f && transform.position.x < 0.285f) {
@@ -96,6 +100,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.27f, 0.585f, startZ);
 				slot4 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 				
 			} else if (slot5 == false && slot4 == true &&
 			           transform.position.x > 0.295f && transform.position.x < 0.325f) {
@@ -103,6 +108,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.31f, 0.585f, startZ);
 				slot5 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 
 			} else if (slot6 == false && slot5 == true &&
 			           transform.position.x > 0.335f && transform.position.x < 0.365f) {
@@ -110,6 +116,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.35f, 0.585f, startZ);
 				slot6 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 
 			} else if (slot7 == false && slot6 == true &&
 			           transform.position.x > 0.375f && transform.position.x < 0.405f) {
@@ -117,6 +124,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.39f, 0.585f, startZ);
 				slot7 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 
 			} else if (slot8 == false && slot7 == true &&
 			           transform.position.x > 0.415f && transform.position.x < 0.445f) {
@@ -124,6 +132,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.43f, 0.585f, startZ);
 				slot8 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 
 			} else if (slot9 == false && slot8 == true &&
 			           transform.position.x > 0.455f && transform.position.x < 0.485f) {
@@ -131,6 +140,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.47f, 0.585f, startZ);
 				slot9 = true;
 				isSlotted = true;
+				AppManager.Instance.incrementCounter();
 
 			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
