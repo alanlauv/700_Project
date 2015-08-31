@@ -26,6 +26,9 @@ public class AppManager {
 	public const string Y1Q12_SCENE = "Y1Q12Scene";
 
 	public const string Y2Q1_SCENE = "Y2Q1Scene";
+	public const string Y2Q2_SCENE = "Y2Q2Scene";
+	public const string Y2Q3_SCENE = "Y2Q3Scene";
+	public const string Y2Q4_SCENE = "Y2Q4Scene";
 
 	public bool sound = false; //{ get; set; }
 	public bool teacherMode = false; //{ get; set; }
