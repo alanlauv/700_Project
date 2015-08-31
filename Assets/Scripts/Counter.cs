@@ -3,6 +3,9 @@ using System.Collections;
 
 public class Counter : MonoBehaviour
 {
+	public float xPos = 0.0f;
+	public float yPos = 0.0f;
+
 	private Texture2D zeroText;
 	private Texture2D oneText;
 	private Texture2D twoText;
@@ -61,7 +64,7 @@ public class Counter : MonoBehaviour
 		else if (counter == 9)
 			textToDisplay = nineText;
 
-		GUI.Box (new Rect (Screen.width * .32f, Screen.height * .82f, Screen.height * .15f, Screen.height * .15f), textToDisplay);
+		GUI.Box (new Rect (Screen.width * xPos, Screen.height * yPos, Screen.height * .15f, Screen.height * .15f), textToDisplay);
 	}
 }
 
