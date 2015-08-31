@@ -7,6 +7,9 @@ public class TeacherScene : MonoBehaviour {
 	public Vector2 scrollPosition = Vector2.zero;
 	private bool displaySettings = false;
 	private IEnumerable<ParseObject> students;
+	private int numEntries = 0;
+
+	private Texture2D settingsIcon;
 
 	// update data timer
 	private float timer = 0.0f;
@@ -15,6 +18,8 @@ public class TeacherScene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		queryStudentList();
+
+		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 	}
 	
 	// Update is called once per frame
@@ -30,7 +35,7 @@ public class TeacherScene : MonoBehaviour {
 
 	void OnGUI () {
 		// settings button
-		if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .9f, Screen.height * .1f, Screen.height * .1f), "S")) {
+		if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .9f, Screen.height * .1f, Screen.height * .1f), settingsIcon)) {
 			if (displaySettings) {
 				displaySettings = false;
 			} else {
@@ -39,7 +44,7 @@ public class TeacherScene : MonoBehaviour {
 		}
 
 		// TODO scroll view for table (hard-coded length atm)
-		scrollPosition = GUI.BeginScrollView(new Rect(10, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, 1000));
+		scrollPosition = GUI.BeginScrollView(new Rect(10, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, Screen.height * .1f * (numEntries+1)));
 
 		// table headers
 		drawStudentEntry(0, "DEVICE", "STUDENT", "CURRENT TASK", "HELP?", "");
@@ -60,6 +65,7 @@ public class TeacherScene : MonoBehaviour {
 					string completedTasks = student.Get<string>("completedTasks");
 					drawStudentEntry(i, device, fullName, currentTask, helpNeeded, completedTasks);
 					i++;
+					numEntries = i;
 					//Debug.Log("Device: " + student["device"]);
 				}
 			}
@@ -72,9 +78,11 @@ public class TeacherScene : MonoBehaviour {
 
 	private void drawStudentEntry (int pos, string device, string name, string task, string helpNeeded, string completedTasks) {
 		if (pos != 0) {
-			if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .1f * pos, Screen.width * .9f, Screen.height * .1f), "")) {
-				AppManager.Instance.storeCompletedTasks(name, completedTasks);
-				Application.LoadLevel(AppManager.TEACHER_COMPLETED_TASKS_SCENE);
+			if (!displaySettings) {
+				if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .1f * pos, Screen.width * .9f, Screen.height * .1f), "")) {
+					AppManager.Instance.storeCompletedTasks(name, completedTasks);
+					Application.LoadLevel(AppManager.TEACHER_COMPLETED_TASKS_SCENE);
+				}
 			}
 		}
 

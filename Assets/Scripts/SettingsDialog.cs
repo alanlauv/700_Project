@@ -23,6 +23,8 @@ public class SettingsDialog : MonoBehaviour
 
 	void OnGUI ()
 	{
+		GUI.depth = -20;
+
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .918f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
 			if (displaySettings) {

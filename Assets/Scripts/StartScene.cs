@@ -14,6 +14,7 @@ public class StartScene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		deviceName = SystemInfo.deviceName;
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 	}
 	
 	// Update is called once per frame
