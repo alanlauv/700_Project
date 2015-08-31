@@ -109,7 +109,7 @@ public class Y1Q1Scene : MonoBehaviour {
 			}
 		}
 
-		// help dialog button (15sec wait) and display astronauts
+		// help dialog button (15sec wait) and display astronauts on click. Flashes on the second incorrect attempt
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .88f, Screen.height * .002f, Screen.width * .12f, Screen.width * .10f), helpIcon)) {
 				displayAstronaut = true;
