@@ -12,6 +12,7 @@ public class Y1Q1Scene : MonoBehaviour {
 	private bool displayHelpDialog = false;
 	private bool displayAstronaut = false;
 	private bool displayStars = false;
+	private bool displayCorrect = false;
 
 	private int numIncorrect = 0;
 
@@ -27,6 +28,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	//textures
 	private Texture2D redCross;
+	private Texture2D blob_correct;
 	private Texture2D greenCircle;
 	private Texture2D bg;
 	private Texture2D astronaut;
@@ -50,13 +52,14 @@ public class Y1Q1Scene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("incorrect");
+		blob_correct = (Texture2D)Resources.Load ("correct");
 		greenCircle = (Texture2D)Resources.Load("green-circle");
 		bg = (Texture2D)Resources.Load("black-bg");
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
-		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
+		helpIcon = (Texture2D)Resources.Load ("hint_icon");
 
 		tallerText = (Texture2D)Resources.Load ("Text/taller_text");
 		longerText = (Texture2D)Resources.Load ("Text/longer_text");
@@ -105,7 +108,7 @@ public class Y1Q1Scene : MonoBehaviour {
 	void OnGUI () {
 
 		// settings button
-		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
+		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .918f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
 			if (displaySettings) {
 				displaySettings = false;
 			} else {
@@ -115,7 +118,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 		// help dialog button (20sec wait) and display astronauts
 		if (displayHelpButton) {
-			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
+			if (GUI.Button (new Rect (Screen.width * .88f, Screen.height * .002f, Screen.width * .12f, Screen.width * .10f), helpIcon)) {
 				// TODO don't need help dialog anymore?
 				//if (displayHelpDialog) {
 				//	displayHelpDialog = false;
@@ -131,6 +134,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		// taller
 		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
 			displayStars = true;
+			displayCorrect = true;
 			AppManager.Instance.storeNumIncorrect(numIncorrect);
 			AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q1, 2);
 
@@ -171,6 +175,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		drawRedCross();
 		drawHelpDialog();
 		drawSettings();
+		drawCorrectBlob();
 		//drawStars();
 	}
 
@@ -220,7 +225,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	private void drawRedCross () {
 		if (displayRedCross) {
-			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .15f, Screen.width * .35f, Screen.width * .35f), redCross);
+			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .15f, Screen.width * .43f, Screen.width * .35f), redCross);
 		}
 	}
 
@@ -268,6 +273,13 @@ public class Y1Q1Scene : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), okText)) {
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
+		}
+	}
+	private void drawCorrectBlob () {
+		if (displayCorrect){
+			GUI.DrawTexture(new Rect (Screen.width * .70f, Screen.height * .28f, Screen.width * .22f, Screen.height * .25f), blob_correct);
+
+
 		}
 	}
 }
