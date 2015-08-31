@@ -28,7 +28,6 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	//textures
 	private Texture2D redCross;
-	private Texture2D blob_correct;
 	private Texture2D greenCircle;
 	private Texture2D bg;
 	private Texture2D astronaut;
@@ -52,7 +51,6 @@ public class Y1Q1Scene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("incorrect");
-		blob_correct = (Texture2D)Resources.Load ("correct");
 		greenCircle = (Texture2D)Resources.Load("green-circle");
 		bg = (Texture2D)Resources.Load("black-bg");
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
@@ -160,8 +158,6 @@ public class Y1Q1Scene : MonoBehaviour {
 		drawAstronaut();
 		drawRedCross();
 		drawSettings();
-		drawCorrectBlob();
-		//drawStars();
 	}
 
 	private void drawSettings () {
@@ -207,15 +203,6 @@ public class Y1Q1Scene : MonoBehaviour {
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .66f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .53f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .4f, Screen.width * .08f, Screen.height * .13f), astronaut);
-		}
-	}
-
-
-	private void drawCorrectBlob () {
-		if (displayCorrect){
-			GUI.DrawTexture(new Rect (Screen.width * .70f, Screen.height * .28f, Screen.width * .22f, Screen.height * .25f), blob_correct);
-
-
 		}
 	}
 }

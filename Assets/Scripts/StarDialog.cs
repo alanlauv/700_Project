@@ -10,6 +10,7 @@ public class StarDialog : MonoBehaviour {
 
 	private Texture2D star;
 	private Texture2D starEmpty;
+	private Texture2D blobCorrect;
 
 	private Texture2D excellentText;
 	private Texture2D goodText;
@@ -20,6 +21,7 @@ public class StarDialog : MonoBehaviour {
 	void Start () {
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
+		blobCorrect = (Texture2D)Resources.Load ("correct");
 
 		excellentText = (Texture2D)Resources.Load ("Text/excellent_text");
 		goodText = (Texture2D)Resources.Load ("Text/good_text");
@@ -62,6 +64,9 @@ public class StarDialog : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), okText)) {
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
+
+			// red blob buddy guy
+			GUI.DrawTexture(new Rect (Screen.width * .70f, Screen.height * .28f, Screen.width * .22f, Screen.height * .25f), blobCorrect);
 		}
 	}
 }
