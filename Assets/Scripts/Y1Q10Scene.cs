@@ -22,46 +22,28 @@ public class Y1Q10Scene : MonoBehaviour {
 	// textures
 	private Texture2D redCross;
 	private Texture2D bg;
-	private Texture2D star;
-	private Texture2D starEmpty;
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 
-	// answer pool text
-	private Texture2D oneText;
-	private Texture2D twoText;
-	private Texture2D threeText;
-	private Texture2D fourText;
-	private Texture2D fiveText;
-	private Texture2D sixText;
-	private Texture2D sevenText;
-	private Texture2D eightText;
-	private Texture2D nineText;
-	
+	private Texture2D blastOff;
+
 //	private string question = "How many astronauts tall is the blue rocket?";
 	
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("red-cross");
 		bg = (Texture2D)Resources.Load("black-bg");
-		star = (Texture2D)Resources.Load("pics/Star/Star");
-		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
 
-		oneText = (Texture2D)Resources.Load ("Text/1_text");
-		twoText = (Texture2D)Resources.Load ("Text/2_text");
-		threeText = (Texture2D)Resources.Load ("Text/3_text");
-		fourText = (Texture2D)Resources.Load ("Text/4_text");
-		fiveText = (Texture2D)Resources.Load ("Text/5_text");
-		sixText = (Texture2D)Resources.Load ("Text/6_text");
-		sevenText = (Texture2D)Resources.Load ("Text/7_text");
-		eightText = (Texture2D)Resources.Load ("Text/8_text");
-		nineText = (Texture2D)Resources.Load ("Text/9_text");
-		
+		blastOff = (Texture2D)Resources.Load ("Text/blast_off_text");
+
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q10);
+
+		AppManager.Instance.resetCounter ();
+		AppManager.Instance.resetNumIncorrect ();
 	}
 	
 	// Update is called once per frame
@@ -104,60 +86,24 @@ public class Y1Q10Scene : MonoBehaviour {
 				numIncorrect++;
 			}
 		}
-		
-		// answer pool
-		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), oneText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), twoText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), threeText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fourText)) {
-			displayStars = true;
-			AppManager.Instance.storeNumIncorrect(numIncorrect);
 
-			// flames appear when correct answer is chosen
-			GameObject fire = GameObject.Find("Fire");
-			fire.GetComponent<Renderer>().enabled = true;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fiveText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sixText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sevenText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), eightText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-		
-		if (GUI.Button (new Rect (Screen.width * .85f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), nineText)) {
-			displayRedCross = true;
-			numIncorrect++;
+		// blast off button
+		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .85f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
+			if (AppManager.Instance.loadCounter() == 4) {
+				displayStars = true;
+				AppManager.Instance.storeNumIncorrect(numIncorrect);
+				
+				// flames appear when correct answer is chosen
+				GameObject fire = GameObject.Find("Fire");
+				fire.GetComponent<Renderer>().enabled = true;
+			} else {
+				numIncorrect++;
+				displayRedCross = true;
+			}
 		}
 		
 		drawRedCross();
 		drawSettings();
-		//drawStars();
 	}
 	
 	private void drawSettings () {
@@ -189,30 +135,6 @@ public class Y1Q10Scene : MonoBehaviour {
 	private void drawRedCross () {
 		if (displayRedCross) {
 			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
-		}
-	}
-	
-	private void drawStars () {
-		if (displayStars) {
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Completed");
-			
-			GUI.DrawTexture (new Rect (Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			
-			if (numIncorrect == 1) {
-				GUI.DrawTexture (new Rect (Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture (new Rect (Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else if (numIncorrect >= 2) {
-				GUI.DrawTexture (new Rect (Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-				GUI.DrawTexture (new Rect (Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else {
-				GUI.DrawTexture (new Rect (Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture (new Rect (Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			}
-			
-			// ok
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
-				AppManager.Instance.exitTask (AppManager.TASK_SELECTION_SCENE);
-			}
 		}
 	}
 }

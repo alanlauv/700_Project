@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Y1Q10mouseDrag : MonoBehaviour {
+public class Y2Q2mouseDrag : MonoBehaviour {
 
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -63,7 +63,6 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.55f, 0.26f, startZ);
 				slot1 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
 			
 			} else if (slot2 == false && slot1 == true &&
 			           transform.position.y > 0.33f && transform.position.y < 0.45f) { // slot 2, height of astro is 0.13f
@@ -71,7 +70,6 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.55f, 0.39f, startZ);
 				slot2 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
 
 			} else if (slot3 == false && slot2 == true &&
 			           transform.position.y > 0.46f && transform.position.y < 0.58f) {
@@ -79,7 +77,6 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.55f, 0.52f, startZ);
 				slot3 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
 			
 			} else if (slot4 == false && slot3 == true &&
 			           transform.position.y > 0.59f && transform.position.y < 0.71f) {
@@ -87,7 +84,6 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.55f, 0.65f, startZ);
 				slot4 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
 
 			} else if (slot5 == false && slot4 == true &&
 			           transform.position.y > 0.72f && transform.position.y < 0.84f) {
@@ -95,7 +91,6 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.55f, 0.78f, startZ);
 				slot5 = true;
 				isSlotted = true;
-				AppManager.Instance.incrementCounter();
 
 			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
