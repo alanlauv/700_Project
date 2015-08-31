@@ -3,7 +3,7 @@ using System.Collections;
 
 public class StarDialog : MonoBehaviour {
 
-	public static int guiDepth = 20;
+	public static int guiDepth = -10; // infront
 
 	private bool displayStars = false;
 	private int numIncorrect = 0;

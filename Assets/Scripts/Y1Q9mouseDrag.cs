@@ -3,8 +3,6 @@ using System.Collections;
 
 public class Y1Q9mouseDrag : MonoBehaviour {
 
-	public static int guiDepth = 0;
-
 	static bool slot0 = false;
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -39,8 +37,6 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUI.depth = guiDepth;
-
 		if (slot0 == false)
 			GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
 

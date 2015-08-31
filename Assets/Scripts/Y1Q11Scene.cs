@@ -8,6 +8,7 @@ public class Y1Q11Scene : MonoBehaviour {
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
+	private bool displayFinishButton = true;
 	
 	private int numIncorrect = 0;
 	
@@ -64,8 +65,6 @@ public class Y1Q11Scene : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		GUI.depth = 1;
-
 		// settings button
 		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
 			if (displaySettings) {
@@ -89,13 +88,15 @@ public class Y1Q11Scene : MonoBehaviour {
 		}
 
 		// finished button
-		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
-			if (AppManager.Instance.loadCounter() == 5) {
-				AppManager.Instance.storeNumIncorrect(numIncorrect);
-
-			} else {
-				numIncorrect++;
-				displayRedCross = true;
+		if (displayFinishButton) {
+			if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
+				if (AppManager.Instance.loadCounter () == 5) {
+					AppManager.Instance.storeNumIncorrect (numIncorrect);
+					displayFinishButton = false;
+				} else {
+					numIncorrect++;
+					displayRedCross = true;
+				}
 			}
 		}
 		

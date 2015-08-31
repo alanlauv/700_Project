@@ -8,6 +8,7 @@ public class Y1Q12Scene : MonoBehaviour {
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
+	private bool displayFinishButton = true;
 	
 	private int numIncorrect = 0;
 	
@@ -87,13 +88,15 @@ public class Y1Q12Scene : MonoBehaviour {
 		}
 
 		// finished button
-		if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
-			if (AppManager.Instance.loadCounter() == 9) {
-				AppManager.Instance.storeNumIncorrect(numIncorrect);
-				
-			} else {
-				numIncorrect++;
-				displayRedCross = true;
+		if (displayFinishButton) {
+			if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
+				if (AppManager.Instance.loadCounter () == 9) {
+					AppManager.Instance.storeNumIncorrect (numIncorrect);
+					displayFinishButton = false;
+				} else {
+					numIncorrect++;
+					displayRedCross = true;
+				}
 			}
 		}
 		
