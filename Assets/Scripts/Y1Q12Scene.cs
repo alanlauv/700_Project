@@ -3,13 +3,12 @@ using System.Collections;
 
 public class Y1Q12Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y1Q12 = "Measurement/Y1/Q12";
-	
-	private bool displaySettings = false;
+
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
-	private bool displayHelpDialog = false;
 	private bool displayFinishButton = true;
-	private bool displayHint=false;
+	private bool displayHint = false;
+
 	private int numIncorrect = 0;
 	
 	// update data timer
@@ -21,9 +20,7 @@ public class Y1Q12Scene : MonoBehaviour {
 	
 	// textures
 	private Texture2D redCross;
-	private Texture2D bg;
 	//settings & help icon
-	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
 	private Texture2D hint;
 	// finished text
@@ -34,8 +31,6 @@ public class Y1Q12Scene : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("red-cross");
-		bg = (Texture2D)Resources.Load("black-bg");
-		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
 		hint = (Texture2D)Resources.Load ("diary_hint");
 		finishedText = (Texture2D)Resources.Load ("Text/finished_text");
@@ -65,64 +60,30 @@ public class Y1Q12Scene : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		// settings button
-		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
-			if (displaySettings) {
-				displaySettings = false;
-			} else {
-				displaySettings = true;
-			}
-		}
-		
-		// help dialog button (20sec wait) and display astronauts
-		if (displayHelpButton) {
-			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
-				displayHint=true;
-				numIncorrect++;
-			}
-		}
-
-		// finished button
-		if (displayFinishButton) {
-			if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
-				if (AppManager.Instance.loadCounter () == 9) {
-					AppManager.Instance.storeNumIncorrect (numIncorrect);
-					displayFinishButton = false;
-				} else {
+		if (!SettingsDialog.displaySettings) {		
+			// help dialog button (20sec wait) and display astronauts
+			if (displayHelpButton) {
+				if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
+					displayHint = true;
 					numIncorrect++;
-					displayRedCross = true;
 				}
 			}
-		}
+
+			// finished button
+			if (displayFinishButton) {
+				if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
+					if (AppManager.Instance.loadCounter () == 9) {
+						AppManager.Instance.storeNumIncorrect (numIncorrect);
+						displayFinishButton = false;
+					} else {
+						numIncorrect++;
+						displayRedCross = true;
+					}
+				}
+			}
 		
-		drawRedCross();
-		drawHint();
-		drawSettings();
-	}
-	
-	private void drawSettings () {
-		if (displaySettings) {
-			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), bg);
-			
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .3f, Screen.width * .4f, Screen.height * .5f), "");
-			
-			// continue
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .35f, Screen.width * .2f, Screen.height * .1f), "Continue")) {
-				displaySettings = false;
-			}
-			
-			// task selection
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), "Main Menu")) {
-				AppManager.Instance.exitTask(AppManager.MAIN_MENU_SCENE);
-			}
-			
-			// quit
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .65f, Screen.width * .2f, Screen.height * .1f), "Quit")) {
-				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
-			}
-			
-			// sound
-			AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
+			drawRedCross ();
+			drawHint ();
 		}
 	}
 	
