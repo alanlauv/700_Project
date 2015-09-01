@@ -15,9 +15,6 @@ public class Y1Q3Scene : MonoBehaviour {
 	private float crossTimer = 0.0f;
 	private float crossTimerMax = 3.0f;
 	
-	private float circleTimer = 0.0f;
-	private float circleTimerMax = 3.0f;
-	
 	private int numIncorrect = 0;
 	
 	//textures
