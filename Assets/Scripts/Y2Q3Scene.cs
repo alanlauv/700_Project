@@ -6,7 +6,7 @@ public class Y2Q3Scene : MonoBehaviour {
 
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
-	private bool displayHint=false;
+	private bool displayHint = false;
 	
 	private int numIncorrect = 0;
 	
