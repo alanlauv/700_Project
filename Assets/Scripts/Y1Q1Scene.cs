@@ -15,8 +15,7 @@ public class Y1Q1Scene : MonoBehaviour {
 	//textures
 	private Texture2D redCross;
 	private Texture2D astronaut;
-	//settings & help icon
-	private Texture2D helpIcon;
+
 	//answers text
 	private Texture2D tallerText;
 	private Texture2D longerText;
@@ -28,9 +27,8 @@ public class Y1Q1Scene : MonoBehaviour {
 	void Start () {
 		AppManager.Instance.resetTaskSceneData ();
 
-		redCross = (Texture2D)Resources.Load("incorrect");
+		redCross = (Texture2D)Resources.Load("red-cross");
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
-		helpIcon = (Texture2D)Resources.Load ("hint_icon");
 
 		tallerText = (Texture2D)Resources.Load ("Text/taller_text");
 		longerText = (Texture2D)Resources.Load ("Text/longer_text");
@@ -103,7 +101,7 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	private void drawRedCross () {
 		if (displayRedCross) {
-			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .15f, Screen.width * .43f, Screen.width * .35f), redCross);
+			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .15f, Screen.width * .5f, Screen.width * .35f), redCross);
 
 			if (StarDialog.numIncorrect >= 2)
 				HintButton.flashHintButton = true;
