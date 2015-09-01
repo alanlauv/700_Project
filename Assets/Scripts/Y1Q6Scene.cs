@@ -11,6 +11,7 @@ public class Y1Q6Scene : MonoBehaviour {
 	private bool displayHelpDialog = false;
 	private bool displayLadybug = false;
 	private bool displayStars = false;
+	private bool displayHint = false;
 	
 	private int numIncorrect = 0;
 	
@@ -34,6 +35,7 @@ public class Y1Q6Scene : MonoBehaviour {
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
+	private Texture2D hint;
 	// text
 	private Texture2D greenPencilText;
 	private Texture2D yellowPencilText;
