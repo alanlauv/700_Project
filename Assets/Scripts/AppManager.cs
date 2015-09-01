@@ -60,6 +60,16 @@ public class AppManager {
 		}
 	}
 
+	public void resetTaskSceneData() {
+		HintButton.displayHintButton = false;
+		HintButton.displayHint = false;
+		HintButton.flashHintButton = false;
+		HintButton.hintUsed = false;
+
+		StarDialog.displayStars = false;
+		StarDialog.numIncorrect = 0;
+	}
+
 	public void setCurrentTask(string task) {
 		if (student != null) {
 			student["helpNeeded"] = "No"; // default to no helpNeeded
@@ -92,7 +102,7 @@ public class AppManager {
 	}
 
 	// append to Parse DB the completed task
-	public void addCompletedTask(string task, int numIncorrect) {
+	public void addCompletedTask(string task, int numIncorrect, bool hintUsed) {
 		if (student != null) {
 			int numStars = 1;
 			if (numIncorrect == 0)
@@ -100,7 +110,7 @@ public class AppManager {
 			else if (numIncorrect == 1)
 				numStars = 2;
 
-			string append = task + "; Stars: " + numStars + "; Incorrect attempts: " + numIncorrect;
+			string append = task + "; Stars: " + numStars + "; Incorrect attempts: " + numIncorrect + "; Hint used?: " + hintUsed;
 			if (student["completedTasks"] != "") {
 				student["completedTasks"] += "\n" + append;
 			} else {

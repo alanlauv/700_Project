@@ -4,16 +4,10 @@ using Parse;
 
 public class Y1Q1Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y1Q1 = "Measurement/Y1/Q1";
-	
-	private bool displayHelpButton = false;
+
 	private bool displayRedCross = false;
-	private bool displayAstronaut = false;
 
-	private int numIncorrect = 0;
-
-	// update data timer
-	private float timer = 0.0f;
-	private float timerMax = 15.0f;
+	//private int numIncorrect = 0;
 
 	private float crossTimer = 0.0f;
 	private float crossTimerMax = 3.0f;
@@ -32,6 +26,8 @@ public class Y1Q1Scene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		AppManager.Instance.resetTaskSceneData ();
+
 		redCross = (Texture2D)Resources.Load("incorrect");
 		astronaut = (Texture2D)Resources.Load("pics/astronaut");
 		helpIcon = (Texture2D)Resources.Load ("hint_icon");
@@ -48,10 +44,6 @@ public class Y1Q1Scene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		timer += Time.deltaTime;
-		if (!HintButton.displayHint && timer >= timerMax) {
-			HintButton.displayHintButton = true;
-		}
 
 		if (displayRedCross) {
 			crossTimer += Time.deltaTime;
@@ -60,33 +52,17 @@ public class Y1Q1Scene : MonoBehaviour {
 				crossTimer = 0.0f;
 			}
 		}
-
-		if (!HintButton.displayHint && numIncorrect >= 1) {
-			HintButton.displayHintButton = true;
-		}
-
-		if (HintButton.hintUsedSoIncrementNumIncorrect) {
-			numIncorrect++;
-			HintButton.hintUsedSoIncrementNumIncorrect = false;
-		}
 	}
 
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
-			// help dialog button (15sec wait) and display astronauts on click. Flashes on the second incorrect attempt
-			/*
-			if (displayHelpButton) {
-				if (GUI.Button (new Rect (Screen.width * .88f, Screen.height * .002f, Screen.width * .12f, Screen.width * .10f), helpIcon)) {
-					displayAstronaut = true;
-					numIncorrect++;
-				}
-			}*/
 
 			// answer pool
 			// taller
 			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
-				AppManager.Instance.storeNumIncorrect (numIncorrect);
-				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q1, numIncorrect);
+				//AppManager.Instance.storeNumIncorrect (numIncorrect);
+				StarDialog.displayStars = true;
+				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q1, StarDialog.numIncorrect, HintButton.hintUsed);
 
 				// flames appear when correct answer is chosen
 				GameObject fire1 = GameObject.Find ("Fire1");
@@ -99,25 +75,25 @@ public class Y1Q1Scene : MonoBehaviour {
 			// thinner
 			if (GUI.Button (new Rect (Screen.width * .3f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
 				displayRedCross = true;
-				numIncorrect++;
+				StarDialog.numIncorrect++;
 			}
 
 			// wider
 			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), widerText)) {
 				displayRedCross = true;
-				numIncorrect++;
+				StarDialog.numIncorrect++;
 			}
 
 			// bigger
 			if (GUI.Button (new Rect (Screen.width * .6f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
 				displayRedCross = true;
-				numIncorrect++;
+				StarDialog.numIncorrect++;
 			}
 
 			// shorter
 			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
 				displayRedCross = true;
-				numIncorrect++;
+				StarDialog.numIncorrect++;
 			}
 
 			drawAstronaut ();
@@ -129,7 +105,7 @@ public class Y1Q1Scene : MonoBehaviour {
 		if (displayRedCross) {
 			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .15f, Screen.width * .43f, Screen.width * .35f), redCross);
 
-			if (numIncorrect >= 2)
+			if (StarDialog.numIncorrect >= 2)
 				HintButton.flashHintButton = true;
 		}
 	}

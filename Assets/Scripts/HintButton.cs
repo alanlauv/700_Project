@@ -6,12 +6,15 @@ public class HintButton : MonoBehaviour
 	public static bool displayHintButton = false;
 	public static bool displayHint = false;
 	public static bool flashHintButton = false;
-	public static bool hintUsedSoIncrementNumIncorrect = false;
+	public static bool hintUsed = false;
 
-	private static bool flash = false;
+	private bool flash = false;
 
 	private float timer = 0.0f;
 	private float timerMax = 4.0f;
+
+	private float timer2 = 0.0f;
+	private float timerMax2 = 15.0f;
 
 	private Texture2D helpIcon;
 
@@ -39,6 +42,18 @@ public class HintButton : MonoBehaviour
 				timer = 0.0f;
 			}
 		}
+
+		// display this button after 15 seconds if not already
+		if (!displayHint && !displayHintButton) {
+			timer2 += Time.deltaTime;
+			if (timer2 >= timerMax2) {
+				HintButton.displayHintButton = true;
+			}
+		}
+
+		if (StarDialog.numIncorrect >= 1) {
+			displayHintButton = true;
+		}
 	}
 
 	void OnGUI () {
@@ -47,7 +62,8 @@ public class HintButton : MonoBehaviour
 				if (GUI.Button (new Rect (Screen.width * .9f, Screen.height * .0f, Screen.width * .1f, Screen.width * .1f), helpIcon)) {
 					displayHint = true;
 					displayHintButton = false;
-					hintUsedSoIncrementNumIncorrect = true;
+					hintUsed = true;
+					StarDialog.numIncorrect++;
 				}
 			}
 		}

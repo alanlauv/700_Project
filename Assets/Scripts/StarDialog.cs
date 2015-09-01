@@ -5,8 +5,8 @@ public class StarDialog : MonoBehaviour {
 
 	public static int guiDepth = -10; // infront
 
-	private bool displayStars = false;
-	private int numIncorrect = 0;
+	public static bool displayStars = false;
+	public static int numIncorrect = 0;
 
 	private Texture2D star;
 	private Texture2D starEmpty;
@@ -31,11 +31,13 @@ public class StarDialog : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		/* TODO dont need
 		if (AppManager.Instance.loadNumIncorrect () != -1 && AppManager.Instance.loadNumIncorrect () != null) {
 			displayStars = true;
 			numIncorrect = AppManager.Instance.loadNumIncorrect ();
 			AppManager.Instance.resetNumIncorrect();
 		}
+		*/
 	}
 
 	void OnGUI () {
