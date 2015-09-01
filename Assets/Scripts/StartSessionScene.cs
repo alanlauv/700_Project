@@ -19,10 +19,6 @@ public class StartSessionScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		GUIStyle titleStyle = new GUIStyle ("Label");
-		titleStyle.alignment = TextAnchor.UpperCenter;
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .05f, Screen.width * 1.0f, Screen.height * .1f), "Start Session", titleStyle);
-		
 		GUI.Box (new Rect (Screen.width * .25f, Screen.height * .2f, Screen.width * .5f, Screen.height * .6f), "");
 		
 		// enter session name
