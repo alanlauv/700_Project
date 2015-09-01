@@ -37,8 +37,10 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (slot1 == false)
-			GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
+		if (!SettingsDialog.displaySettings) {
+			if (slot1 == false)
+				GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
+		}
 	}
 	
 	void OnMouseDrag () {
