@@ -8,6 +8,7 @@ public class Y1Q9Scene : MonoBehaviour {
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
+	private bool displayHint = false;
 
 	private int numIncorrect = 0;
 	
@@ -24,10 +25,9 @@ public class Y1Q9Scene : MonoBehaviour {
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
-
+	private Texture2D hint;
 	private Texture2D blastOff;
 
-//	private string question = "How many astronauts tall is the purple rocket?";
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +35,7 @@ public class Y1Q9Scene : MonoBehaviour {
 		bg = (Texture2D)Resources.Load("black-bg");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
-
+		hint = (Texture2D)Resources.Load ("space_hint");
 		blastOff = (Texture2D)Resources.Load ("Text/blast_off_text");
 
 		// set current task
@@ -73,15 +73,10 @@ public class Y1Q9Scene : MonoBehaviour {
 			}
 		}
 		
-		// help dialog button (20sec wait) and display astronauts
+		// help dialog button (15sec wait) and display astronauts
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
-				// TODO don't need help dialog anymore?
-				//if (displayHelpDialog) {
-				//	displayHelpDialog = false;
-				//} else {
-				//	displayHelpDialog = true;
-				//}
+				displayHint=true;
 				numIncorrect++;
 			}
 		}
@@ -101,6 +96,7 @@ public class Y1Q9Scene : MonoBehaviour {
 		}
 
 		drawRedCross();
+		drawHint ();
 		drawSettings();
 	}
 
@@ -133,6 +129,12 @@ public class Y1Q9Scene : MonoBehaviour {
 	private void drawRedCross () {
 		if (displayRedCross) {
 			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
+		}
+	}
+	private void drawHint (){
+		if (displayHint) {
+			GUI.DrawTexture(new Rect(Screen.width * .15f, Screen.height * .37f, Screen.width * .5f, Screen.width * .05f), hint);
+			GUI.DrawTexture(new Rect(Screen.width * .15f, Screen.height * .77f, Screen.width * .5f, Screen.width * .05f), hint);
 		}
 	}
 }
