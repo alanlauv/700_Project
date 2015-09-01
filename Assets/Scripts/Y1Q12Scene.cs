@@ -9,7 +9,7 @@ public class Y1Q12Scene : MonoBehaviour {
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
 	private bool displayFinishButton = true;
-	
+	private bool displayHint=false;
 	private int numIncorrect = 0;
 	
 	// update data timer
@@ -25,7 +25,7 @@ public class Y1Q12Scene : MonoBehaviour {
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
-
+	private Texture2D hint;
 	// finished text
 	private Texture2D finishedText;
 
@@ -37,7 +37,7 @@ public class Y1Q12Scene : MonoBehaviour {
 		bg = (Texture2D)Resources.Load("black-bg");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
-
+		hint = (Texture2D)Resources.Load ("diary_hint");
 		finishedText = (Texture2D)Resources.Load ("Text/finished_text");
 
 		// set current task
@@ -77,12 +77,7 @@ public class Y1Q12Scene : MonoBehaviour {
 		// help dialog button (20sec wait) and display astronauts
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
-				// TODO don't need help dialog anymore?
-				//if (displayHelpDialog) {
-				//	displayHelpDialog = false;
-				//} else {
-				//	displayHelpDialog = true;
-				//}
+				displayHint=true;
 				numIncorrect++;
 			}
 		}
@@ -101,6 +96,7 @@ public class Y1Q12Scene : MonoBehaviour {
 		}
 		
 		drawRedCross();
+		drawHint();
 		drawSettings();
 	}
 	
@@ -133,6 +129,12 @@ public class Y1Q12Scene : MonoBehaviour {
 	private void drawRedCross () {
 		if (displayRedCross) {
 			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
+		}
+	}
+	private void drawHint (){
+		if (displayHint) {
+			GUI.DrawTexture(new Rect(Screen.width * .435f, Screen.height * .28f, Screen.width * .05f, Screen.width * .2f), hint);
+			GUI.DrawTexture(new Rect(Screen.width * .07f, Screen.height * .28f, Screen.width * .05f, Screen.width * .2f), hint);
 		}
 	}
 }
