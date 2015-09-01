@@ -52,16 +52,17 @@ public class Y1Q4Scene : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		
-		// help dialog button
-		if (displayHelpButton) {
-			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
-				displayHintLine = true;
+		if (!SettingsDialog.displaySettings) {
+			// help dialog button
+			if (displayHelpButton) {
+				if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
+					displayHintLine = true;
+				}
 			}
-		}
 
-		drawRedCross();
-		drawHintLine();
+			drawRedCross ();
+			drawHintLine ();
+		}
 	}
 	
 	private void drawRedCross () {
