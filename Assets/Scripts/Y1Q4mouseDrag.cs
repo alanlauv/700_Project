@@ -156,18 +156,20 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
-			displayFlames = true;
-			if (slot1 == true && slot2 == true && slot3 == true && slot4 == true) {
-				AppManager.Instance.storeNumIncorrect(numIncorrect);
-			} else {
-				numIncorrect++;
-				displayRedCross = true;
+		if (!SettingsDialog.displaySettings) {
+			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
+				displayFlames = true;
+				if (slot1 == true && slot2 == true && slot3 == true && slot4 == true) {
+					AppManager.Instance.storeNumIncorrect (numIncorrect);
+				} else {
+					numIncorrect++;
+					displayRedCross = true;
+				}
 			}
-		}
 
-		drawFlames ();
-		drawRedCross();
+			drawFlames ();
+			drawRedCross ();
+		}
 	}
 
 	void OnMouseUp () {

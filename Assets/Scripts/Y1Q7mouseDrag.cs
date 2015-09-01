@@ -14,8 +14,8 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	static float swapPos;
 
 	private bool displaySquiggles = false;
-	private bool displayStars = false;
 	private bool displayRedCross = false;
+
 	private int numIncorrect = 0;
 
 	private float squigglesTimer = 0.0f;
@@ -31,9 +31,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	float startX;
 	float startY;
 	float startZ;
-
-	private Texture2D star;
-	private Texture2D starEmpty;
+	
 	private Texture2D redCross;
 	private Texture2D squigglyLine;
 
@@ -55,8 +53,6 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 			curGreenPencilPos = currentPosition.y;
 		}
 
-		star = (Texture2D)Resources.Load("pics/Star/Star");
-		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		redCross = (Texture2D)Resources.Load("red-cross");
 		squigglyLine = (Texture2D)Resources.Load ("pics/squiggle_left");
 
@@ -115,20 +111,20 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
-			displaySquiggles = true;
-			if (slot1 == true && slot2 == true && slot3 == true) {
-				displayStars = true;
-				AppManager.Instance.storeNumIncorrect(numIncorrect);
-			} else {
-				numIncorrect++;
-				displayRedCross = true;
+		if (!SettingsDialog.displaySettings) {
+			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
+				displaySquiggles = true;
+				if (slot1 == true && slot2 == true && slot3 == true) {
+					AppManager.Instance.storeNumIncorrect (numIncorrect);
+				} else {
+					numIncorrect++;
+					displayRedCross = true;
+				}
 			}
-		}
 
-		drawSquigglyLines ();
-		//drawStars();
-		drawRedCross();
+			drawSquigglyLines ();
+			drawRedCross ();
+		}
 	}
 	
 	void OnMouseUp () {		
@@ -165,30 +161,6 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	private void drawRedCross () {
 		if (displayRedCross) {
 			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
-		}
-	}
-	
-	private void drawStars () {
-		if (displayStars) {
-			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "Completed");
-			
-			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			
-			if (numIncorrect == 1) {
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else if (numIncorrect >= 2) {
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
-			} else {
-				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
-				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			}
-			
-			// ok
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
-				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
-			}
 		}
 	}
 }
