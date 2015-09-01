@@ -38,8 +38,10 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (slot0 == false)
-			GUI.DrawTexture (new Rect (Screen.width * .09f, Screen.height * .385f, Screen.width * .042f, Screen.height * .066f), ladybugOutline);
+		if (!SettingsDialog.displaySettings) {
+			if (slot0 == false)
+				GUI.DrawTexture (new Rect (Screen.width * .09f, Screen.height * .385f, Screen.width * .042f, Screen.height * .066f), ladybugOutline);
+		}
 	}
 
 	void OnMouseDrag () {
