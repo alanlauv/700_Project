@@ -10,11 +10,15 @@ public class StartScene : MonoBehaviour {
 	string deviceName = null;
 
 	bool loggedIn = false;
+	
+	Texture2D enterText;
 
 	// Use this for initialization
 	void Start () {
 		deviceName = SystemInfo.deviceName;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+		enterText = (Texture2D)Resources.Load ("Text/enter_text");
 	}
 	
 	// Update is called once per frame
@@ -27,18 +31,8 @@ public class StartScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		// set up scaling
-		//float rx = Screen.width / 1600;
-		//float ry = Screen.height / 1000;
-		//GUI.matrix = Matrix4x4.TRS (Vector3(0, 0, 0), Quaternion.identity, Vector3 (rx, ry, 1)); 
 
-		// school label
-		GUIStyle titleStyle = new GUIStyle ("Label");
-		titleStyle.alignment = TextAnchor.UpperCenter;
-		titleStyle.fontSize = 23;
-		titleStyle.normal.textColor = Color.white;
-		GUI.Box (new Rect (Screen.width * .25f, Screen.height * .2f, Screen.width * .5f, Screen.height * .7f), "");
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .25f, Screen.width * 1.0f, Screen.height * .2f), "What is your name?", titleStyle);
+		GUI.Box (new Rect (Screen.width * .25f, Screen.height * .3f, Screen.width * .5f, Screen.height * .6f), "");
 
 		// name input
 		firstName = GUI.TextField(new Rect(Screen.width * .3f, Screen.height * .4f, Screen.width * .4f, Screen.height * .07f), firstName, 25);
@@ -46,7 +40,7 @@ public class StartScene : MonoBehaviour {
 		className = GUI.TextField(new Rect(Screen.width * .3f, Screen.height * .6f, Screen.width * .4f, Screen.height * .07f), className, 25);
 
 		// School use button
-		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), "Enter")) {
+		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), enterText)) {
 			// sign into Parse
 			//signUp();
 			newLogIn();
