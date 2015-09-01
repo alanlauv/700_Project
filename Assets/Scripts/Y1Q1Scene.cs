@@ -79,55 +79,56 @@ public class Y1Q1Scene : MonoBehaviour {
 	}
 
 	void OnGUI () {
+		if (!SettingsDialog.displaySettings) {
+			// help dialog button (15sec wait) and display astronauts on click. Flashes on the second incorrect attempt
+			if (displayHelpButton) {
+				if (GUI.Button (new Rect (Screen.width * .88f, Screen.height * .002f, Screen.width * .12f, Screen.width * .10f), helpIcon)) {
+					displayAstronaut = true;
+					numIncorrect++;
+				}
+			}
 
-		// help dialog button (15sec wait) and display astronauts on click. Flashes on the second incorrect attempt
-		if (displayHelpButton) {
-			if (GUI.Button (new Rect (Screen.width * .88f, Screen.height * .002f, Screen.width * .12f, Screen.width * .10f), helpIcon)) {
-				displayAstronaut = true;
+			// answer pool
+			// taller
+			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
+				AppManager.Instance.storeNumIncorrect (numIncorrect);
+				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q1, 2);
+
+				// flames appear when correct answer is chosen
+				GameObject fire1 = GameObject.Find ("Fire1");
+				fire1.GetComponent<Renderer> ().enabled = true;
+
+				GameObject fire2 = GameObject.Find ("Fire2");
+				fire2.GetComponent<Renderer> ().enabled = true;
+			}
+
+			// thinner
+			if (GUI.Button (new Rect (Screen.width * .3f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
+				displayRedCross = true;
 				numIncorrect++;
 			}
+
+			// wider
+			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), widerText)) {
+				displayRedCross = true;
+				numIncorrect++;
+			}
+
+			// bigger
+			if (GUI.Button (new Rect (Screen.width * .6f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
+				displayRedCross = true;
+				numIncorrect++;
+			}
+
+			// shorter
+			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
+				displayRedCross = true;
+				numIncorrect++;
+			}
+
+			drawAstronaut ();
+			drawRedCross ();
 		}
-
-		// answer pool
-		// taller
-		if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
-			AppManager.Instance.storeNumIncorrect(numIncorrect);
-			AppManager.Instance.addCompletedTask(MEASUREMENT_Y1Q1, 2);
-
-			// flames appear when correct answer is chosen
-			GameObject fire1 = GameObject.Find("Fire1");
-			fire1.GetComponent<Renderer>().enabled = true;
-
-			GameObject fire2 = GameObject.Find("Fire2");
-			fire2.GetComponent<Renderer>().enabled = true;
-		}
-
-		// thinner
-		if (GUI.Button (new Rect (Screen.width * .3f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-
-		// wider
-		if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), widerText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-
-		// bigger
-		if (GUI.Button (new Rect (Screen.width * .6f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-
-		// shorter
-		if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
-			displayRedCross = true;
-			numIncorrect++;
-		}
-
-		drawAstronaut();
-		drawRedCross();
 	}
 
 	private void drawRedCross () {

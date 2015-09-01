@@ -5,11 +5,14 @@ public class TeacherLoginScene : MonoBehaviour {
 	string password = "";
 	bool keepLoggedIn = false;
 
-	private Texture2D backText;
+	Texture2D backText;
+	Texture2D enterText;
 
 	// Use this for initialization
 	void Start () {
 		backText = (Texture2D)Resources.Load ("Text/back_text");
+
+		enterText = (Texture2D)Resources.Load ("Text/enter_text");
 	}
 	
 	// Update is called once per frame
@@ -25,7 +28,7 @@ public class TeacherLoginScene : MonoBehaviour {
 		password = GUI.PasswordField(new Rect(Screen.width * .45f, Screen.height * .3f, Screen.width * .25f, Screen.height * .07f), password, "*"[0], 25);
 
 		// enter button
-		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), "Enter")) {
+		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), enterText)) {
 			// move to session creation
 			// if teacher login successful, teacherMode set true
 			AppManager.Instance.teacherMode = true;

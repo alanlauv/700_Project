@@ -8,11 +8,17 @@ public class SettingsDialog : MonoBehaviour
 	private Texture2D bg;
 	private Texture2D settingsIcon;
 
+	private Texture2D continueText;
+	private Texture2D quitText;
+
 	// Use this for initialization
 	void Start ()
 	{
 		bg = (Texture2D)Resources.Load("black-bg");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
+
+		continueText = (Texture2D)Resources.Load ("Text/continue_text");
+		quitText = (Texture2D)Resources.Load ("Text/quit_text");
 	}
 	
 	// Update is called once per frame
@@ -38,22 +44,17 @@ public class SettingsDialog : MonoBehaviour
 
 	private void drawSettings () {
 		if (displaySettings) {
-			GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), bg);
+			//GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), bg);
 			
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .3f, Screen.width * .4f, Screen.height * .5f), "");
 			
 			// continue
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .35f, Screen.width * .2f, Screen.height * .1f), "Continue")) {
+			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .4f, Screen.width * .3f, Screen.height * .1f), continueText)) {
 				displaySettings = false;
 			}
 			
-			// task selection
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), "Main Menu")) {
-				AppManager.Instance.exitTask(AppManager.MAIN_MENU_SCENE);
-			}
-			
-			// quit
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .65f, Screen.width * .2f, Screen.height * .1f), "Quit")) {
+			// quit to task selection
+			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .6f, Screen.width * .3f, Screen.height * .1f), quitText)) {
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
 			
