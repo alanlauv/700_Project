@@ -9,6 +9,7 @@ public class Y2Q1Scene : MonoBehaviour {
 	private bool displayRedCross = false;
 	private bool displayHelpDialog = false;
 	private bool displayStars = false;
+	private bool displayHint = false;
 
 	private int numIncorrect = 0;
 	
@@ -27,6 +28,7 @@ public class Y2Q1Scene : MonoBehaviour {
 	//settings & help icon
 	private Texture2D settingsIcon;
 	private Texture2D helpIcon;
+	private Texture2D hint;
 
 	// answer pool text
 	private Texture2D oneText;
@@ -49,6 +51,7 @@ public class Y2Q1Scene : MonoBehaviour {
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 		helpIcon = (Texture2D)Resources.Load ("pics/green_hand");
+		hint = (Texture2D)Resources.Load ("space_hint");
 
 		oneText = (Texture2D)Resources.Load ("Text/1_text");
 		twoText = (Texture2D)Resources.Load ("Text/2_text");
@@ -95,12 +98,7 @@ public class Y2Q1Scene : MonoBehaviour {
 		// help dialog button (20sec wait) and display astronauts
 		if (displayHelpButton) {
 			if (GUI.Button (new Rect (Screen.width * .89f, Screen.height * .0f, Screen.width * .05f, Screen.width * .05f), helpIcon)) {
-				// TODO don't need help dialog anymore?
-				//if (displayHelpDialog) {
-				//	displayHelpDialog = false;
-				//} else {
-				//	displayHelpDialog = true;
-				//}
+				displayHint=true;
 				numIncorrect++;
 			}
 		}
@@ -156,8 +154,8 @@ public class Y2Q1Scene : MonoBehaviour {
 		}
 
 		drawRedCross();
+		drawHint();
 		drawSettings();
-		//drawStars();
 	}
 
 	private void drawSettings () {
@@ -213,6 +211,12 @@ public class Y2Q1Scene : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "OK")) {
 				AppManager.Instance.exitTask (AppManager.TASK_SELECTION_SCENE);
 			}
+		}
+	}
+	private void drawHint (){
+		if (displayHint) {
+			GUI.DrawTexture(new Rect(Screen.width * .15f, Screen.height * .37f, Screen.width * .5f, Screen.width * .05f), hint);
+			GUI.DrawTexture(new Rect(Screen.width * .15f, Screen.height * .77f, Screen.width * .5f, Screen.width * .05f), hint);
 		}
 	}
 }
