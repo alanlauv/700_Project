@@ -7,7 +7,6 @@ public class Y1Q1Scene : MonoBehaviour {
 	
 	private bool displayHelpButton = false;
 	private bool displayRedCross = false;
-	private bool displayHelpDialog = false;
 	private bool displayAstronaut = false;
 
 	private int numIncorrect = 0;
@@ -31,11 +30,6 @@ public class Y1Q1Scene : MonoBehaviour {
 	private Texture2D biggerText;
 	private Texture2D shorterText;
 
-	private Texture2D excellentText;
-	private Texture2D goodText;
-	private Texture2D completedText;
-	private Texture2D okText;
-
 	// Use this for initialization
 	void Start () {
 		redCross = (Texture2D)Resources.Load("incorrect");
@@ -47,11 +41,6 @@ public class Y1Q1Scene : MonoBehaviour {
 		widerText = (Texture2D)Resources.Load ("Text/wider_text");
 		biggerText = (Texture2D)Resources.Load ("Text/bigger_text");
 		shorterText = (Texture2D)Resources.Load ("Text/shorter_text");
-
-		excellentText = (Texture2D)Resources.Load ("Text/excellent_text");
-		goodText = (Texture2D)Resources.Load ("Text/good_text");
-		completedText = (Texture2D)Resources.Load ("Text/completed_text");
-		okText = (Texture2D)Resources.Load ("Text/ok_text");
 
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q1);
