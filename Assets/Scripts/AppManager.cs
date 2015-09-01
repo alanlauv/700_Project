@@ -92,9 +92,15 @@ public class AppManager {
 	}
 
 	// append to Parse DB the completed task
-	public void addCompletedTask(string task, int numStars) {
+	public void addCompletedTask(string task, int numIncorrect) {
 		if (student != null) {
-			string append = task + "; Stars: " + numStars;
+			int numStars = 1;
+			if (numIncorrect == 0)
+				numStars = 3;
+			else if (numIncorrect == 1)
+				numStars = 2;
+
+			string append = task + "; Stars: " + numStars + "; Incorrect attempts: " + numIncorrect;
 			if (student["completedTasks"] != "") {
 				student["completedTasks"] += "\n" + append;
 			} else {

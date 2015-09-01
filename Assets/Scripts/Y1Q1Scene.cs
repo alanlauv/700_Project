@@ -49,9 +49,8 @@ public class Y1Q1Scene : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
-		if (displayHelpButton == false && timer >= timerMax) {
-			//Debug.Log("timerMax reached!");
-			displayHelpButton = true;
+		if (!HintButton.displayHint && timer >= timerMax) {
+			HintButton.displayHintButton = true;
 		}
 
 		if (displayRedCross) {
@@ -62,26 +61,32 @@ public class Y1Q1Scene : MonoBehaviour {
 			}
 		}
 
-		if (displayAstronaut == false && numIncorrect >= 1) {
-			displayHelpButton = true;
+		if (!HintButton.displayHint && numIncorrect >= 1) {
+			HintButton.displayHintButton = true;
+		}
+
+		if (HintButton.hintUsedSoIncrementNumIncorrect) {
+			numIncorrect++;
+			HintButton.hintUsedSoIncrementNumIncorrect = false;
 		}
 	}
 
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
 			// help dialog button (15sec wait) and display astronauts on click. Flashes on the second incorrect attempt
+			/*
 			if (displayHelpButton) {
 				if (GUI.Button (new Rect (Screen.width * .88f, Screen.height * .002f, Screen.width * .12f, Screen.width * .10f), helpIcon)) {
 					displayAstronaut = true;
 					numIncorrect++;
 				}
-			}
+			}*/
 
 			// answer pool
 			// taller
 			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
 				AppManager.Instance.storeNumIncorrect (numIncorrect);
-				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q1, 2);
+				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q1, numIncorrect);
 
 				// flames appear when correct answer is chosen
 				GameObject fire1 = GameObject.Find ("Fire1");
@@ -123,11 +128,14 @@ public class Y1Q1Scene : MonoBehaviour {
 	private void drawRedCross () {
 		if (displayRedCross) {
 			GUI.DrawTexture(new Rect(Screen.width * .33f, Screen.height * .15f, Screen.width * .43f, Screen.width * .35f), redCross);
+
+			if (numIncorrect >= 2)
+				HintButton.flashHintButton = true;
 		}
 	}
 
 	private void drawAstronaut () {
-		if (displayAstronaut) {
+		if (HintButton.displayHint) {
 			GUI.DrawTexture(new Rect(Screen.width * .37f, Screen.height * .66f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .37f, Screen.height * .53f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .37f, Screen.height * .4f, Screen.width * .08f, Screen.height * .13f), astronaut);
