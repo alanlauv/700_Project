@@ -31,14 +31,12 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 
 	private Texture2D blastOff;
 
-	void Awake () {
+	// Use this for initialization
+	void Start () {
 		slot1 = false;
 		slot2 = false;
 		slot3 = false;
-	}
 
-	// Use this for initialization
-	void Start () {
 		currentPosition = transform.position;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
