@@ -115,40 +115,6 @@ public class AppManager {
 		setCurrentTask("None");
 	}
 
-	// passing numIncorrect [-1 = task not yet completed, else if >=0 then completed]
-	public void storeNumIncorrect(int numIncorrect) {
-		PlayerPrefs.SetInt ("NUM_INCORRECT", numIncorrect);
-	}
-
-	public int loadNumIncorrect() {
-		if (PlayerPrefs.GetInt ("NUM_INCORRECT") == null) {
-			PlayerPrefs.SetInt ("NUM_INCORRECT", -1);
-		}
-		return PlayerPrefs.GetInt ("NUM_INCORRECT");
-	}
-
-	public void resetNumIncorrect () {
-		PlayerPrefs.SetInt ("NUM_INCORRECT", -1);
-	}
-
-	// store and load number of slots for incrementing q9-12
-	public void incrementCounter() {
-		int counter = loadCounter ();
-		counter++;
-		PlayerPrefs.SetInt ("COUNTER", counter);
-	}
-
-	public int loadCounter() {
-		if (PlayerPrefs.GetInt ("COUNTER") == null) {
-			PlayerPrefs.SetInt ("COUNTER", 0);
-		}
-		return PlayerPrefs.GetInt ("COUNTER");
-	}
-
-	public void resetCounter () {
-		PlayerPrefs.SetInt ("COUNTER", 0);
-	}
-
 	// passing student completedTasks of a student in Teacher Scene
 	public void storeCompletedTasks(string studentName, string tasks) {
 		string s = studentName + "\n" + tasks;
