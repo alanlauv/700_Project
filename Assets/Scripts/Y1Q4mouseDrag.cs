@@ -30,8 +30,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 	Vector3 currentPosition;
 	float startY;
 	float startZ;
-
-	static Texture2D fire;
+	
 	private Texture2D blastOff;
 
 	// Use this for initialization
@@ -55,7 +54,6 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 			curPurpleRocketPos = currentPosition.x;
 		}
 
-		fire = (Texture2D)Resources.Load("pics/Fire sprites/Fire");
 		blastOff = (Texture2D)Resources.Load ("Text/blast_off_text");
 	}
 
