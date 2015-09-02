@@ -31,15 +31,17 @@ public class SettingsDialog : MonoBehaviour
 	{
 		GUI.depth = -20;
 
-		// settings button
-		if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .918f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
-			if (displaySettings) {
-				displaySettings = false;
-			} else {
-				displaySettings = true;
+		if (!StarDialog.displayStars) {
+			// settings button
+			if (GUI.Button (new Rect (Screen.width * .95f, Screen.height * .918f, Screen.width * .05f, Screen.width * .05f), settingsIcon)) {
+				if (displaySettings) {
+					displaySettings = false;
+				} else {
+					displaySettings = true;
+				}
 			}
+			drawSettings ();
 		}
-		drawSettings ();
 	}
 
 	private void drawSettings () {

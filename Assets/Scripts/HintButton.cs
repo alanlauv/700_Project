@@ -89,7 +89,7 @@ public class HintButton : MonoBehaviour
 	void OnGUI () {
 		GUI.depth = -10;
 
-		if (!SettingsDialog.displaySettings) {
+		if (!SettingsDialog.displaySettings && !StarDialog.displayStars) {
 			if (!flash && !displayHint && displayHintButton) {
 				if (GUI.Button (new Rect (Screen.width * .9f, Screen.height * .0f, Screen.width * .1f, Screen.width * .1f), helpIcon)) {
 					displayHint = true;

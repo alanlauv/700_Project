@@ -34,11 +34,13 @@ public class IncorrectDialog : MonoBehaviour
 	{
 		GUI.depth = -10;
 
-		if (displayIncorrectDialog) {
-			GUI.DrawTexture(new Rect(Screen.width * .27f, Screen.height * .15f, Screen.width * .46f, Screen.width * .35f), incorrect);
+		if (!StarDialog.displayStars) {
+			if (displayIncorrectDialog) {
+				GUI.DrawTexture (new Rect (Screen.width * .27f, Screen.height * .15f, Screen.width * .46f, Screen.width * .35f), incorrect);
 
-			if (StarDialog.numIncorrect >= 2)
-				HintButton.flashHintButton = true;
+				if (StarDialog.numIncorrect >= 2)
+					HintButton.flashHintButton = true;
+			}
 		}
 	}
 }
