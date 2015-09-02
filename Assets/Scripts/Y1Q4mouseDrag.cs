@@ -149,6 +149,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 				displayFlames = true;
 				if (slot1 == true && slot2 == true && slot3 == true && slot4 == true) {
 					StarDialog.displayStars = true;
+					AppManager.Instance.addCompletedTask (Y1Q4Scene.MEASUREMENT_Y1Q4, StarDialog.numIncorrect, HintButton.hintUsed);
 				} else {
 					StarDialog.numIncorrect++;
 					IncorrectDialog.displayIncorrectDialog = true;

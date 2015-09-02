@@ -115,6 +115,7 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 				displaySquiggles = true;
 				if (slot1 == true && slot2 == true && slot3 == true) {
 					StarDialog.displayStars = true;
+					AppManager.Instance.addCompletedTask (Y1Q8Scene.MEASUREMENT_Y1Q8, StarDialog.numIncorrect, HintButton.hintUsed);
 				} else {
 					StarDialog.numIncorrect++;
 					IncorrectDialog.displayIncorrectDialog = true;

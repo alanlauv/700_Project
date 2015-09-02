@@ -61,6 +61,7 @@ public class Y2Q2Scene : MonoBehaviour {
 		
 			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fourText)) {
 				StarDialog.displayStars = true;
+				AppManager.Instance.addCompletedTask (MEASUREMENT_Y2Q2, StarDialog.numIncorrect, HintButton.hintUsed);
 
 				// flames appear when correct answer is chosen
 				GameObject fire = GameObject.Find ("Fire");

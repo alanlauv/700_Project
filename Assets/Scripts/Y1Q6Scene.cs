@@ -49,6 +49,7 @@ public class Y1Q6Scene : MonoBehaviour {
 			// blue pencil
 			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .55f, Screen.width * .2f, Screen.height * .1f), pinkPencilText)) {
 				StarDialog.displayStars = true;
+				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q6, StarDialog.numIncorrect, HintButton.hintUsed);
 			}
 
 			//pink pencil

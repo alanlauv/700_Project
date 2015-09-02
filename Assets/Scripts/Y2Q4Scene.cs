@@ -87,6 +87,7 @@ public class Y2Q4Scene : MonoBehaviour {
 		
 			if (GUI.Button (new Rect (Screen.width * .85f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), nineText)) {
 				StarDialog.displayStars = true;
+				AppManager.Instance.addCompletedTask (MEASUREMENT_Y2Q4, StarDialog.numIncorrect, HintButton.hintUsed);
 			}
 			
 			drawHint ();

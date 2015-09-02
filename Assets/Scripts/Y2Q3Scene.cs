@@ -67,6 +67,7 @@ public class Y2Q3Scene : MonoBehaviour {
 		
 			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fiveText)) {
 				StarDialog.displayStars = true;
+				AppManager.Instance.addCompletedTask (MEASUREMENT_Y2Q3, StarDialog.numIncorrect, HintButton.hintUsed);
 			}
 		
 			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sixText)) {
