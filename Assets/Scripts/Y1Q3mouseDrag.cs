@@ -8,14 +8,9 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	static bool isMouseDrag = false; // don't need
 
 	private bool displayFlames = false;
-	private bool displayRedCross = false;
-	private int numIncorrect = 0;
 
 	private float flameTimer = 0.0f;
-	private const float flameTimerMax = crossTimerMax + 2.0f;
-
-	private float crossTimer = 0.0f;
-	private const float crossTimerMax = 3.0f;
+	private const float flameTimerMax = 5.0f;
 	
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -33,10 +28,14 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 	Vector3 currentPosition;
 	float startY;
 	float startZ;
-	
-	static Texture2D fire;
-	private Texture2D redCross;
+
 	private Texture2D blastOff;
+
+	void Awake () {
+		slot1 = false;
+		slot2 = false;
+		slot3 = false;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -51,9 +50,7 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 		} else if (startZ == 3.0f) {
 			curPurpleRocketPos = currentPosition.x;
 		}
-		
-		fire = (Texture2D)Resources.Load("pics/Fire sprites/Fire");
-		redCross = (Texture2D)Resources.Load("red-cross");
+
 		blastOff = (Texture2D)Resources.Load ("Text/blast_off_text");
 	}
 	
@@ -76,14 +73,6 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 				slot3 = true;
 			} else {
 				slot3 = false;
-			}
-		}
-		
-		if (displayRedCross) {
-			crossTimer += Time.deltaTime;
-			if (crossTimer >= crossTimerMax) {
-				displayRedCross = false;
-				crossTimer = 0.0f;
 			}
 		}
 
@@ -150,15 +139,14 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .13f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
 				displayFlames = true;
 				if (slot1 == true && slot2 == true && slot3 == true) {
-					AppManager.Instance.storeNumIncorrect (numIncorrect);
+					StarDialog.displayStars = true;
 				} else {
-					numIncorrect++;
-					displayRedCross = true;
+					StarDialog.numIncorrect++;
+					IncorrectDialog.displayIncorrectDialog = true;
 				}
 			}
 
 			drawFlames ();
-			drawRedCross ();
 		}
 	}
 	
@@ -245,12 +233,6 @@ public class Y1Q3mouseDrag : MonoBehaviour {
 			fire1.GetComponent<Renderer> ().enabled = false;
 			fire2.GetComponent<Renderer> ().enabled = false;
 			fire3.GetComponent<Renderer> ().enabled = false;
-		}
-	}
-
-	private void drawRedCross () {
-		if (displayRedCross) {
-			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
 		}
 	}
 }
