@@ -9,15 +9,9 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	static bool slot4 = false;
 
 	private bool displaySquiggles = false;
-	private bool displayRedCross = false;
-
-	private int numIncorrect = 0;
 
 	private float squigglesTimer = 0.0f;
-	private const float squigglesTimerMax = crossTimerMax + 2.0f;
-	
-	private float crossTimer = 0.0f;
-	private const float crossTimerMax = 3.0f;
+	private const float squigglesTimerMax = 5.0f;
 	
 	// Y positions 0.2, 0.4, 0.6, 0.8
 	static float curPinkPencilPos;
@@ -33,8 +27,7 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	float startX;
 	float startY;
 	float startZ;
-	
-	private Texture2D redCross;
+
 	private Texture2D squigglyLine;
 
 	// finished text
@@ -42,6 +35,11 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		slot1 = false;
+		slot2 = false;
+		slot3 = false;
+		slot4 = false;
+
 		currentPosition = transform.position;
 		startX = currentPosition.x;
 		startY = currentPosition.y;
@@ -57,7 +55,6 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 			curPinkPencilPos = currentPosition.y;
 		}
 
-		redCross = (Texture2D)Resources.Load("red-cross");
 		squigglyLine = (Texture2D)Resources.Load ("pics/squiggle_right");
 
 		finishedText = (Texture2D)Resources.Load ("Text/finished_text");
@@ -91,14 +88,6 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 			}
 		}
 		
-		if (displayRedCross) {
-			crossTimer += Time.deltaTime;
-			if (crossTimer >= crossTimerMax) {
-				displayRedCross = false;
-				crossTimer = 0.0f;
-			}
-		}
-
 		if (displaySquiggles) {
 			squigglesTimer += Time.deltaTime;
 			if (squigglesTimer >= squigglesTimerMax) {
@@ -125,15 +114,14 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
 				displaySquiggles = true;
 				if (slot1 == true && slot2 == true && slot3 == true) {
-					AppManager.Instance.storeNumIncorrect (numIncorrect);
+					StarDialog.displayStars = true;
 				} else {
-					numIncorrect++;
-					displayRedCross = true;
+					StarDialog.numIncorrect++;
+					IncorrectDialog.displayIncorrectDialog = true;
 				}
 			}
 
 			drawSquigglyLines ();
-			drawRedCross ();
 		}
 	}
 	
@@ -172,12 +160,6 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 
 			if (slot4)
 				GUI.DrawTexture (new Rect (Screen.width * .535f, Screen.height * .75f, Screen.width * .2f, Screen.height * .1f), squigglyLine);
-		}
-	}
-
-	private void drawRedCross () {
-		if (displayRedCross) {
-			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .05f, Screen.width * .5f, Screen.width * .5f), redCross);
 		}
 	}
 }
