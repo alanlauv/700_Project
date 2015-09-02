@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Counter : MonoBehaviour
 {
+	public static int counter = 0;
+
 	public float xPos = 0.0f;
 	public float yPos = 0.0f;
 
@@ -20,6 +22,8 @@ public class Counter : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		counter = 0;
+
 		zeroText = (Texture2D)Resources.Load ("Text/0_text");
 		oneText = (Texture2D)Resources.Load ("Text/1_text");
 		twoText = (Texture2D)Resources.Load ("Text/2_text");
@@ -40,7 +44,6 @@ public class Counter : MonoBehaviour
 
 	void OnGUI ()
 	{
-		int counter = AppManager.Instance.loadCounter ();
 		Texture2D textToDisplay = zeroText;
 
 		if (counter == 0)
