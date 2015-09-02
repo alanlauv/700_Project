@@ -4,7 +4,7 @@ using System.Collections;
 public class Y1Q9Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y1Q9 = "Measurement/Y1/Q9";
 
-	// texture
+	// textures
 	private Texture2D hint;
 	private Texture2D blastOff;
 
