@@ -23,6 +23,12 @@ public class Y2Q2mouseDrag : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		slot1 = false;
+		slot2 = false;
+		slot3 = false;
+		slot4 = false;
+		slot5 = false;
+
 		currentPosition = transform.position;
 		startX = currentPosition.x;
 		startY = currentPosition.y;
