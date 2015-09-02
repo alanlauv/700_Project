@@ -75,7 +75,7 @@ public class TaskSelectionScene : MonoBehaviour {
 	void OnGUI () {
 
 		// sound toggle
-		AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
+		//AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
 
 		// year selection
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .2f, Screen.width * .2f, Screen.height * .1f), year1Text)) {

@@ -21,7 +21,7 @@ public class MainMenuScene : MonoBehaviour {
 
 	void OnGUI () {
 		// toggle sound
-		AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
+		//AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
 
 		// title
 		GUIStyle titleStyle = new GUIStyle ("Label");
