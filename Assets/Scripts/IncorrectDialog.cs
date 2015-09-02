@@ -32,6 +32,8 @@ public class IncorrectDialog : MonoBehaviour
 
 	void OnGUI ()
 	{
+		GUI.depth = -10;
+
 		if (displayIncorrectDialog) {
 			GUI.DrawTexture(new Rect(Screen.width * .27f, Screen.height * .15f, Screen.width * .46f, Screen.width * .35f), incorrect);
 
