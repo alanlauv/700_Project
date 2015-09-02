@@ -17,8 +17,15 @@ public class StarDialog : MonoBehaviour {
 	private Texture2D completedText;
 	private Texture2D okText;
 
+	void Awake () {
+
+	}
+
 	// Use this for initialization
 	void Start () {
+		displayStars = false;
+		numIncorrect = 0;
+
 		star = (Texture2D)Resources.Load("pics/Star/Star");
 		starEmpty = (Texture2D)Resources.Load("pics/Star/star_empty");
 		blobCorrect = (Texture2D)Resources.Load ("correct");

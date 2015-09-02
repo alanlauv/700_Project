@@ -20,6 +20,11 @@ public class HintButton : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
+		displayHintButton = false;
+		displayHint = false;
+		flashHintButton = false;
+		hintUsed = false;
+
 		helpIcon = (Texture2D)Resources.Load ("hint_icon");
 	}
 	

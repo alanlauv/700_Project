@@ -60,16 +60,6 @@ public class AppManager {
 		}
 	}
 
-	public void resetTaskSceneData() {
-		HintButton.displayHintButton = false;
-		HintButton.displayHint = false;
-		HintButton.flashHintButton = false;
-		HintButton.hintUsed = false;
-
-		StarDialog.displayStars = false;
-		StarDialog.numIncorrect = 0;
-	}
-
 	public void setCurrentTask(string task) {
 		if (student != null) {
 			student["helpNeeded"] = "No"; // default to no helpNeeded
