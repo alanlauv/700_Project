@@ -25,7 +25,7 @@ public class Y1Q10Scene : MonoBehaviour {
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
 			// blast off button
-			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .85f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
+			if (GUI.Button (new Rect (Screen.width * .26f, Screen.height * .85f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
 				if (Counter.counter == 4) {
 					StarDialog.displayStars = true;
 					AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q10, StarDialog.numIncorrect, HintButton.hintUsed);
