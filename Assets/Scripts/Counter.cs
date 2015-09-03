@@ -67,7 +67,7 @@ public class Counter : MonoBehaviour
 		else if (counter == 9)
 			textToDisplay = nineText;
 
-		GUI.Box (new Rect (Screen.width * xPos, Screen.height * yPos, Screen.height * .15f, Screen.height * .15f), textToDisplay);
+		GUI.Box (new Rect (Screen.width * xPos, Screen.height * yPos, Screen.height * .11f, Screen.height * .11f), textToDisplay);
 	}
 }
 
