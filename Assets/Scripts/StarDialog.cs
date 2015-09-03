@@ -38,13 +38,10 @@ public class StarDialog : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		/* TODO dont need
-		if (AppManager.Instance.loadNumIncorrect () != -1 && AppManager.Instance.loadNumIncorrect () != null) {
-			displayStars = true;
-			numIncorrect = AppManager.Instance.loadNumIncorrect ();
-			AppManager.Instance.resetNumIncorrect();
+		// set helped need for student if num incorrect is >= 3 and hint is used
+		if (numIncorrect >= 3 && HintButton.hintUsed) {
+			AppManager.Instance.setHelpNeeded(true);
 		}
-		*/
 	}
 
 	void OnGUI () {
