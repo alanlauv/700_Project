@@ -87,19 +87,21 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	}
 
 	void OnMouseDrag () {
-		//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
+		if (!StarDialog.displayStars && !SettingsDialog.displaySettings) {
+			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
 		
-		Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-		//mousePosition.z = transform.position.z;
+			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
+			//mousePosition.z = transform.position.z;
 		
-		objPosition	= Camera.main.ScreenToViewportPoint(mousePosition);
-		objPosition.z = 5.0f;
+			objPosition = Camera.main.ScreenToViewportPoint (mousePosition);
+			objPosition.z = 5.0f;
 		
-		transform.position = objPosition;
+			transform.position = objPosition;
+		}
 	}
 	
 	void OnGUI () {
-		if (!SettingsDialog.displaySettings) {
+		if (!SettingsDialog.displaySettings && !StarDialog.displayStars) {
 			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
 				displaySquiggles = true;
 				if (slot1 == true && slot2 == true && slot3 == true) {

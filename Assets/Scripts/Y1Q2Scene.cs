@@ -35,47 +35,47 @@ public class Y1Q2Scene : MonoBehaviour {
 	
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
-					
-			// answer pool
-			// taller
-			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
+			if (!StarDialog.displayStars) {
+				// answer pool
+				// taller
+				if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), tallerText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
 
+				}
+			
+				// thinner
+				if (GUI.Button (new Rect (Screen.width * .3f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+			
+				// wider
+				if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), thinnerText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+			
+				// bigger
+				if (GUI.Button (new Rect (Screen.width * .6f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+			
+				drawAstronaut ();
 			}
-		
-			// thinner
-			if (GUI.Button (new Rect (Screen.width * .3f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), longerText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
-			// wider
-			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), thinnerText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
-			// bigger
-			if (GUI.Button (new Rect (Screen.width * .6f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), biggerText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
 			// shorter
 			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .8f, Screen.width * .12f, Screen.height * .1f), shorterText)) {
 				StarDialog.displayStars = true;
 				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q2, StarDialog.numIncorrect, HintButton.hintUsed);
-
+				
 				// flames appear when correct answer is chosen
 				GameObject fire1 = GameObject.Find ("Fire1");
 				fire1.GetComponent<Renderer> ().enabled = true;
-			
+				
 				GameObject fire2 = GameObject.Find ("Fire2");
 				fire2.GetComponent<Renderer> ().enabled = true;
 			}
-		
-			drawAstronaut ();
 		}
 	}
 

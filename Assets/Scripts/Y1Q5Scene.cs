@@ -32,27 +32,27 @@ public class Y1Q5Scene : MonoBehaviour {
 	
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
-			// answer pool
-			// Yellow
-			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), yellowPencilText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			
-			}
+			if (!StarDialog.displayStars) {
+				// answer pool
+				// Yellow
+				if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), yellowPencilText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
 		
-			// green pencil
-			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), greenPencilText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
+				// green pencil
+				if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), greenPencilText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				drawLadyBug ();
 			}
-			
 			// blue pencil
 			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .65f, Screen.width * .2f, Screen.height * .1f), bluePencilText)) {
 				StarDialog.displayStars = true;
 				AppManager.Instance.addCompletedTask (MEASUREMENT_Y1Q5, StarDialog.numIncorrect, HintButton.hintUsed);
 			}
-		
-			drawLadyBug ();
 		}
 	}
 	

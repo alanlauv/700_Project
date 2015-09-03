@@ -60,7 +60,7 @@ public class Y1Q12mouseDrag : MonoBehaviour {
 	}
 	
 	void OnMouseDrag () {
-		if (!isSlotted) {
+		if (!isSlotted && !StarDialog.displayStars && !SettingsDialog.displaySettings) {
 			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
 			
 			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);

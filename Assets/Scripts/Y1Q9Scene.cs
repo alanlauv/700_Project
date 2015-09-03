@@ -23,7 +23,7 @@ public class Y1Q9Scene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (!SettingsDialog.displaySettings) {
+		if (!SettingsDialog.displaySettings && !StarDialog.displayStars) {
 			// blast off button
 			if (GUI.Button (new Rect (Screen.width * .27f, Screen.height * .85f, Screen.width * .2f, Screen.height * .1f), blastOff)) {
 				if (Counter.counter == 3) {

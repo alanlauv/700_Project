@@ -43,54 +43,54 @@ public class Y2Q3Scene : MonoBehaviour {
 	
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
+			if (!StarDialog.displayStars) {
+				// answer pool
+				if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), oneText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), twoText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), threeText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fourText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sixText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sevenText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), eightText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
+		
+				if (GUI.Button (new Rect (Screen.width * .85f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), nineText)) {
+					IncorrectDialog.displayIncorrectDialog = true;
+					StarDialog.numIncorrect++;
+				}
 			
-			// answer pool
-			if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), oneText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
+				drawHint ();
 			}
-		
-			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), twoText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
-			if (GUI.Button (new Rect (Screen.width * .25f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), threeText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
-			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fourText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
 			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), fiveText)) {
 				StarDialog.displayStars = true;
 				AppManager.Instance.addCompletedTask (MEASUREMENT_Y2Q3, StarDialog.numIncorrect, HintButton.hintUsed);
 			}
-		
-			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sixText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
-			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), sevenText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
-			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), eightText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-		
-			if (GUI.Button (new Rect (Screen.width * .85f, Screen.height * .83f, Screen.height * .1f, Screen.height * .1f), nineText)) {
-				IncorrectDialog.displayIncorrectDialog = true;
-				StarDialog.numIncorrect++;
-			}
-			
-			drawHint ();
 		}
 	}
 	
