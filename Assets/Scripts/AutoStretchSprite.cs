@@ -12,8 +12,7 @@ public class AutoStretchSprite : MonoBehaviour {
 		Resize();
 	}
 	
-	void Resize()
-	{
+	void Resize() {
 		SpriteRenderer sr = GetComponent<SpriteRenderer>();
 		transform.localScale = new Vector3(1, 1, 1);
 		
