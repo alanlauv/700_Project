@@ -9,7 +9,7 @@ public class Y1Q3Scene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		hintLine = (Texture2D)Resources.Load("y1q2_line");
+		hintLine = (Texture2D)Resources.Load("Short2Long");
 		
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q3);
@@ -28,7 +28,7 @@ public class Y1Q3Scene : MonoBehaviour {
 	
 	private void drawHintLine () {
 		if (HintButton.displayHint) {
-			GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .01f, Screen.width * 1.0f, Screen.height * 1.0f), hintLine);
+			GUI.DrawTexture(new Rect(Screen.width * .0f, Screen.height * .23f, Screen.width * 1.0f, Screen.height * .55f), hintLine);
 		}
 	}
 }
