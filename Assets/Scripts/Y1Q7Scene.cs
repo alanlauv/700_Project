@@ -28,7 +28,7 @@ public class Y1Q7Scene : MonoBehaviour {
 	
 	private void drawHintLine () {
 		if (HintButton.displayHint) {
-			GUI.DrawTexture(new Rect(Screen.width * .05f, Screen.height * .0f, Screen.width * 0.9f, Screen.height * 1.0f), hintLine);
+			GUI.DrawTexture(new Rect(Screen.width * .17f, Screen.height * .23f, Screen.width * 0.45f, Screen.height * .5f), hintLine);
 		}
 	}
 }
