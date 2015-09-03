@@ -2,9 +2,15 @@
 using System.Collections;
 
 public class TaskSelectionScene : MonoBehaviour {
-	bool displayTasks = false;
+	bool displayYear1Tasks = false;
+	bool displayYear2Tasks = false;
+	bool displayYear3Tasks = false;
+	bool displayYear4Tasks = false;
+	bool displayYear5Tasks = false;
+	bool displayYear6Tasks = false;
 
 	private Texture2D backText;
+	private Texture2D comingSoonText;
 
 	private Texture2D year1Text;
 	private Texture2D year2Text;
@@ -12,6 +18,27 @@ public class TaskSelectionScene : MonoBehaviour {
 	private Texture2D year4Text;
 	private Texture2D year5Text;
 	private Texture2D year6Text;
+
+	private Texture2D greyOneText;
+	private Texture2D greyTwoText;
+	private Texture2D greyThreeText;
+	private Texture2D greyFourText;
+	private Texture2D greyFiveText;
+	private Texture2D greySixText;
+	private Texture2D greySevenText;
+	private Texture2D greyEightText;
+	private Texture2D greyNineText;
+	private Texture2D greyTenText;
+	private Texture2D greyElevenText;
+	private Texture2D greyTwelveText;
+	private Texture2D greyThirteenText;
+	private Texture2D greyFourteenText;
+	private Texture2D greyFifteenText;
+	private Texture2D greySixteenText;
+	private Texture2D greySeventeenText;
+	private Texture2D greyEighteenText;
+	private Texture2D greyNineteenText;
+	private Texture2D greyTwentyText;
 
 	private Texture2D oneText;
 	private Texture2D twoText;
@@ -34,9 +61,15 @@ public class TaskSelectionScene : MonoBehaviour {
 	private Texture2D nineteenText;
 	private Texture2D twentyText;
 
+	private Texture2D year2OneText;
+	private Texture2D year2TwoText;
+	private Texture2D year2ThreeText;
+	private Texture2D year2FourText;
+
 	// Use this for initialization
 	void Start () {
 		backText = (Texture2D)Resources.Load ("Text/back_text");
+		comingSoonText = (Texture2D)Resources.Load ("Text/coming_soon_text");
 
 		year1Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year1_text");
 		year2Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year2_text");
@@ -44,6 +77,27 @@ public class TaskSelectionScene : MonoBehaviour {
 		year4Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year4_text");
 		year5Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year5_text");
 		year6Text = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/year6_text");
+
+		greyOneText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-grey");
+		greyTwoText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/2-grey");
+		greyThreeText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/3-grey");
+		greyFourText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/4-grey");
+		greyFiveText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/5-grey");
+		greySixText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/6-grey");
+		greySevenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/7-grey");
+		greyEightText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/8-grey");
+		greyNineText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/9-grey");
+		greyTenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/10-grey");
+		greyElevenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/11-grey");
+		greyTwelveText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/12-grey");
+		greyThirteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/13-grey");
+		greyFourteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/14-grey");
+		greyFifteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/15-grey");
+		greySixteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/16-grey");
+		greySeventeenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/17-grey");
+		greyEighteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/18-grey");
+		greyNineteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/19-grey");
+		greyTwentyText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/20-grey");
 
 		oneText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-1");
 		twoText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-2");
@@ -65,6 +119,11 @@ public class TaskSelectionScene : MonoBehaviour {
 		eighteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-18");
 		nineteenText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-19");
 		twentyText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/1-20");
+
+		year2OneText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/2-1");
+		year2TwoText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/2-2");
+		year2ThreeText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/2-3");
+		year2FourText = (Texture2D)Resources.Load ("Text/Task_Selection_Scene/2-4");
 	}
 	
 	// Update is called once per frame
@@ -79,31 +138,72 @@ public class TaskSelectionScene : MonoBehaviour {
 
 		// year selection
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .2f, Screen.width * .2f, Screen.height * .1f), year1Text)) {
-			displayTasks = true;
+			displayYear1Tasks = true;
+
+			displayYear2Tasks = false;
+			displayYear3Tasks = false;
+			displayYear4Tasks = false;
+			displayYear5Tasks = false;
+			displayYear6Tasks = false;
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .3f, Screen.width * .2f, Screen.height * .1f), year2Text)) {
-			displayTasks = true;
+			displayYear2Tasks = true;
+
+			displayYear1Tasks = false;
+			displayYear3Tasks = false;
+			displayYear4Tasks = false;
+			displayYear5Tasks = false;
+			displayYear6Tasks = false;
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .4f, Screen.width * .2f, Screen.height * .1f), year3Text)) {
-			displayTasks = true;
+			displayYear3Tasks = true;
+
+			displayYear1Tasks = false;
+			displayYear2Tasks = false;
+			displayYear4Tasks = false;
+			displayYear5Tasks = false;
+			displayYear6Tasks = false;
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), year4Text)) {
-			displayTasks = true;
+			displayYear4Tasks = true;
+
+			displayYear1Tasks = false;
+			displayYear2Tasks = false;
+			displayYear3Tasks = false;
+			displayYear5Tasks = false;
+			displayYear6Tasks = false;
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), year5Text)) {
-			displayTasks = true;
+			displayYear5Tasks = true;
+
+			displayYear1Tasks = false;
+			displayYear2Tasks = false;
+			displayYear3Tasks = false;
+			displayYear4Tasks = false;
+			displayYear6Tasks = false;
 		}
 
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), year6Text)) {
-			displayTasks = true;
+			displayYear6Tasks = true;
+
+			displayYear1Tasks = false;
+			displayYear2Tasks = false;
+			displayYear3Tasks = false;
+			displayYear4Tasks = false;
+			displayYear5Tasks = false;
 		}
 
 		// task selection
-		drawTasks ();
+		drawYear1Tasks ();
+		drawYear2Tasks ();
+		drawYear3Tasks ();
+		drawYear4Tasks ();
+		drawYear5Tasks ();
+		drawYear6Tasks ();
 
 		// back button
 		if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .9f, Screen.width * .2f, Screen.height * .1f), backText)) {
@@ -111,8 +211,8 @@ public class TaskSelectionScene : MonoBehaviour {
 		}
 	}
 
-	void drawTasks () {
-		if (displayTasks) {
+	void drawYear1Tasks () {
+		if (displayYear1Tasks) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
 
 			// task buttons
@@ -167,38 +267,161 @@ public class TaskSelectionScene : MonoBehaviour {
 				Application.LoadLevel(AppManager.Y1Q12_SCENE);
 			}
 
-			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), thirteenText)) {
+			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyThirteenText)) {
 				
 			}
 
-			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), fourteenText)) {
+			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyFourteenText)) {
 				
 			}
 
-			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), fifteenText)) {
+			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyFifteenText)) {
 				
 			}
 
 			// row4 no16-20
-			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), sixteenText)) {
+			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greySixteenText)) {
 				
 			}
 
-			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), seventeenText)) {
+			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greySeventeenText)) {
 				
 			}
 
-			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), eighteenText)) {
+			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greyEighteenText)) {
 				
 			}
 
-			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), nineteenText)) {
+			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greyNineteenText)) {
 				
 			}
 
-			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), twentyText)) {
+			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greyTwentyText)) {
 				
 			}
+		}
+	}
+
+	void drawYear2Tasks () {
+		if (displayYear2Tasks) {
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
+			
+			// task buttons
+			// row1 no1-5
+			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), year2OneText)) {
+				Application.LoadLevel(AppManager.Y2Q1_SCENE);
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), year2TwoText)) {
+				Application.LoadLevel(AppManager.Y2Q2_SCENE);
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), year2ThreeText)) {
+				Application.LoadLevel(AppManager.Y2Q3_SCENE);
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), year2FourText)) {
+				Application.LoadLevel(AppManager.Y2Q4_SCENE);
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .22f, Screen.height * .1f, Screen.height * .1f), greyFiveText)) {
+
+			}
+			
+			// row2 no6-10
+			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), greySixText)) {
+
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), greySevenText)) {
+
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), greyEightText)) {
+
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), greyNineText)) {
+
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .37f, Screen.height * .1f, Screen.height * .1f), greyTenText)) {
+
+			}
+			
+			// row3 no10-15
+			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyElevenText)) {
+
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyTwelveText)) {
+
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyThirteenText)) {
+				
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyFourteenText)) {
+				
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .52f, Screen.height * .1f, Screen.height * .1f), greyFifteenText)) {
+				
+			}
+			
+			// row4 no16-20
+			if (GUI.Button (new Rect (Screen.width * .35f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greySixteenText)) {
+				
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .45f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greySeventeenText)) {
+				
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .55f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greyEighteenText)) {
+				
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greyNineteenText)) {
+				
+			}
+			
+			if (GUI.Button (new Rect (Screen.width * .75f, Screen.height * .67f, Screen.height * .1f, Screen.height * .1f), greyTwentyText)) {
+				
+			}
+		}
+	}
+
+	void drawYear3Tasks () {
+		if (displayYear3Tasks) {
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
+
+			GUI.DrawTexture (new Rect (Screen.width * .33f, Screen.height * .4f, Screen.width * .5f, Screen.height * .2f), comingSoonText);
+		}
+	}
+
+	void drawYear4Tasks () {
+		if (displayYear4Tasks) {
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
+			
+			GUI.DrawTexture (new Rect (Screen.width * .33f, Screen.height * .4f, Screen.width * .5f, Screen.height * .2f), comingSoonText);
+		}
+	}
+
+	void drawYear5Tasks () {
+		if (displayYear5Tasks) {
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
+			
+			GUI.DrawTexture (new Rect (Screen.width * .33f, Screen.height * .4f, Screen.width * .5f, Screen.height * .2f), comingSoonText);
+		}
+	}
+
+	void drawYear6Tasks () {
+		if (displayYear6Tasks) {
+			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
+			
+			GUI.DrawTexture (new Rect (Screen.width * .33f, Screen.height * .4f, Screen.width * .5f, Screen.height * .2f), comingSoonText);
 		}
 	}
 }
