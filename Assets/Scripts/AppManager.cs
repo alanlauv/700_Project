@@ -119,7 +119,7 @@ public class AppManager {
 
 	// passing student completedTasks of a student in Teacher Scene
 	public void storeCompletedTasks(string studentName, string tasks) {
-		string s = studentName + "\n" + tasks;
+		string s = studentName + "\nList of Completed Tasks\n\n" + tasks;
 		if (tasks.Equals(""))
 			s += "Has not yet completed any tasks";
 		PlayerPrefs.SetString ("COMPLETED_TASKS", s);	
