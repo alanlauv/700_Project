@@ -23,12 +23,6 @@ public class MainMenuScene : MonoBehaviour {
 		// toggle sound
 		//AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
 
-		// title
-		GUIStyle titleStyle = new GUIStyle ("Label");
-		titleStyle.alignment = TextAnchor.UpperCenter;
-		titleStyle.normal.textColor = Color.black;
-		GUI.Label (new Rect (Screen.width * .0f, Screen.height * .1f, Screen.width * 1.0f, Screen.height * .1f), "SOME TITLE", titleStyle);
-
 		// Number & Algebra button
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .3f, Screen.width * .25f, Screen.height * .4f), "")) {
 			// nothing
