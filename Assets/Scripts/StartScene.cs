@@ -41,50 +41,23 @@ public class StartScene : MonoBehaviour {
 
 		// School use button
 		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), enterText)) {
-			// sign into Parse
-			//signUp();
-			newLogIn();
+			// login to Parse
+			logIn();
 		}
 
 		// teacher login
-		if (GUI.Button (new Rect (Screen.width * .8f, Screen.height * .9f, Screen.width * .2f, Screen.height * .1f), "Teacher Login")) {
+		if (GUI.Button (new Rect (Screen.width * .85f, Screen.height * .9f, Screen.width * .15f, Screen.height * .1f), "Teacher Login")) {
 			// move to teacher login scene
 			Application.LoadLevel(AppManager.TEACHER_LOGIN_SCENE);
 		}
+
+		// offline mode
+		if (GUI.Button (new Rect (Screen.width * .0f, Screen.height * .9f, Screen.width * .15f, Screen.height * .1f), "Offline Mode")) {
+			Application.LoadLevel(AppManager.MAIN_MENU_SCENE);
+		}
 	}
 
-	// deprecated - can remove
-	private void signUp () {
-		var user = new ParseUser() {
-			Username = firstName + " " + lastName,
-			Password = "password"
-		};
-		user.SignUpAsync().ContinueWith(t => {
-			if (t.IsFaulted || t.IsCanceled) {
-				// The sign up failed. Check the error to see why.
-				Debug.Log("sign up failed");
-				logIn();
-			} else {
-				// sign up was successful.
-				loggedIn = true;
-			}
-		});
-	}
-
-	// depreciated - can remove
 	private void logIn () {
-		ParseUser.LogInAsync(firstName + " " + lastName, "password").ContinueWith(t => {
-			if (t.IsFaulted || t.IsCanceled) {
-				// The login failed. Check the error to see why.
-				Debug.Log("Login failed");
-			} else {
-				// Login was successful.
-				loggedIn = true;
-			}
-		});
-	}
-
-	private void newLogIn () {
 		ParseObject.GetQuery(className).FindAsync().ContinueWith(t => {
 			if (t.IsFaulted || t.IsCanceled) {
 				// The login failed. Check the error to see why.
