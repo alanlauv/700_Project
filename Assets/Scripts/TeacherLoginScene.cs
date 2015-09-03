@@ -31,8 +31,10 @@ public class TeacherLoginScene : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), enterText)) {
 			// move to session creation
 			// if teacher login successful, teacherMode set true
-			AppManager.Instance.teacherMode = true;
-			Application.LoadLevel(AppManager.START_SESSION_SCENE);
+			if (password.Equals(AppManager.TEACHER_PASSWORD)) {
+				AppManager.Instance.teacherMode = true;
+				Application.LoadLevel(AppManager.START_SESSION_SCENE);
+			}
 		}
 
 		// keep logged in
