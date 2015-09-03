@@ -39,6 +39,7 @@ public class Y1Q4mouseDrag : MonoBehaviour {
 		slot2 = false;
 		slot3 = false;
 		slot4 = false;
+		displayFlames = false;
 
 		currentPosition = transform.position;
 		startY = currentPosition.y;
