@@ -30,6 +30,8 @@ public class AppManager {
 	public const string Y2Q3_SCENE = "Y2Q3Scene";
 	public const string Y2Q4_SCENE = "Y2Q4Scene";
 
+	public const string TEACHER_PASSWORD = "TeacherOnly";
+
 	public bool sound = false; //{ get; set; }
 	public bool teacherMode = false; //{ get; set; }
 
