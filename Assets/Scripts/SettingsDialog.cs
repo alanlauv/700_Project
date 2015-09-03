@@ -14,6 +14,8 @@ public class SettingsDialog : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		displaySettings = false;
+
 		bg = (Texture2D)Resources.Load("black-bg");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 
