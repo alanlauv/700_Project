@@ -23,6 +23,7 @@ public class Y2Q4mouseDrag : MonoBehaviour {
 	float startZ;
 	
 	private bool isSlotted = false;
+	private bool canRemove = false;
 
 	private Texture2D ladybugOutline;
 	
@@ -143,15 +144,21 @@ public class Y2Q4mouseDrag : MonoBehaviour {
 				
 				transform.position = new Vector3 (0.47f, 0.585f, startZ);
 				slot9 = true;
-				isSlotted = true;
+				canRemove = true;
 
 			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
+				if (canRemove) {
+					canRemove = false;
+				}
 			}
 			
 			
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
+			if (canRemove) {
+				canRemove = false;
+			}
 		}
 		
 		/**

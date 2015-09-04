@@ -18,6 +18,7 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 	float startZ;
 	
 	private bool isSlotted = false;
+	private bool canRemove = false;
 
 	private Texture2D astronautOutline;
 	
@@ -102,16 +103,22 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 
 				transform.position = new Vector3 (0.55f, 0.78f, startZ);
 				slot5 = true;
-				isSlotted = true;
+				canRemove = true;
 				Counter.counter++;
 
 			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
+				if (canRemove) {
+					Counter.counter--;
+				}
 			}
 
 
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
+			if (canRemove) {
+				Counter.counter--;
+			}
 		}
 
 		/**

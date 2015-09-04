@@ -18,6 +18,9 @@ public class Counter : MonoBehaviour
 	private Texture2D sevenText;
 	private Texture2D eightText;
 	private Texture2D nineText;
+	private Texture2D tenText;
+
+	private Texture2D textToDisplay;
 
 	// Use this for initialization
 	void Start ()
@@ -34,6 +37,7 @@ public class Counter : MonoBehaviour
 		sevenText = (Texture2D)Resources.Load ("Text/7_text");
 		eightText = (Texture2D)Resources.Load ("Text/8_text");
 		nineText = (Texture2D)Resources.Load ("Text/9_text");
+		tenText = (Texture2D)Resources.Load ("Text/10_text");
 	}
 	
 	// Update is called once per frame
@@ -44,7 +48,7 @@ public class Counter : MonoBehaviour
 
 	void OnGUI ()
 	{
-		Texture2D textToDisplay = zeroText;
+		textToDisplay = zeroText;
 
 		if (counter == 0)
 			textToDisplay = zeroText;
@@ -66,6 +70,8 @@ public class Counter : MonoBehaviour
 			textToDisplay = eightText;
 		else if (counter == 9)
 			textToDisplay = nineText;
+		else if (counter == 10)
+			textToDisplay = tenText;
 
 		GUI.Box (new Rect (Screen.width * xPos, Screen.height * yPos, Screen.height * .11f, Screen.height * .11f), textToDisplay);
 	}

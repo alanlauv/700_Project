@@ -9,6 +9,10 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 	static bool slot3 = false;
 	static bool slot4 = false;
 	static bool slot5 = false;
+	static bool slot6 = false;
+	static bool slot7 = false;
+	static bool slot8 = false;
+	static bool slot9 = false;
 	
 	float distance = 1.0f;
 	Vector3 objPosition;
@@ -19,6 +23,7 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 	float startZ;
 	
 	private bool isSlotted = false;
+	private bool canRemove = false;
 	
 	private Texture2D ladybugOutline;
 	
@@ -30,12 +35,16 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 		slot3 = false;
 		slot4 = false;
 		slot5 = false;
-
+		slot6 = false;
+		slot7 = false;
+		slot8 = false;
+		slot9 = false;
+		
 		currentPosition = transform.position;
 		startX = currentPosition.x;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
-
+		
 		ladybugOutline = (Texture2D)Resources.Load ("Sprites/Lady-Bug_l_outline");
 	}
 	
@@ -43,14 +52,14 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 	void Update () {		
 		
 	}
-
+	
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
 			if (slot0 == false)
 				GUI.DrawTexture (new Rect (Screen.width * .09f, Screen.height * .385f, Screen.width * .042f, Screen.height * .066f), ladybugOutline);
 		}
 	}
-
+	
 	void OnMouseDrag () {
 		if (!isSlotted && !StarDialog.displayStars && !SettingsDialog.displaySettings) {
 			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
@@ -73,9 +82,9 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 				transform.position = new Vector3 (0.11f, 0.585f, startZ);
 				slot0 = true;
 				isSlotted = true;
-
-			} else if (slot1 == false && slot0 == true &&
-			    transform.position.x > 0.135f && transform.position.x < 0.165f) { // slot1, +-1.5
+				
+			} else if (slot1 == false &&
+			           transform.position.x > 0.135f && transform.position.x < 0.165f) { // slot1, +-1.5
 				
 				transform.position = new Vector3 (0.15f, 0.585f, startZ);
 				slot1 = true;
@@ -107,15 +116,49 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 				
 				transform.position = new Vector3 (0.31f, 0.585f, startZ);
 				slot5 = true;
-				isSlotted = true;
+				canRemove = true;
+				
+			} else if (slot6 == false && slot5 == true &&
+			           transform.position.x > 0.335f && transform.position.x < 0.365f) {
+				
+				transform.position = new Vector3 (0.35f, 0.585f, startZ);
+				slot6 = true;
+				canRemove = true;
+				
+			} else if (slot7 == false && slot6 == true &&
+			           transform.position.x > 0.375f && transform.position.x < 0.405f) {
+				
+				transform.position = new Vector3 (0.39f, 0.585f, startZ);
+				slot7 = true;
+				canRemove = true;
+				
+			} else if (slot8 == false && slot7 == true &&
+			           transform.position.x > 0.415f && transform.position.x < 0.445f) {
+				
+				transform.position = new Vector3 (0.43f, 0.585f, startZ);
+				slot8 = true;
+				canRemove = true;
+				
+			} else if (slot9 == false && slot8 == true &&
+			           transform.position.x > 0.455f && transform.position.x < 0.485f) {
+				
+				transform.position = new Vector3 (0.47f, 0.585f, startZ);
+				slot9 = true;
+				canRemove = true;
 				
 			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
+				if (canRemove) {
+					canRemove = false;
+				}
 			}
 			
 			
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
+			if (canRemove) {
+				canRemove = false;
+			}
 		}
 		
 		/**
