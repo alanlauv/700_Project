@@ -109,6 +109,7 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 			} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 				transform.position = currentPosition;
 				if (canRemove) {
+					canRemove = false;
 					Counter.counter--;
 				}
 			}
@@ -117,6 +118,7 @@ public class Y1Q10mouseDrag : MonoBehaviour {
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 			if (canRemove) {
+				canRemove = false;
 				Counter.counter--;
 			}
 		}
