@@ -83,7 +83,7 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 				slot0 = true;
 				isSlotted = true;
 				
-			} else if (slot1 == false &&
+			} else if (slot1 == false && slot0 == true &&
 			           transform.position.x > 0.135f && transform.position.x < 0.165f) { // slot1, +-1.5
 				
 				transform.position = new Vector3 (0.15f, 0.585f, startZ);
