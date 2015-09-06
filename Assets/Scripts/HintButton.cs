@@ -55,11 +55,12 @@ public class HintButton : MonoBehaviour
 			}
 		}
 
-		// display this button after 15 seconds if not already
+		// display this button after 15 seconds if not already and flashhint button
 		if (!displayHint && !displayHintButton && !hintUsed) {
 			timer2 += Time.deltaTime;
 			if (timer2 >= timerMax2) {
-				HintButton.displayHintButton = true;
+				displayHintButton = true;
+				flashHintButton = true;
 			}
 		}
 
