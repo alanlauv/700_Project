@@ -21,7 +21,7 @@ public class Y1Q4Scene : MonoBehaviour {
 	}
 	
 	void OnGUI () {
-		if (!SettingsDialog.displaySettings) {
+		if (!SettingsDialog.displaySettings && !StarDialog.displayStars) {
 			drawHintLine ();
 		}
 	}
