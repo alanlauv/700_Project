@@ -3,6 +3,16 @@ using System.Collections;
 using Parse;
 
 public class AppManager {
+	public const string room1 = "room1";
+	public const string room2 = "room2";
+	public const string room3 = "room3";
+	public const string room4 = "room4";
+	public const string room5 = "room5";
+	public const string room6 = "room6";
+	public const string room7 = "room7";
+	public const string room8 = "room8";
+	public const string room9 = "room9";
+
 	// list of scenes
 	public const string START_SCENE = "StartScene";
 	public const string TEACHER_LOGIN_SCENE = "TeacherLoginScene";
