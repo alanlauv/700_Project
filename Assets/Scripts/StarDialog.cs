@@ -15,11 +15,9 @@ public class StarDialog : MonoBehaviour {
 	private Texture2D excellentText;
 	private Texture2D goodText;
 	private Texture2D completedText;
-	private Texture2D okText;
 
-	void Awake () {
-
-	}
+	private Texture2D menuText;
+	private Texture2D nextText;
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +31,9 @@ public class StarDialog : MonoBehaviour {
 		excellentText = (Texture2D)Resources.Load ("Text/excellent_text");
 		goodText = (Texture2D)Resources.Load ("Text/good_text");
 		completedText = (Texture2D)Resources.Load ("Text/completed_text");
-		okText = (Texture2D)Resources.Load ("Text/ok_text");
+
+		menuText = (Texture2D)Resources.Load ("Text/menu_text");
+		nextText = (Texture2D)Resources.Load ("Text/next_text");
 	}
 	
 	// Update is called once per frame
@@ -66,11 +66,15 @@ public class StarDialog : MonoBehaviour {
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
 			}
 			
-			// ok
-			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), okText)) {
+			// menu
+			if (GUI.Button (new Rect (Screen.width * .3125f, Screen.height * .6f, Screen.width * .18f, Screen.height * .1f), menuText)) {
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
 
+			// next
+			if (GUI.Button (new Rect (Screen.width * .5075f, Screen.height * .6f, Screen.width * .18f, Screen.height * .1f), nextText)) {
+				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
+			}
 			// red blob buddy guy
 			GUI.DrawTexture(new Rect (Screen.width * .70f, Screen.height * .28f, Screen.width * .22f, Screen.height * .25f), blobCorrect);
 		}
