@@ -73,7 +73,7 @@ public class StarDialog : MonoBehaviour {
 
 			// next
 			if (GUI.Button (new Rect (Screen.width * .5075f, Screen.height * .6f, Screen.width * .18f, Screen.height * .1f), nextText)) {
-				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
+				AppManager.Instance.nextTask();
 			}
 			// red blob buddy guy
 			GUI.DrawTexture(new Rect (Screen.width * .70f, Screen.height * .28f, Screen.width * .22f, Screen.height * .25f), blobCorrect);

@@ -40,6 +40,10 @@ public class AppManager {
 	public const string Y2Q3_SCENE = "Y2Q3Scene";
 	public const string Y2Q4_SCENE = "Y2Q4Scene";
 
+	public const string YEAR = "Y";
+	public const string QUES = "Q";
+	public const string SCENE = "SCENE";
+
 	public const string TEACHER_PASSWORD = "TeacherOnly";
 
 	public bool sound = false; //{ get; set; }
@@ -52,6 +56,7 @@ public class AppManager {
 
 	public string currentClass = null;
 	public string currentTask = null;
+	public int[] currentTaskYearAndNumber = new int[2];
 
 	// Singleton
 	private static readonly object padlock = new object();
@@ -103,6 +108,11 @@ public class AppManager {
 		}
 	}
 
+	public void setCurrentTaskYearAndNumber(int year, int number) {
+		currentTaskYearAndNumber [0] = year;
+		currentTaskYearAndNumber [1] = number;
+	}
+
 	// append to Parse DB the completed task
 	public void addCompletedTask(string task, int numIncorrect, bool hintUsed) {
 		if (student != null) {
@@ -119,6 +129,12 @@ public class AppManager {
 				student["completedTasks"] += append;
 			}
 		}
+	}
+
+	public void nextTask() {
+		currentTaskYearAndNumber [1]++;
+		string nextTaskName = YEAR + currentTaskYearAndNumber [0] + QUES + currentTaskYearAndNumber [1] + SCENE;
+		Application.LoadLevel (nextTaskName);
 	}
 
 	// use this method for exiting a task scene instead of Application.LoadLevel

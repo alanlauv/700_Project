@@ -15,6 +15,7 @@ public class Y1Q9Scene : MonoBehaviour {
 
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y1Q9);
+		AppManager.Instance.setCurrentTaskYearAndNumber (1, 9);
 	}
 	
 	// Update is called once per frame

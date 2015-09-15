@@ -34,6 +34,7 @@ public class Y2Q2Scene : MonoBehaviour {
 		
 		// set current task
 		AppManager.Instance.setCurrentTask(MEASUREMENT_Y2Q2);
+		AppManager.Instance.setCurrentTaskYearAndNumber (2, 2);
 	}
 	
 	// Update is called once per frame
