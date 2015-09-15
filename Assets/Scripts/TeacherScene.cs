@@ -17,6 +17,8 @@ public class TeacherScene : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		AppManager.Instance.teacherMode = true;
+
 		queryStudentList();
 
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
@@ -55,7 +57,8 @@ public class TeacherScene : MonoBehaviour {
 			foreach (var student in students) {
 				// This does not require a network access.
 				if (student["device"].Equals("TEACHER")) {
-					student.DeleteAsync(); // delete useless teacher entry
+					if (i != 1)
+						student.DeleteAsync(); // delete useless teacher entry if it's not the only entry in the databaseF
 				} else {
 					//string device = student["device"] + "";
 					string device = student.Get<string>("device");
@@ -86,10 +89,15 @@ public class TeacherScene : MonoBehaviour {
 			}
 		}
 
-		GUI.Label(new Rect (Screen.width * .0f, Screen.height * .1f * pos, Screen.width * .15f, Screen.height * .1f), device);
-		GUI.Label(new Rect (Screen.width * .2f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), name);
-		GUI.Label(new Rect (Screen.width * .45f, Screen.height * .1f * pos, Screen.width * .3f, Screen.height * .1f), task);
-		GUI.Label(new Rect (Screen.width * .8f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), helpNeeded);
+		// font size
+		GUIStyle style = new GUIStyle ();
+		style.fontSize = 26;
+		style.normal.textColor = Color.white;
+
+		GUI.Label(new Rect (Screen.width * .0f, Screen.height * .1f * pos, Screen.width * .15f, Screen.height * .1f), device, style);
+		GUI.Label(new Rect (Screen.width * .2f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), name, style);
+		GUI.Label(new Rect (Screen.width * .45f, Screen.height * .1f * pos, Screen.width * .3f, Screen.height * .1f), task, style);
+		GUI.Label(new Rect (Screen.width * .8f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), helpNeeded, style);
 	}
 
 	private void drawSettings () {
@@ -114,6 +122,7 @@ public class TeacherScene : MonoBehaviour {
 			// TODO logout
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), "Logout")) {
 				Application.LoadLevel(AppManager.START_SCENE);
+				AppManager.Instance.teacherMode = false;
 			}
 
 		}
