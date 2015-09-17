@@ -79,8 +79,10 @@ public class StartScene : MonoBehaviour {
 			// School use button
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .75f, Screen.width * .2f, Screen.height * .1f), enterText)) {
 				// login to Parse
-				logIn ();
-				LoadingDialog.showLoading = true;
+				if (!className.Equals("")) {
+					logIn ();
+					LoadingDialog.showLoading = true;
+				}
 			}
 
 			// teacher login
