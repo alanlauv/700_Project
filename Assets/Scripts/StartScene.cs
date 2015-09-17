@@ -64,7 +64,7 @@ public class StartScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (!displayClassSelection) {
+		if (!displayClassSelection && !LoadingDialog.showLoading) {
 			GUI.Box (new Rect (Screen.width * .25f, Screen.height * .3f, Screen.width * .5f, Screen.height * .6f), "");
 
 			// name input
@@ -80,6 +80,7 @@ public class StartScene : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .75f, Screen.width * .2f, Screen.height * .1f), enterText)) {
 				// login to Parse
 				logIn ();
+				LoadingDialog.showLoading = true;
 			}
 
 			// teacher login
@@ -177,6 +178,7 @@ public class StartScene : MonoBehaviour {
 					createStudent ();
 				} else {
 					Debug.Log("class does not exist");
+					LoadingDialog.showLoading = false;
 				}
 			}
 		});

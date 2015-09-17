@@ -45,7 +45,7 @@ public class TeacherScene : MonoBehaviour {
 			}
 		}
 
-		// TODO scroll view for table (hard-coded length atm)
+		// scroll view for table
 		scrollPosition = GUI.BeginScrollView(new Rect(10, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, Screen.height * .1f * (numEntries+1)));
 
 		// table headers
@@ -97,7 +97,16 @@ public class TeacherScene : MonoBehaviour {
 		GUI.Label(new Rect (Screen.width * .0f, Screen.height * .1f * pos, Screen.width * .15f, Screen.height * .1f), device, style);
 		GUI.Label(new Rect (Screen.width * .2f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), name, style);
 		GUI.Label(new Rect (Screen.width * .45f, Screen.height * .1f * pos, Screen.width * .3f, Screen.height * .1f), task, style);
-		GUI.Label(new Rect (Screen.width * .8f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), helpNeeded, style);
+
+		if (helpNeeded.Equals ("Yes")) {
+			GUIStyle redStyle = new GUIStyle ();
+			redStyle.fontSize = 26;
+			redStyle.normal.textColor = Color.red;
+			
+			GUI.Label (new Rect (Screen.width * .8f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), helpNeeded, redStyle);
+		} else {
+			GUI.Label (new Rect (Screen.width * .8f, Screen.height * .1f * pos, Screen.width * .2f, Screen.height * .1f), helpNeeded, style);
+		}
 	}
 
 	private void drawSettings () {

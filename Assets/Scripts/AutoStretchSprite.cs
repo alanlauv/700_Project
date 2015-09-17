@@ -4,15 +4,17 @@ using System.Collections;
 
 public class AutoStretchSprite : MonoBehaviour {
 
+	// Use this for initialization
 	void Start () {
-		Resize();
+		stretch();
+	}
+
+	// Update is called once per frame
+	void Update () {
+		//stretch();
 	}
 	
-	void FixedUpdate () {
-		Resize();
-	}
-	
-	void Resize() {
+	void stretch() {
 		SpriteRenderer sr = GetComponent<SpriteRenderer>();
 		transform.localScale = new Vector3(1, 1, 1);
 		

@@ -44,7 +44,7 @@ public class AppManager {
 	public const string QUES = "Q";
 	public const string SCENE = "SCENE";
 
-	public const string TEACHER_PASSWORD = "TeacherOnly";
+	public const string TEACHER_PASSWORD = "Teacher";
 
 	public bool sound = false; //{ get; set; }
 	public bool teacherMode = false; //{ get; set; }

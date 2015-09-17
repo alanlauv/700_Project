@@ -39,7 +39,7 @@ public class StartSessionScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		if (!displayClassSelection) {
+		if (!displayClassSelection && !LoadingDialog.showLoading) {
 			GUI.Box (new Rect (Screen.width * .25f, Screen.height * .2f, Screen.width * .5f, Screen.height * .6f), "");
 
 			// enter session name
@@ -53,6 +53,7 @@ public class StartSessionScene : MonoBehaviour {
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "Start")) {
 				// move to teacher console
 				createSession ();
+				LoadingDialog.showLoading = true;
 			}
 		}
 		drawClassSelection ();
@@ -122,6 +123,8 @@ public class StartSessionScene : MonoBehaviour {
 			if (t.IsFaulted || t.IsCanceled) {
 				// The session creation failed. Check the error to see why.
 				Debug.Log("session creation failed");
+				Debug.Log(t.Exception.Message.ToString());
+				LoadingDialog.showLoading = false;
 			} else {
 				// session creation was successful.
 				sessionCreated = true;
