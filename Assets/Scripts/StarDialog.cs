@@ -7,6 +7,7 @@ public class StarDialog : MonoBehaviour {
 
 	public static bool displayStars = false;
 	public static int numIncorrect = 0;
+	public static bool helpNeededUpdated = false;
 
 	private Texture2D star;
 	private Texture2D starEmpty;
@@ -39,8 +40,9 @@ public class StarDialog : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// set helped need for student if num incorrect is >= 3 and hint is used
-		if (numIncorrect >= 3 && HintButton.hintUsed) {
+		if (numIncorrect >= 3 && HintButton.hintUsed && !helpNeededUpdated) {
 			AppManager.Instance.setHelpNeeded(true);
+			helpNeededUpdated = true;
 		}
 	}
 
