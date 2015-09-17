@@ -16,11 +16,11 @@ public class TeacherCompletedTasksScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-		scrollPosition = GUI.BeginScrollView(new Rect(0, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, Screen.height * .1f * 5));
+		scrollPosition = GUI.BeginScrollView(new Rect(0, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, Screen.height * .1f * 30));
 
 		// font size
 		GUIStyle style = new GUIStyle ();
-		style.fontSize = 26;
+		style.fontSize = 32;
 		style.normal.textColor = Color.white;
 
 		// display completed tasks
