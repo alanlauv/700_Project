@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Task selection scene for year 1 to 6.
+/// </summary>
 public class TaskSelectionScene : MonoBehaviour {
 	bool displayYear1Tasks = false;
 	bool displayYear2Tasks = false;
@@ -19,6 +22,7 @@ public class TaskSelectionScene : MonoBehaviour {
 	private Texture2D year5Text;
 	private Texture2D year6Text;
 
+	// greyed out task numbers to indicate that a task is not implemented
 	private Texture2D greyOneText;
 	private Texture2D greyTwoText;
 	private Texture2D greyThreeText;
@@ -40,6 +44,7 @@ public class TaskSelectionScene : MonoBehaviour {
 	private Texture2D greyNineteenText;
 	private Texture2D greyTwentyText;
 
+	// year 1 task numbers 1 to 20
 	private Texture2D oneText;
 	private Texture2D twoText;
 	private Texture2D threeText;
@@ -61,6 +66,7 @@ public class TaskSelectionScene : MonoBehaviour {
 	private Texture2D nineteenText;
 	private Texture2D twentyText;
 
+	// year 2 task numbers 1 to 4
 	private Texture2D year2OneText;
 	private Texture2D year2TwoText;
 	private Texture2D year2ThreeText;
@@ -132,11 +138,10 @@ public class TaskSelectionScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
-
 		// sound toggle
 		//AppManager.Instance.sound = GUI.Toggle(new Rect(Screen.width * .0f, Screen.height * .0f, Screen.width * .15f, Screen.height * .07f), AppManager.Instance.sound, "  Sound");
 
-		// year selection
+		// year 1
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .2f, Screen.width * .2f, Screen.height * .1f), year1Text)) {
 			displayYear1Tasks = true;
 
@@ -147,6 +152,7 @@ public class TaskSelectionScene : MonoBehaviour {
 			displayYear6Tasks = false;
 		}
 
+		// year 2
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .3f, Screen.width * .2f, Screen.height * .1f), year2Text)) {
 			displayYear2Tasks = true;
 
@@ -157,6 +163,7 @@ public class TaskSelectionScene : MonoBehaviour {
 			displayYear6Tasks = false;
 		}
 
+		// year 3
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .4f, Screen.width * .2f, Screen.height * .1f), year3Text)) {
 			displayYear3Tasks = true;
 
@@ -167,6 +174,7 @@ public class TaskSelectionScene : MonoBehaviour {
 			displayYear6Tasks = false;
 		}
 
+		// year 4
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .5f, Screen.width * .2f, Screen.height * .1f), year4Text)) {
 			displayYear4Tasks = true;
 
@@ -177,6 +185,7 @@ public class TaskSelectionScene : MonoBehaviour {
 			displayYear6Tasks = false;
 		}
 
+		// year 5
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), year5Text)) {
 			displayYear5Tasks = true;
 
@@ -187,6 +196,7 @@ public class TaskSelectionScene : MonoBehaviour {
 			displayYear6Tasks = false;
 		}
 
+		// year 6
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .7f, Screen.width * .2f, Screen.height * .1f), year6Text)) {
 			displayYear6Tasks = true;
 
@@ -211,6 +221,9 @@ public class TaskSelectionScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the year1 tasks dialog selection.
+	/// </summary>
 	void drawYear1Tasks () {
 		if (displayYear1Tasks) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
@@ -302,6 +315,9 @@ public class TaskSelectionScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the year2 tasks dialog selection.
+	/// </summary>
 	void drawYear2Tasks () {
 		if (displayYear2Tasks) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
@@ -393,6 +409,9 @@ public class TaskSelectionScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the year3 tasks - coming soon.
+	/// </summary>
 	void drawYear3Tasks () {
 		if (displayYear3Tasks) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
@@ -401,6 +420,9 @@ public class TaskSelectionScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the year4 tasks - coming soon.
+	/// </summary>
 	void drawYear4Tasks () {
 		if (displayYear4Tasks) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
@@ -409,6 +431,9 @@ public class TaskSelectionScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the year5 tasks - coming soon.
+	/// </summary>
 	void drawYear5Tasks () {
 		if (displayYear5Tasks) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");
@@ -417,6 +442,9 @@ public class TaskSelectionScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the year6 tasks - coming soon.
+	/// </summary>
 	void drawYear6Tasks () {
 		if (displayYear6Tasks) {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .2f, Screen.width * .57f, Screen.height * .6f), "");

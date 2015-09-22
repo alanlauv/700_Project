@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Loading dialog used for logging in children and when teachers start a session.
+/// </summary>
 public class LoadingDialog : MonoBehaviour {
 
 	public static bool showLoading = false;
@@ -12,10 +15,11 @@ public class LoadingDialog : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// show loading dialog
 		if (showLoading) {
 			GameObject loading = GameObject.Find ("Loading");
 			loading.GetComponent<Renderer> ().enabled = true;
-		} else {
+		} else { // hide loading dialog when done loading
 			GameObject loading = GameObject.Find ("Loading");
 			loading.GetComponent<Renderer> ().enabled = false;
 		}
@@ -23,7 +27,7 @@ public class LoadingDialog : MonoBehaviour {
 
 	void OnGUI () {
 		if (showLoading) {
-			// font size
+			// font style
 			GUIStyle style = new GUIStyle ();
 			style.fontSize = 26;
 			style.alignment = TextAnchor.UpperCenter;

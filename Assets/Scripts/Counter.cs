@@ -1,13 +1,18 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Counter for Y1 - Q9, 10, 11, 12.
+/// </summary>
 public class Counter : MonoBehaviour
 {
 	public static int counter = 0;
 
+	// position of the counter
 	public float xPos = 0.0f;
 	public float yPos = 0.0f;
 
+	// images of text 0 to 10
 	private Texture2D zeroText;
 	private Texture2D oneText;
 	private Texture2D twoText;

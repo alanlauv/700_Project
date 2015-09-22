@@ -2,12 +2,17 @@
 using System.Collections;
 using Parse;
 
+/// <summary>
+/// Start session scene, part of the teacher side where teacher chooses his/her classroom
+/// and starts session for the chosen class room.
+/// </summary>
 public class StartSessionScene : MonoBehaviour {
 	string sessionName = "Choose your classroom";
 	bool sessionCreated = false;
 
 	bool displayClassSelection = false;
-	
+
+	// list fo class room numbers
 	private Texture2D oneText;
 	private Texture2D twoText;
 	private Texture2D threeText;
@@ -33,6 +38,7 @@ public class StartSessionScene : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// upon successful creation of session, load teacher console scene
 		if (sessionCreated) {
 			Application.LoadLevel(AppManager.TEACHER_SCENE);
 		}
@@ -42,16 +48,14 @@ public class StartSessionScene : MonoBehaviour {
 		if (!displayClassSelection && !LoadingDialog.showLoading) {
 			GUI.Box (new Rect (Screen.width * .25f, Screen.height * .2f, Screen.width * .5f, Screen.height * .6f), "");
 
-			// enter session name
-			//GUI.Label (new Rect (Screen.width * .3f, Screen.height * .3f, Screen.width * .5f, Screen.height * .1f), "Enter Class Name");
-			//sessionName = GUI.TextField(new Rect(Screen.width * .3f, Screen.height * .4f, Screen.width * .4f, Screen.height * .07f), sessionName, 25);
+			// choose class room button
 			if (GUI.Button (new Rect (Screen.width * .3f, Screen.height * .4f, Screen.width * .4f, Screen.height * .07f), sessionName)) {
 				displayClassSelection = true;
 			}
 
 			// start button
 			if (GUI.Button (new Rect (Screen.width * .4f, Screen.height * .6f, Screen.width * .2f, Screen.height * .1f), "Start")) {
-				// move to teacher console
+				// create session and move to teacher console
 				createSession ();
 				LoadingDialog.showLoading = true;
 			}
@@ -59,6 +63,9 @@ public class StartSessionScene : MonoBehaviour {
 		drawClassSelection ();
 	}
 
+	/// <summary>
+	/// Draws the class selection dialog.
+	/// </summary>
 	private void drawClassSelection () {
 		if (displayClassSelection) {
 			GUI.Box (new Rect (Screen.width * .2f, Screen.height * .2f, Screen.width * .6f, Screen.height * .7f), "");
@@ -110,6 +117,9 @@ public class StartSessionScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Creates the session and creates a TEACHER object into Parse
+	/// </summary>
 	private void createSession () {
 		ParseObject session = new ParseObject(sessionName);
 		// create fields by empty inputs
@@ -129,8 +139,6 @@ public class StartSessionScene : MonoBehaviour {
 				// session creation was successful.
 				sessionCreated = true;
 				AppManager.Instance.currentClass = sessionName;
-				// empty session/object created in db so remove as class is now created in Parse
-				//session.DeleteAsync(); // actually we need teacher object to start session
 			}
 		});
 	}

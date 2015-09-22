@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Main menu scene used for topic selection.
+/// </summary>
 public class MainMenuScene : MonoBehaviour {
 
+	// image text of topics
 	private Texture2D numberText;
 	private Texture2D geometryText;
 	private Texture2D statisticsText;

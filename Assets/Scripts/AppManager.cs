@@ -2,7 +2,13 @@
 using System.Collections;
 using Parse;
 
+/// <summary>
+/// App manager. Singleton Class. Contains constant strings of scene names and room names.
+/// Primarily deals with uploading of data into Parse and the student object of Parse is contained
+/// in this class.
+/// </summary>
 public class AppManager {
+	// list of room names
 	public const string room1 = "room1";
 	public const string room2 = "room2";
 	public const string room3 = "room3";
@@ -13,7 +19,7 @@ public class AppManager {
 	public const string room8 = "room8";
 	public const string room9 = "room9";
 
-	// list of scenes
+	// list of scenes, used to LoadLevel()
 	public const string START_SCENE = "StartScene";
 	public const string TEACHER_LOGIN_SCENE = "TeacherLoginScene";
 	public const string MAIN_MENU_SCENE = "MainMenuScene";
@@ -40,14 +46,19 @@ public class AppManager {
 	public const string Y2Q3_SCENE = "Y2Q3Scene";
 	public const string Y2Q4_SCENE = "Y2Q4Scene";
 
+
 	public const string YEAR = "Y";
 	public const string QUES = "Q";
 	public const string SCENE = "SCENE";
 
+	// shared teacher password
 	public const string TEACHER_PASSWORD = "Teacher";
 
-	public bool sound = false; //{ get; set; }
-	public bool teacherMode = false; //{ get; set; }
+	// whether sound is on/off
+	public bool sound = false;
+
+	// if application is in teachermode or being used by the teacher
+	public bool teacherMode = false;
 
 	// player/student info
 	public ParseObject student = null; // student object reference in Parse
@@ -56,6 +67,8 @@ public class AppManager {
 
 	public string currentClass = null;
 	public string currentTask = null;
+
+	// [0] stores int year | [1] stores int task number
 	public int[] currentTaskYearAndNumber = new int[2];
 
 	// Singleton
@@ -77,6 +90,10 @@ public class AppManager {
 		}
 	}
 
+	/// <summary>
+	/// Sets the current task into Parse, and helpNeeded is set back to "No".
+	/// </summary>
+	/// <param name="task">Task.</param>
 	public void setCurrentTask(string task) {
 		if (student != null) {
 			student["helpNeeded"] = "No"; // default to no helpNeeded
@@ -91,6 +108,10 @@ public class AppManager {
 		}
 	}
 
+	/// <summary>
+	/// Sets helpNeeded to "Yes" if true, else "No" into Parse.
+	/// </summary>
+	/// <param name="helpNeeded">If set to <c>true</c> help needed.</param>
 	public void setHelpNeeded(bool helpNeeded) {
 		if (student != null) {
 			if (helpNeeded) {
@@ -108,12 +129,22 @@ public class AppManager {
 		}
 	}
 
+	/// <summary>
+	/// Sets the current task year and task number.
+	/// </summary>
+	/// <param name="year">Year.</param>
+	/// <param name="number">Number.</param>
 	public void setCurrentTaskYearAndNumber(int year, int number) {
 		currentTaskYearAndNumber [0] = year;
 		currentTaskYearAndNumber [1] = number;
 	}
-
-	// append to Parse DB the completed task
+	
+	/// <summary>
+	/// Adds the completed task to Parse to the string of completed task.
+	/// </summary>
+	/// <param name="task">Task.</param>
+	/// <param name="numIncorrect">Number incorrect.</param>
+	/// <param name="hintUsed">If set to <c>true</c> hint used.</param>
 	public void addCompletedTask(string task, int numIncorrect, bool hintUsed) {
 		if (student != null) {
 			int numStars = 1;
@@ -131,19 +162,31 @@ public class AppManager {
 		}
 	}
 
+	/// <summary>
+	/// Loads the scene of the next task of the current task.
+	/// </summary>
 	public void nextTask() {
 		currentTaskYearAndNumber [1]++;
 		string nextTaskName = YEAR + currentTaskYearAndNumber [0] + QUES + currentTaskYearAndNumber [1] + SCENE;
 		Application.LoadLevel (nextTaskName);
 	}
 
-	// use this method for exiting a task scene instead of Application.LoadLevel
+	/// <summary>
+	/// Exits the task.
+	/// Use this method for exiting a task scene instead of Application.LoadLevel().
+	/// </summary>
+	/// <param name="scene">Scene.</param>
 	public void exitTask(string scene) {
 		Application.LoadLevel(scene);
 		setCurrentTask("None");
 	}
-
-	// passing student completedTasks of a student in Teacher Scene
+	
+	/// <summary>
+	/// Stores the completed tasks string into PlayerPrefs.
+	/// Used for passing student completedTasks of a student in Teacher Scene.
+	/// </summary>
+	/// <param name="studentName">Student name.</param>
+	/// <param name="tasks">Tasks.</param>
 	public void storeCompletedTasks(string studentName, string tasks) {
 		string s = studentName + "\nList of Completed Tasks\n\n" + tasks;
 		if (tasks.Equals(""))
@@ -151,6 +194,10 @@ public class AppManager {
 		PlayerPrefs.SetString ("COMPLETED_TASKS", s);	
 	}
 
+	/// <summary>
+	/// Gets the completed tasks string from PlayerPrefs.
+	/// </summary>
+	/// <returns>The completed tasks.</returns>
 	public string loadCompletedTasks() {
 		return PlayerPrefs.GetString ("COMPLETED_TASKS");
 	}

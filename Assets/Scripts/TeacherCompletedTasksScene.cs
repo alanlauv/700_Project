@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Teacher completed tasks scene - view of completed tasks of the student that was clicked
+/// into from the teacher console.
+/// </summary>
 public class TeacherCompletedTasksScene : MonoBehaviour {
 
 	public Vector2 scrollPosition = Vector2.zero;
@@ -16,9 +20,10 @@ public class TeacherCompletedTasksScene : MonoBehaviour {
 	}
 
 	void OnGUI () {
+		// TODO hard coded length of scroll view
 		scrollPosition = GUI.BeginScrollView(new Rect(0, 0, Screen.width * 0.98f, Screen.height * 1f), scrollPosition, new Rect(0, 0, Screen.width * 0.94f, Screen.height * .1f * 30));
 
-		// font size
+		// font style
 		GUIStyle style = new GUIStyle ();
 		style.fontSize = 32;
 		style.normal.textColor = Color.white;

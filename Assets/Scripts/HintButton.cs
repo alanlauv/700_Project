@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Hint button for all task scenes.
+/// </summary>
 public class HintButton : MonoBehaviour
 {
 	public static bool displayHintButton = false;
@@ -41,12 +44,14 @@ public class HintButton : MonoBehaviour
 		if (!displayHint && flashHintButton && !hintUsed) {
 			timer += Time.deltaTime;
 
+			// make hint button flash
 			if (timer >= 0.5f && timer <= 1.0f || timer >= 1.5f && timer <= 2.0f || timer >= 2.5f && timer <= 3.0f || timer >= 3.5f && timer <= 4.0f)
 				flash = true;
 
 			if (timer >= 1.0f && timer <= 1.5f || timer >= 2f && timer <= 2.5f || timer >= 3f && timer <= 3.5f)
 				flash = false;
 
+			// reset timer after finishing flashing of hint button
 			if (timer >= timerMax) {
 				displayHintButton = true;
 				flashHintButton = false;
@@ -71,18 +76,21 @@ public class HintButton : MonoBehaviour
 		// flash hint
 		if (hintUsed) {
 			timer3 += Time.deltaTime;
-			
+
+			// flash the hint
 			if (timer3 >= 0.5f && timer3 <= 1.0f || timer3 >= 1.5f && timer3 <= 2.0f || timer3 >= 2.5f && timer3 <= 3.0f || timer3 >= 3.5f && timer3 <= 4.0f || timer3 >= 4.5f && timer3 <= 5.0f)
 				displayHint = false;
 			
 			if (timer3 >= 1.0f && timer3 <= 1.5f || timer3 >= 2f && timer3 <= 2.5f || timer3 >= 3f && timer3 <= 3.5f || timer3 >= 4f && timer3 <= 4.5f)
 				displayHint = true;
-			
+
+			// hide the hint
 			if (timer >= timerMax) {
 				displayHint = false;
 			}
 		}
 
+		// display hint (no flash) if hint was used and user got task incorrect again
 		if (hintUsed && StarDialog.numIncorrect > numIncorrectAtHintUsed)
 			displayHint = true;
 	}
@@ -90,9 +98,11 @@ public class HintButton : MonoBehaviour
 	void OnGUI () {
 		GUI.depth = -10;
 
+		// display hint button
 		if (!SettingsDialog.displaySettings && !StarDialog.displayStars) {
 			if (!flash && !displayHint && displayHintButton) {
 				if (GUI.Button (new Rect (Screen.width * .9f, Screen.height * .0f, Screen.width * .1f, Screen.width * .1f), helpIcon)) {
+					// hide hint button after use
 					displayHint = true;
 					displayHintButton = false;
 					hintUsed = true;

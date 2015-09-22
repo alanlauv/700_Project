@@ -2,6 +2,10 @@
 using System.Collections;
 [RequireComponent(typeof(SpriteRenderer))]
 
+/// <summary>
+/// Auto stretch sprite.
+/// Used for background sprite to stretch and fill the whole screen.
+/// </summary>
 public class AutoStretchSprite : MonoBehaviour {
 
 	// Use this for initialization
@@ -13,14 +17,17 @@ public class AutoStretchSprite : MonoBehaviour {
 	void Update () {
 		//stretch();
 	}
-	
+
+	/// <summary>
+	/// Stretch this sprite to fill the whole screen.
+	/// </summary>
 	void stretch() {
 		SpriteRenderer sr = GetComponent<SpriteRenderer>();
 		transform.localScale = new Vector3(1, 1, 1);
 		
-		// example of a 640x480 sprite
-		float width = sr.sprite.bounds.size.x; // 4.80f
-		float height = sr.sprite.bounds.size.y; // 6.40f
+		// size of sprite curently
+		float width = sr.sprite.bounds.size.x;
+		float height = sr.sprite.bounds.size.y;
 		
 		// and a 2D camera at 0,0,-10
 		float worldScreenHeight = Camera.main.orthographicSize * 2f; // 10f

@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Parse;
 
+/// <summary>
+/// Start scene is the initial scene where children login or use offline mode
+/// and teachers use the teacher console.
+/// </summary>
 public class StartScene : MonoBehaviour {
 	string firstName = "First name";
 	string lastName = "Last name";
@@ -14,6 +18,7 @@ public class StartScene : MonoBehaviour {
 
 	bool loggedIn = false;
 
+	// room names
 	const string ROOM_1 = "Room 1";
 	const string ROOM_2 = "Room 2";
 	const string ROOM_3 = "Room 3";
@@ -24,6 +29,7 @@ public class StartScene : MonoBehaviour {
 	const string ROOM_8 = "Room 8";
 	const string ROOM_9 = "Room 9";
 
+	// list of room numbers in image text
 	private Texture2D oneText;
 	private Texture2D twoText;
 	private Texture2D threeText;
@@ -99,6 +105,9 @@ public class StartScene : MonoBehaviour {
 		drawClassSelection ();
 	}
 
+	/// <summary>
+	/// Draws the class selection dialog when child selects their class room.
+	/// </summary>
 	private void drawClassSelection () {
 		if (displayClassSelection) {
 			GUI.Box (new Rect (Screen.width * .2f, Screen.height * .2f, Screen.width * .6f, Screen.height * .7f), "");
@@ -159,6 +168,9 @@ public class StartScene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Logs the child into Parse database.
+	/// </summary>
 	private void logIn () {
 		ParseObject.GetQuery(className).FindAsync().ContinueWith(t => {
 			if (t.IsFaulted || t.IsCanceled) {
@@ -170,13 +182,14 @@ public class StartScene : MonoBehaviour {
 				// get list of students from Parse class
 				IEnumerable<ParseObject> students = t.Result;
 				bool classExists = false;
-				// if there is something in the collection then class exists
+				// if there is something in the collection then class exists, i.e. a TEACHER object or other students.
 				foreach (var student in students) {
 					classExists = true;
 					break;
 				}
 				if (classExists) {
 					Debug.Log ("class exist");
+					// create student object to store into Parse.
 					createStudent ();
 				} else {
 					Debug.Log("class does not exist");
@@ -186,6 +199,9 @@ public class StartScene : MonoBehaviour {
 		});
 	}
 
+	/// <summary>
+	/// Creates the student object after a successful log into Parse and saves it into Parse.
+	/// </summary>
 	private void createStudent () {
 		ParseObject student = new ParseObject(className);
 		student["device"] = deviceName;

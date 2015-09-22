@@ -1,22 +1,22 @@
 using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Settings dialog used in all task scenes, shown on the bottom right hand corner.
+/// </summary>
 public class SettingsDialog : MonoBehaviour
 {
 	public static bool displaySettings = false;
-
-	private Texture2D bg;
+	
 	private Texture2D settingsIcon;
 
 	private Texture2D continueText;
 	private Texture2D quitText;
 
 	// Use this for initialization
-	void Start ()
-	{
+	void Start () {
 		displaySettings = false;
 
-		bg = (Texture2D)Resources.Load("black-bg");
 		settingsIcon = (Texture2D)Resources.Load ("pics/cog");
 
 		continueText = (Texture2D)Resources.Load ("Text/continue_text");
@@ -24,13 +24,11 @@ public class SettingsDialog : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
-	{
+	void Update () {
 	
 	}
 
-	void OnGUI ()
-	{
+	void OnGUI () {
 		GUI.depth = -20;
 
 		if (!StarDialog.displayStars) {
@@ -46,10 +44,9 @@ public class SettingsDialog : MonoBehaviour
 		}
 	}
 
+	// displaying the settings dialog
 	private void drawSettings () {
 		if (displaySettings) {
-			//GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), bg);
-			
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .3f, Screen.width * .4f, Screen.height * .5f), "");
 			
 			// continue

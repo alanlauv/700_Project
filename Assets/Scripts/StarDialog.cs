@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Star dialog: the completion dialog which is shown in all task scenes upon completion.
+/// </summary>
 public class StarDialog : MonoBehaviour {
 
 	public static int guiDepth = -10; // infront
@@ -53,27 +56,30 @@ public class StarDialog : MonoBehaviour {
 			GUI.Box (new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .5f), "");
 			
 			GUI.DrawTexture(new Rect(Screen.width * .35f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
-			
+
+			// 2 stars if number of incorrect attempts == 1
 			if (numIncorrect == 1) {
 				GUI.DrawTexture(new Rect (Screen.width * .4f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), goodText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
+			// 1 star if number of incorrect attempts >= 2
 			} else if (numIncorrect >= 2) {
 				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), completedText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), starEmpty);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), starEmpty);
+			// 3 stars if number of incorrect attempts == 1
 			} else {
 				GUI.DrawTexture(new Rect (Screen.width * .3f, Screen.height * .25f, Screen.width * .4f, Screen.height * .1f), excellentText);
 				GUI.DrawTexture(new Rect(Screen.width * .45f, Screen.height * .4f, Screen.width * .1f, Screen.width * .1f), star);
 				GUI.DrawTexture(new Rect(Screen.width * .55f, Screen.height * .35f, Screen.width * .1f, Screen.width * .1f), star);
 			}
 			
-			// menu
+			// menu button
 			if (GUI.Button (new Rect (Screen.width * .3125f, Screen.height * .6f, Screen.width * .18f, Screen.height * .1f), menuText)) {
 				AppManager.Instance.exitTask(AppManager.TASK_SELECTION_SCENE);
 			}
 
-			// next
+			// next button
 			if (GUI.Button (new Rect (Screen.width * .5075f, Screen.height * .6f, Screen.width * .18f, Screen.height * .1f), nextText)) {
 				AppManager.Instance.nextTask();
 			}
