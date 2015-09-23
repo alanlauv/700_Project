@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Y1 q7mouse drag for the pencils.
+/// </summary>
 public class Y1Q7mouseDrag : MonoBehaviour {
 
 	static bool slot1 = false;
@@ -8,10 +11,6 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	static bool slot3 = false;
 	
 	// Y positions 0.3, 0.5, 0.7
-	static float curPinkPencilPos;
-	static float curYellowPencilPos;
-	static float curGreenPencilPos;
-	static float swapPos;
 
 	private bool displaySquiggles = false;
 
@@ -41,14 +40,6 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 		startX = currentPosition.x;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
-		
-		if (startZ == 1.0f) { // pink
-			curPinkPencilPos = currentPosition.y;
-		} else if (startZ == 2.0f) { // yellow
-			curYellowPencilPos = currentPosition.y;
-		} else if (startZ == 3.0f) { // green
-			curGreenPencilPos = currentPosition.y;
-		}
 
 		squigglyLine = (Texture2D)Resources.Load ("pics/squiggle_left");
 
@@ -77,6 +68,7 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 			}
 		}
 
+		// show squiggly lines as instant feedback for 5 seconds
 		if (displaySquiggles) {
 			squigglesTimer += Time.deltaTime;
 			if (squigglesTimer >= squigglesTimerMax) {
@@ -88,10 +80,8 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 
 	void OnMouseDrag () {
 		if (!StarDialog.displayStars && !SettingsDialog.displaySettings) {
-			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
-		
+			// drag logic
 			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
-			//mousePosition.z = transform.position.z;
 		
 			objPosition = Camera.main.ScreenToViewportPoint (mousePosition);
 			objPosition.z = 5.0f;
@@ -102,8 +92,10 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings && !StarDialog.displayStars) {
+			// finished button
 			if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
 				displaySquiggles = true;
+				// correct answer
 				if (slot1 == true && slot2 == true && slot3 == true) {
 					StarDialog.displayStars = true;
 					AppManager.Instance.addCompletedTask (Y1Q7Scene.MEASUREMENT_Y1Q7, StarDialog.numIncorrect, HintButton.hintUsed);
@@ -119,15 +111,12 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 	
 	void OnMouseUp () {		
 		if (transform.position.y > 0.2f & transform.position.y < 0.39f) { // slot 1
-			//changePos(0.3f);
 			transform.position = new Vector3(startX, 0.3f, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.y > 0.4f & transform.position.y < 0.59f) { // slot 2
-			//changePos(0.5f);
 			transform.position = new Vector3(startX, 0.5f, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.y > 0.6f & transform.position.y < 0.79f) { // slot 3
-			//changePos(0.7f);
 			transform.position = new Vector3(startX, 0.7f, startZ);
 			currentPosition = transform.position;
 		} else { // not valid drop slot, move back to before slot.
@@ -135,6 +124,9 @@ public class Y1Q7mouseDrag : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the squiggly lines - instant feedback.
+	/// </summary>
 	private void drawSquigglyLines () {
 		if (displaySquiggles) {
 			if (slot1)

@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Y1 q8mouse drag for pencils.
+/// </summary>
 public class Y1Q8mouseDrag : MonoBehaviour {
-
+	
 	static bool slot1 = false;
 	static bool slot2 = false;
 	static bool slot3 = false;
@@ -14,11 +17,6 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	private const float squigglesTimerMax = 5.0f;
 	
 	// Y positions 0.2, 0.4, 0.6, 0.8
-	static float curPinkPencilPos;
-	static float curYellowPencilPos;
-	static float curGreenPencilPos;
-	static float curBluePencilPos;
-	static float swapPos;
 	
 	float distance = 1.0f;
 	Vector3 objPosition;
@@ -44,16 +42,6 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 		startX = currentPosition.x;
 		startY = currentPosition.y;
 		startZ = currentPosition.z;
-		
-		if (startZ == 1.0f) { // yellow
-			curPinkPencilPos = currentPosition.y;
-		} else if (startZ == 2.0f) { // green
-			curYellowPencilPos = currentPosition.y;
-		} else if (startZ == 3.0f) { // blue
-			curGreenPencilPos = currentPosition.y;
-		} else if (startZ == 4.0f) { // pink
-			curPinkPencilPos = currentPosition.y;
-		}
 
 		squigglyLine = (Texture2D)Resources.Load ("pics/squiggle_right");
 
@@ -64,7 +52,7 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	void Update () {
 		if (currentPosition.y == 0.8f) {
 			if (currentPosition.z == 1.0f) { // yellow
-				slot1 = true;;
+				slot1 = true;
 			} else {
 				slot1 = false;
 			}
@@ -87,7 +75,8 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 				slot4 = false;
 			}
 		}
-		
+
+		// instant feedback, draw squiggly line next to pencils in correct positions for 5 seconds
 		if (displaySquiggles) {
 			squigglesTimer += Time.deltaTime;
 			if (squigglesTimer >= squigglesTimerMax) {
@@ -99,10 +88,8 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	
 	void OnMouseDrag () {
 		if (!StarDialog.displayStars  && !SettingsDialog.displaySettings) {
-			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
-		
+			// drag logic
 			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
-			//mousePosition.z = transform.position.z;
 		
 			objPosition = Camera.main.ScreenToViewportPoint (mousePosition);
 			objPosition.z = 5.0f;
@@ -113,8 +100,10 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings && !StarDialog.displayStars) {
+			// finished button
 			if (GUI.Button (new Rect (Screen.width * .15f, Screen.height * .45f, Screen.width * .2f, Screen.height * .1f), finishedText)) {
 				displaySquiggles = true;
+				// correct answer
 				if (slot1 == true && slot2 == true && slot3 == true) {
 					StarDialog.displayStars = true;
 					AppManager.Instance.addCompletedTask (Y1Q8Scene.MEASUREMENT_Y1Q8, StarDialog.numIncorrect, HintButton.hintUsed);
@@ -130,19 +119,15 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 	
 	void OnMouseUp () {		
 		if (transform.position.y > 0.1f & transform.position.y < 0.29f) { // slot 1
-			//changePos(0.3f);
 			transform.position = new Vector3(startX, 0.2f, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.y > 0.3f & transform.position.y < 0.49f) { // slot 2
-			//changePos(0.5f);
 			transform.position = new Vector3(startX, 0.4f, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.y > 0.5f & transform.position.y < 0.69f) { // slot 3
-			//changePos(0.7f);
 			transform.position = new Vector3(startX, 0.6f, startZ);
 			currentPosition = transform.position;
 		} else if (transform.position.y > 0.7f & transform.position.y < 0.89f) { // slot 3
-			//changePos(0.7f);
 			transform.position = new Vector3(startX, 0.8f, startZ);
 			currentPosition = transform.position;
 		} else { // not valid drop slot, move back to before slot.
@@ -150,6 +135,9 @@ public class Y1Q8mouseDrag : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the squiggly lines - instant feedback.
+	/// </summary>
 	private void drawSquigglyLines () {
 		if (displaySquiggles) {
 			if (slot1)

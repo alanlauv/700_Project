@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Y1 q9mouse drag for the astronauts.
+/// </summary>
 public class Y1Q9mouseDrag : MonoBehaviour {
 
+	// slots next to the rocket
 	static bool slot0 = false;
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -45,6 +49,7 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
+			// draw the green outlines one after the other as a tutorial style question
 			if (slot0 == false)
 				GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
 
@@ -73,7 +78,7 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 	void OnMouseUp () {	
 		if (transform.position.x > 0.5f && transform.position.x < 0.6f) {
 			if (slot0 == false &&
-			    transform.position.y > 0.2f && transform.position.y < 0.32f) { // slot1, +-6 from 0.26f
+			    transform.position.y > 0.2f && transform.position.y < 0.32f) { // slot0, +-6 from 0.26f
 				
 				transform.position = new Vector3 (0.55f, 0.26f, startZ);
 				slot0 = true;
@@ -81,7 +86,7 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 				Counter.counter++;
 
 			} else if (slot1 == false && slot0 == true &&
-			    transform.position.y > 0.33f && transform.position.y < 0.45f) { // slot1, +-6 from 0.26f
+			    transform.position.y > 0.33f && transform.position.y < 0.45f) {
 				
 				transform.position = new Vector3 (0.55f, 0.39f, startZ);
 				slot1 = true;
@@ -89,7 +94,7 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 				Counter.counter++;
 
 			} else if (slot2 == false && slot1 == true &&
-			           transform.position.y > 0.46f && transform.position.y < 0.58f) { // slot 2, height of astro is 0.13f
+			           transform.position.y > 0.46f && transform.position.y < 0.58f) {
 				
 				transform.position = new Vector3 (0.55f, 0.52f, startZ);
 				slot2 = true;
@@ -119,8 +124,7 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 					Counter.counter--;
 				}
 			}
-			
-			
+				
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 			if (canRemove) {
@@ -128,27 +132,5 @@ public class Y1Q9mouseDrag : MonoBehaviour {
 				Counter.counter--;
 			}
 		}
-		
-		/**
-		if (transform.position.y > 0.1f & transform.position.y < 0.29f) { // slot 1
-			//changePos(0.3f);
-			transform.position = new Vector3(startX, 0.2f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.3f & transform.position.y < 0.49f) { // slot 2
-			//changePos(0.5f);
-			transform.position = new Vector3(startX, 0.4f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.5f & transform.position.y < 0.69f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.6f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.7f & transform.position.y < 0.89f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.8f, startZ);
-			currentPosition = transform.position;
-		} else { // not valid drop slot, move back to before slot.
-			transform.position = currentPosition;
-		}
-		*/
 	}
 }
