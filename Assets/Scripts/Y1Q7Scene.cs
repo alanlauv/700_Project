@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Script for game logics of task 7.
+/// </summary>
 public class Y1Q7Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y1Q7 = "Measurement/Y1/Q7";
 	
@@ -26,7 +28,9 @@ public class Y1Q7Scene : MonoBehaviour {
 			drawHintLine ();
 		}
 	}
-	
+	/// <summary>
+	/// Draws the hint which is a hint line.
+	/// </summary>
 	private void drawHintLine () {
 		if (HintButton.displayHint) {
 			GUI.DrawTexture(new Rect(Screen.width * .17f, Screen.height * .23f, Screen.width * 0.45f, Screen.height * .5f), hintLine);

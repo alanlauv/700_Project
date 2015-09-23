@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+/// <summary>
+/// Script for game logics of task 5.
+/// </summary>
 
 public class Y1Q5Scene : MonoBehaviour {
 
@@ -8,7 +11,7 @@ public class Y1Q5Scene : MonoBehaviour {
 	//textures
 	private Texture2D ladybug;
 
-	// text
+	// Answer pool
 	private Texture2D greenPencilText;
 	private Texture2D yellowPencilText;
 	private Texture2D bluePencilText;
@@ -35,7 +38,7 @@ public class Y1Q5Scene : MonoBehaviour {
 		if (!SettingsDialog.displaySettings) {
 			if (!StarDialog.displayStars) {
 				// answer pool
-				// Yellow
+				// yellow pencil
 				if (GUI.Button (new Rect (Screen.width * .65f, Screen.height * .25f, Screen.width * .2f, Screen.height * .1f), yellowPencilText)) {
 					IncorrectDialog.displayIncorrectDialog = true;
 					StarDialog.numIncorrect++;
@@ -56,23 +59,23 @@ public class Y1Q5Scene : MonoBehaviour {
 			}
 		}
 	}
-	
+	/// <summary>
+	/// Draws the hints which are lady bugs.
+	/// </summary>
 	private void drawLadyBug () {
 		if (HintButton.displayHint) {
-			//yellow
+			//Hints drawn for the yellow pencil
 			GUI.DrawTexture(new Rect(Screen.width * .09f, Screen.height * .325f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .13f, Screen.height * .325f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .17f, Screen.height * .325f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .21f, Screen.height * .325f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .325f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .29f, Screen.height * .325f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//green
+			//Hints drawn for the green pencil
 			GUI.DrawTexture(new Rect(Screen.width * .09f, Screen.height * .525f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .13f, Screen.height * .525f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .17f, Screen.height * .525f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//GUI.DrawTexture(new Rect(Screen.width * .21f, Screen.height * .54f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//GUI.DrawTexture(new Rect(Screen.width * .25f, Screen.height * .54f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//blue
+			//Hints drawn for the blue pencil.
 			GUI.DrawTexture(new Rect(Screen.width * .09f, Screen.height * .725f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .13f, Screen.height * .725f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .17f, Screen.height * .725f, Screen.width * .04f, Screen.height * .06f), ladybug);

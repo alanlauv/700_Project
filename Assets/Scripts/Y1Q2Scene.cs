@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Script for game logics of task 2.
+/// </summary>
 public class Y1Q2Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y1Q2 = "Measurement/Y1/Q2";
 	
 	//textures
 	private Texture2D astronaut;
 
-	//answers text
+	//Answer pool
 	private Texture2D tallerText;
 	private Texture2D longerText;
 	private Texture2D thinnerText;
@@ -79,14 +81,16 @@ public class Y1Q2Scene : MonoBehaviour {
 			}
 		}
 	}
-
+	/// <summary>
+	/// Draws the hint which are astronaut.
+	/// </summary>
 	private void drawAstronaut () {
 		if (HintButton.displayHint) {
-
+			//Astronauts are drawn beside the purple rocket
 			GUI.DrawTexture(new Rect(Screen.width * .37f, Screen.height * .66f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .37f, Screen.height * .53f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .37f, Screen.height * .4f, Screen.width * .08f, Screen.height * .13f), astronaut);
-
+			//Astronauts are drawn beside red rocket
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .66f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .53f, Screen.width * .08f, Screen.height * .13f), astronaut);
 			GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .4f, Screen.width * .08f, Screen.height * .13f), astronaut);

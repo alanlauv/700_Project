@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+/// <summary>
+/// Script for game logics of task 6.
+/// </summary>
 public class Y1Q6Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y1Q6 = "Measurement/Y1/Q6";
 
 	//textures
 	private Texture2D ladybug;
 
-	// text
+	// Answer pool
 	private Texture2D greenPencilText;
 	private Texture2D yellowPencilText;
 	private Texture2D bluePencilText;
@@ -63,18 +65,17 @@ public class Y1Q6Scene : MonoBehaviour {
 			}
 		}
 	}
-
+	/// <summary>
+	/// Draws the hints which are lady bugs.
+	/// </summary>
 	private void drawLadyBug () {
 		if (HintButton.displayHint) {
-			//green
-			//GUI.DrawTexture(new Rect(Screen.width * .67f, Screen.height * .12f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//GUI.DrawTexture(new Rect(Screen.width * .72f, Screen.height * .12f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			//Hints are drawn beside the green pencil
 			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .23f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .23f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .23f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .23f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//blue
-			//GUI.DrawTexture(new Rect(Screen.width * .52f, Screen.height * .32f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			//Hints are drawn beside the blue pencil
 			GUI.DrawTexture(new Rect(Screen.width * .615f, Screen.height * .43f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .655f, Screen.height * .43f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .695f, Screen.height * .43f, Screen.width * .04f, Screen.height * .06f), ladybug);
@@ -83,14 +84,11 @@ public class Y1Q6Scene : MonoBehaviour {
 			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .43f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .43f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .43f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//pink
-			//GUI.DrawTexture(new Rect(Screen.width * .72f, Screen.height * .52f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//GUI.DrawTexture(new Rect(Screen.width * .77f, Screen.height * .52f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			//Hints are drawn beside the pink pencil
 			GUI.DrawTexture(new Rect(Screen.width * .815f, Screen.height * .63f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .855f, Screen.height * .63f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .895f, Screen.height * .63f, Screen.width * .04f, Screen.height * .06f), ladybug);
-			//yellow
-			//GUI.DrawTexture(new Rect(Screen.width * .62f, Screen.height * .72f, Screen.width * .04f, Screen.height * .06f), ladybug);
+			//Hints are drawn beside the yellow pencil
 			GUI.DrawTexture(new Rect(Screen.width * .695f, Screen.height * .83f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .735f, Screen.height * .83f, Screen.width * .04f, Screen.height * .06f), ladybug);
 			GUI.DrawTexture(new Rect(Screen.width * .775f, Screen.height * .83f, Screen.width * .04f, Screen.height * .06f), ladybug);
