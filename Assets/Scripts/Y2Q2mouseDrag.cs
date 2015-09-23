@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Y2 q2mouse drag for the astronauts.
+/// </summary>
 public class Y2Q2mouseDrag : MonoBehaviour {
 
+	// slots next to the rocket
 	static bool slot1 = false;
 	static bool slot2 = false;
 	static bool slot3 = false;
@@ -45,6 +49,7 @@ public class Y2Q2mouseDrag : MonoBehaviour {
 
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
+			// draw only the first green outline
 			if (slot1 == false)
 				GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
 		}
@@ -52,10 +57,8 @@ public class Y2Q2mouseDrag : MonoBehaviour {
 	
 	void OnMouseDrag () {
 		if (!isSlotted && !StarDialog.displayStars && !SettingsDialog.displaySettings) {
-			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
-			
+			// drag logic
 			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
-			//mousePosition.z = transform.position.z;
 			
 			objPosition = Camera.main.ScreenToViewportPoint (mousePosition);
 			objPosition.z = 5.0f;
@@ -108,34 +111,11 @@ public class Y2Q2mouseDrag : MonoBehaviour {
 				}
 			}
 
-
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 			if (canRemove) {
 				canRemove = false;
 			}
 		}
-
-		/**
-		if (transform.position.y > 0.1f & transform.position.y < 0.29f) { // slot 1
-			//changePos(0.3f);
-			transform.position = new Vector3(startX, 0.2f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.3f & transform.position.y < 0.49f) { // slot 2
-			//changePos(0.5f);
-			transform.position = new Vector3(startX, 0.4f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.5f & transform.position.y < 0.69f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.6f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.7f & transform.position.y < 0.89f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.8f, startZ);
-			currentPosition = transform.position;
-		} else { // not valid drop slot, move back to before slot.
-			transform.position = currentPosition;
-		}
-		*/
 	}
 }

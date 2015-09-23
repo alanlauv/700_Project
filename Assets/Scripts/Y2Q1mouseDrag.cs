@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Y2 q1mouse drag for the astronauts.
+/// </summary>
 public class Y2Q1mouseDrag : MonoBehaviour {
 
+	// slots next to the rocket
 	static bool slot0 = false;
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -45,6 +49,7 @@ public class Y2Q1mouseDrag : MonoBehaviour {
 
 	void OnGUI () {
 		if (!SettingsDialog.displaySettings) {
+			// draw the green outlines if astronaut is not in the slot
 			if (slot0 == false)
 				GUI.DrawTexture (new Rect (Screen.width * .507f, Screen.height * .67f, Screen.width * .086f, Screen.height * .14f), astronautOutline);
 
@@ -58,11 +63,9 @@ public class Y2Q1mouseDrag : MonoBehaviour {
 	
 	void OnMouseDrag () {
 		if (!isSlotted && !StarDialog.displayStars && !SettingsDialog.displaySettings) {
-			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
-			
+			// drag logic
 			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
-			//mousePosition.z = transform.position.z;
-			
+						
 			objPosition = Camera.main.ScreenToViewportPoint (mousePosition);
 			objPosition.z = 5.0f;
 			
@@ -70,24 +73,25 @@ public class Y2Q1mouseDrag : MonoBehaviour {
 		}
 	}
 	
-	void OnMouseUp () {	
+	void OnMouseUp () {
+		// drop astronaut into a slot if dargged into correct slot
 		if (transform.position.x > 0.5f && transform.position.x < 0.6f) {
 			if (slot0 == false &&
-			    transform.position.y > 0.2f && transform.position.y < 0.32f) { // slot1, +-6 from 0.26f
+			    transform.position.y > 0.2f && transform.position.y < 0.32f) { // slot0, +-6 from 0.26f
 				
 				transform.position = new Vector3 (0.55f, 0.26f, startZ);
 				slot0 = true;
 				isSlotted = true;
 
 			} else if (slot1 == false && slot0 == true &&
-			    transform.position.y > 0.33f && transform.position.y < 0.45f) { // slot1, +-6 from 0.26f
+			    transform.position.y > 0.33f && transform.position.y < 0.45f) {
 				
 				transform.position = new Vector3 (0.55f, 0.39f, startZ);
 				slot1 = true;
 				isSlotted = true;
 				
 			} else if (slot2 == false && slot1 == true &&
-			           transform.position.y > 0.46f && transform.position.y < 0.58f) { // slot 2, height of astro is 0.13f
+			           transform.position.y > 0.46f && transform.position.y < 0.58f) {
 				
 				transform.position = new Vector3 (0.55f, 0.52f, startZ);
 				slot2 = true;
@@ -113,35 +117,12 @@ public class Y2Q1mouseDrag : MonoBehaviour {
 					canRemove = false;
 				}
 			}
-			
-			
+
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 			if (canRemove) {
 				canRemove = false;
 			}
 		}
-		
-		/**
-		if (transform.position.y > 0.1f & transform.position.y < 0.29f) { // slot 1
-			//changePos(0.3f);
-			transform.position = new Vector3(startX, 0.2f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.3f & transform.position.y < 0.49f) { // slot 2
-			//changePos(0.5f);
-			transform.position = new Vector3(startX, 0.4f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.5f & transform.position.y < 0.69f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.6f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.7f & transform.position.y < 0.89f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.8f, startZ);
-			currentPosition = transform.position;
-		} else { // not valid drop slot, move back to before slot.
-			transform.position = currentPosition;
-		}
-		*/
 	}
 }

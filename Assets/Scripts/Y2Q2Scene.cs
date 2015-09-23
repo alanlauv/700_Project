@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Y2 q2 scene.
+/// </summary>
 public class Y2Q2Scene : MonoBehaviour {
 	public const string MEASUREMENT_Y2Q2 = "Measurement/Y2/Q2";
 	
@@ -99,9 +102,14 @@ public class Y2Q2Scene : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Draws the hint.
+	/// </summary>
 	private void drawHint (){
 		if (HintButton.displayHint) {
+			// top line
 			GUI.DrawTexture(new Rect(Screen.width * .15f, Screen.height * .235f, Screen.width * .5f, Screen.width * .05f), hint);
+			// bottom line
 			GUI.DrawTexture(new Rect(Screen.width * .15f, Screen.height * .77f, Screen.width * .5f, Screen.width * .05f), hint);
 		}
 	}

@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Y2 q3mouse drag for the ladybugs.
+/// </summary>
 public class Y2Q3mouseDrag : MonoBehaviour {
 
+	// slots next to the pencil
 	static bool slot0 = false;
 	static bool slot1 = false;
 	static bool slot2 = false;
@@ -62,10 +66,8 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 	
 	void OnMouseDrag () {
 		if (!isSlotted && !StarDialog.displayStars && !SettingsDialog.displaySettings) {
-			//Vector3 mousePosition = new Vector3(Input.mousePosition.x + 130.0f, Input.mousePosition.y - 140.0f, distance);
-			
+			// drag logic
 			Vector3 mousePosition = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, distance);
-			//mousePosition.z = transform.position.z;
 			
 			objPosition = Camera.main.ScreenToViewportPoint (mousePosition);
 			objPosition.z = 5.0f;
@@ -77,21 +79,21 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 	void OnMouseUp () {	
 		if (transform.position.y > 0.535f && transform.position.y < 0.635f) {
 			if (slot0 == false &&
-			    transform.position.x > 0.095f && transform.position.x < 0.125f) { // slot1, +-1.5
+			    transform.position.x > 0.095f && transform.position.x < 0.125f) { // slot0, +-1.5
 				
 				transform.position = new Vector3 (0.11f, 0.585f, startZ);
 				slot0 = true;
 				isSlotted = true;
 				
 			} else if (slot1 == false && slot0 == true &&
-			           transform.position.x > 0.135f && transform.position.x < 0.165f) { // slot1, +-1.5
+			           transform.position.x > 0.135f && transform.position.x < 0.165f) {
 				
 				transform.position = new Vector3 (0.15f, 0.585f, startZ);
 				slot1 = true;
 				isSlotted = true;
 				
 			} else if (slot2 == false && slot1 == true &&
-			           transform.position.x > 0.175f && transform.position.x < 0.205f) { // slot 2
+			           transform.position.x > 0.175f && transform.position.x < 0.205f) {
 				
 				transform.position = new Vector3 (0.19f, 0.585f, startZ);
 				slot2 = true;
@@ -152,35 +154,12 @@ public class Y2Q3mouseDrag : MonoBehaviour {
 					canRemove = false;
 				}
 			}
-			
-			
+
 		} else if (!isSlotted) { // not valid drop slot, move back to before slot.
 			transform.position = currentPosition;
 			if (canRemove) {
 				canRemove = false;
 			}
 		}
-		
-		/**
-		if (transform.position.y > 0.1f & transform.position.y < 0.29f) { // slot 1
-			//changePos(0.3f);
-			transform.position = new Vector3(startX, 0.2f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.3f & transform.position.y < 0.49f) { // slot 2
-			//changePos(0.5f);
-			transform.position = new Vector3(startX, 0.4f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.5f & transform.position.y < 0.69f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.6f, startZ);
-			currentPosition = transform.position;
-		} else if (transform.position.y > 0.7f & transform.position.y < 0.89f) { // slot 3
-			//changePos(0.7f);
-			transform.position = new Vector3(startX, 0.8f, startZ);
-			currentPosition = transform.position;
-		} else { // not valid drop slot, move back to before slot.
-			transform.position = currentPosition;
-		}
-		*/
 	}
 }
