@@ -85,7 +85,7 @@ public class HintButton : MonoBehaviour
 				displayHint = true;
 
 			// hide the hint
-			if (timer >= timerMax) {
+			if (timer3 >= timerMax3) {
 				displayHint = false;
 			}
 		}

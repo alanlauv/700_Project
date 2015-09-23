@@ -7,7 +7,7 @@ using System.Collections;
 /// </summary>
 public class TeacherLoginScene : MonoBehaviour {
 	string password = "";
-	bool keepLoggedIn = false;
+	//bool keepLoggedIn = false;
 
 	Texture2D backText;
 	Texture2D enterText;
