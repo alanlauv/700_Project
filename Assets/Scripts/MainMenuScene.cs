@@ -11,8 +11,14 @@ public class MainMenuScene : MonoBehaviour {
 	private Texture2D geometryText;
 	private Texture2D statisticsText;
 
+	private bool displayComingSoon1 = false;
+	private bool displayComingSoon2 = false;
+	private Texture2D comingSoonText;
+
 	// Use this for initialization
 	void Start () {
+		comingSoonText = (Texture2D)Resources.Load ("Text/coming_soon_text");
+
 		numberText = (Texture2D)Resources.Load ("Text/number_and_algebra_text");
 		geometryText = (Texture2D)Resources.Load ("Text/geometry_and_measurement_text");
 		statisticsText = (Texture2D)Resources.Load ("Text/statistics_text");
@@ -29,9 +35,12 @@ public class MainMenuScene : MonoBehaviour {
 
 		// Number & Algebra button
 		if (GUI.Button (new Rect (Screen.width * .05f, Screen.height * .3f, Screen.width * .25f, Screen.height * .4f), "")) {
-			// nothing
+			displayComingSoon1 = true;
 		}
-		GUI.DrawTexture (new Rect (Screen.width * .1125f, Screen.height * .425f, Screen.width * .125f, Screen.height * .16f), numberText);
+		if (displayComingSoon1)
+			GUI.DrawTexture (new Rect (Screen.width * .075f, Screen.height * .45f, Screen.width * .2f, Screen.height * .08f), comingSoonText);
+		else
+			GUI.DrawTexture (new Rect (Screen.width * .1125f, Screen.height * .425f, Screen.width * .125f, Screen.height * .16f), numberText);
 
 		// Geometry & measurement button
 		if (GUI.Button (new Rect (Screen.width * .375f, Screen.height * .3f, Screen.width * .25f, Screen.height * .4f), geometryText)) {
@@ -40,9 +49,12 @@ public class MainMenuScene : MonoBehaviour {
 
 		// Statistics button
 		if (GUI.Button (new Rect (Screen.width * .7f, Screen.height * .3f, Screen.width * .25f, Screen.height * .4f), "")) {
-			// nothing
+			displayComingSoon2 = true;
 		}
-		GUI.DrawTexture (new Rect (Screen.width * .75f, Screen.height * .475f, Screen.width * .15f, Screen.height * .05f), statisticsText);
+		if (displayComingSoon2)
+			GUI.DrawTexture (new Rect (Screen.width * .73f, Screen.height * .45f, Screen.width * .2f, Screen.height * .08f), comingSoonText);
+		else
+			GUI.DrawTexture (new Rect (Screen.width * .75f, Screen.height * .475f, Screen.width * .15f, Screen.height * .05f), statisticsText);
 
 		// Teacher's console button
 		if (AppManager.Instance.teacherMode) {
